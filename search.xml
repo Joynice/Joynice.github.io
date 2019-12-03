@@ -1,34 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>时时彩</title>
-    <url>/2019/12/03/%E6%97%B6%E6%97%B6%E5%BD%A9/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>asd</category>
-      </categories>
+    <title>Flask数据可视化</title>
+    <url>/2019/12/03/Flask%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+    <content><![CDATA[<p>在Web开发过程中遇到要做些数据可视化工作，对于我来说，基本上后端使用<a href="https://pyecharts.org/#/" target="_blank" rel="noopener">Pyecharts</a>配合着前端<code>echarts.js</code>实现数据可视化工作。</p>
+<a id="more"></a>
+<h3 id="Pyechats介绍"><a href="#Pyechats介绍" class="headerlink" title="Pyechats介绍"></a>Pyechats介绍</h3><p><strong>✨ 特性</strong></p>
+<ul>
+<li>简洁的 API 设计，使用如丝滑般流畅，支持链式调用</li>
+<li>囊括了 30+ 种常见图表，应有尽有</li>
+<li>支持主流 Notebook 环境，Jupyter Notebook 和 JupyterLab</li>
+<li>可轻松集成至 Flask，Django 等主流 Web 框架</li>
+<li>高度灵活的配置项，可轻松搭配出精美的图表</li>
+<li>详细的文档和示例，帮助开发者更快的上手项目</li>
+<li>多达 400+ 地图文件以及原生的百度地图，为地理数据可视化提供强有力的支持</li>
+</ul>
+<p><strong>版本</strong><br>Pyechats有两个大版本，分为<code>v0.5.X</code>和v1。这两个版本像<code>python2</code>和<code>python3</code>一样相互不兼容，而且v1版本使用了python3.6+更新新的语法特性，所以v1版本只支持python3.6+。</p>
+<h3 id="Pyecharts使用"><a href="#Pyecharts使用" class="headerlink" title="Pyecharts使用"></a>Pyecharts使用</h3><p>在Web开发过程中，两个版本的Pyechats都使用过，使用的场景也不同。</p>
+<h4 id="场景一：Top10柱状图展示"><a href="#场景一：Top10柱状图展示" class="headerlink" title="场景一：Top10柱状图展示"></a>场景一：Top10柱状图展示</h4><p>在一次爬虫数据展示中，爬取<a href="[http://www.shicimingju.com/](http://www.shicimingju.com/)">诗词名句网</a>中诗人作品，并将作品数量前十的诗人展示出来。那时，还是第一次使用pyechats，使用的是<code>0.5.1</code>版本，可以说，第一次接触可视化工具，对于前端知识不怎么了解的我，使用起来还是非常方便的。对于这个场景，通过导入相应的图表如使用如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Bar     柱状图</span></pre></td></tr><tr><td class="code"><pre><span class="line">Pie     饼状图</span></pre></td></tr><tr><td class="code"><pre><span class="line">Line    折线图</span></pre></td></tr></table></figure>
+<p>主要使用这些图，还有其他图表如：<code>Funnel（漏斗图）</code>、<code>Gauge（仪表盘）</code>等等，如果有需要，详情请见<a href="https://05x-docs.pyecharts.org/#/zh-cn/charts_base" target="_blank" rel="noopener">Pyechats基本图表</a></p>
+<ul>
+<li>后端</li>
+</ul>
+<ol>
+<li>导入柱状图表<code>Bar</code>类，以及页面<code>Page</code>类<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Bar, Page</span></pre></td></tr></table></figure></li>
+<li>定义一个函数，从数据库中查询数据，返回返回Bar的实例<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_bar</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    poets = Poet.query.order_by(Poet.num.desc()).limit(<span class="number">10</span>)  <span class="comment">#获取诗人作品量前十的诗人</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    attr_poet = []    <span class="comment">#定义x轴数据，诗人姓名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    num_poet = []   <span class="comment">#定义y轴数据，诗人作品数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> poet <span class="keyword">in</span> poets:   </span></pre></td></tr><tr><td class="code"><pre><span class="line">        attr_poet.append(poet.name)   <span class="comment">#填充x轴数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        num_poet.append(poet.num)      <span class="comment">#填充y轴数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    bar = Bar(<span class="string">"作诗数前十名诗人"</span>)    <span class="comment">#实例</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    bar.add(<span class="string">""</span>, attr_poet, num_poet, is_label_show=<span class="literal">True</span>, center=[<span class="number">50</span>,<span class="number">50</span>])  <span class="comment">#将数据添加</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> bar   <span class="comment">#返回实例</span></span></pre></td></tr></table></figure></li>
+<li>在视图中渲染给前端<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/search/')</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    page = Page()  <span class="comment">#创建一个页面实例</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    bar = get_bar()   <span class="comment">#执行函数，得到Bar实例</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    page.add(bar)   <span class="comment">#将图表添加带页面类中，如果页面中有多个图：page.add([bar1, bar2, ....])</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'search.html'</span>, chart=page.render_embed())  <span class="comment">#渲染页面,返回chart</span></span></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>前端</li>
+</ul>
+<ol>
+<li>导入echarts.js<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='js/echarts.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure></li>
+<li>在相应位置使用Jinja2语法引用chart<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#123;&#123; chart|safe &#125;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+这样就实现数据展示，展示如下：<br><img src="https://upload-images.jianshu.io/upload_images/14106334-1e078578cbae62ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="作诗数前十诗人"><br>如果有兴趣研究项目地址如下：<a href="[https://github.com/Joynice/shicimingju](https://github.com/Joynice/shicimingju)">shicimingju</a></li>
+</ol>
+<h4 id="场景二：数据实时展示"><a href="#场景二：数据实时展示" class="headerlink" title="场景二：数据实时展示"></a>场景二：数据实时展示</h4><p>在近期的项目中，遇到了要实时更新的数据，类似实时展示24小时用户在线数量，这样的话每一个小时都要向后端请求一次数据，然后重新渲染图表，实现效果如下;<br><img src="https://upload-images.jianshu.io/upload_images/14106334-a74cd3546b8bc254.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="今日在线人数"><br>配合着<code>Layui</code>的轮播图展示，为了实现这个功能，我使用了<code>v1</code>的版本，这个相比于<code>0.5</code>版本，这个版本的实现效果更佳深入用户体验。实现这个功能使用Pyecharts也非常方便。</p>
+<ul>
+<li>后端<br>因为<code>v1</code>版本对代码进行了重构，所有导包方式也发生了变化</li>
+</ul>
+<ol>
+<li>新版本的Pyecharts将图表封装到<code>pyecharts.charts</code>这个文件中,将配置封装到<code>options</code>文件中，将两者分开，所以导包时：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> options <span class="keyword">as</span> opts</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Line</span></pre></td></tr></table></figure></li>
+<li>与<code>0.5</code>版本类似，首先写个函数创建图表，由于还没正式上线，所以为假数据。<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bar_base</span><span class="params">()</span> -&gt; Line:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    c = (</span></pre></td></tr><tr><td class="code"><pre><span class="line">        Line()</span></pre></td></tr><tr><td class="code"><pre><span class="line">            .add_xaxis(xaxis_data=list(map(<span class="keyword">lambda</span> x: <span class="string">'&#123;&#125;:00'</span>.format(x), [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">25</span>)])))</span></pre></td></tr><tr><td class="code"><pre><span class="line">            .add_yaxis(<span class="string">"在线人数"</span>, [random.randint(<span class="number">25</span>, <span class="number">150</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">25</span>)], is_smooth=<span class="literal">True</span>, color=<span class="string">'#66CDAA'</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                       label_opts=opts.LabelOpts(is_show=<span class="literal">False</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">            .set_series_opts(</span></pre></td></tr><tr><td class="code"><pre><span class="line">            areastyle_opts=opts.AreaStyleOpts(opacity=<span class="number">0.5</span>),</span></pre></td></tr><tr><td class="code"><pre><span class="line">        )</span></pre></td></tr><tr><td class="code"><pre><span class="line">            .set_global_opts(</span></pre></td></tr><tr><td class="code"><pre><span class="line">            title_opts=opts.TitleOpts(title=<span class="string">"今日在线人数"</span>, pos_left=<span class="string">'43%'</span>, pos_top=<span class="string">'8%'</span>),</span></pre></td></tr><tr><td class="code"><pre><span class="line">            xaxis_opts=opts.AxisOpts(</span></pre></td></tr><tr><td class="code"><pre><span class="line">                axistick_opts=opts.AxisTickOpts(is_align_with_label=<span class="literal">True</span>),</span></pre></td></tr><tr><td class="code"><pre><span class="line">                is_scale=<span class="literal">False</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                boundary_gap=<span class="literal">False</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">            ),</span></pre></td></tr><tr><td class="code"><pre><span class="line">            legend_opts=opts.LegendOpts(is_show=<span class="literal">False</span>),</span></pre></td></tr><tr><td class="code"><pre><span class="line">        )</span></pre></td></tr><tr><td class="code"><pre><span class="line">    )</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> c</span></pre></td></tr></table></figure></li>
+<li>定义一个视图函数进行，进行与前端交互<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@bp.route("/barChart")</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="meta">@login_required</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_bar_chart</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    c = bar_base()</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> c.dump_options()</span></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>前端</li>
+</ul>
+<ol>
+<li><p>引用echarts.js</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/echarts.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>结合<code>Layui</code>的轮播图，将生成的图表放入轮播图中</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-carousel"</span> <span class="attr">id</span>=<span class="string">"test1"</span> <span class="attr">lay-filter</span>=<span class="string">"test1"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">carousel-item</span>=<span class="string">""</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">              <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"bar"</span> <span class="attr">style</span>=<span class="string">"background-image: url('&#123;&#123; static('admin/img/timg.gif') &#125;&#125;');"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                     <span class="tag">&lt;<span class="name">div</span>&gt;</span>条目2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                     <span class="tag">&lt;<span class="name">div</span>&gt;</span>条目3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                      <span class="tag">&lt;<span class="name">div</span>&gt;</span>条目4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                      <span class="tag">&lt;<span class="name">div</span>&gt;</span>条目5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">               <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure></li>
+<li><p>通过JS实现AJAX轮询操作</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">var</span> chart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'bar'</span>), <span class="string">'essos'</span>, &#123;<span class="attr">renderer</span>: <span class="string">'canvas'</span>&#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">      chart.resize();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    chart.setOption(&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">        toolbox: &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            show: <span class="literal">true</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">            feature: &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                mark: &#123;<span class="attr">show</span>: <span class="literal">true</span>&#125;,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                dataView: &#123;<span class="attr">show</span>: <span class="literal">true</span>, <span class="attr">readOnly</span>: <span class="literal">false</span>&#125;,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                magicType: &#123;<span class="attr">show</span>: <span class="literal">true</span>, <span class="attr">type</span>: [<span class="string">'line'</span>, <span class="string">'bar'</span>, <span class="string">'stack'</span>, <span class="string">'tiled'</span>]&#125;,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                restore: &#123;<span class="attr">show</span>: <span class="literal">true</span>&#125;,</span></pre></td></tr><tr><td class="code"><pre><span class="line">                saveAsImage: &#123;<span class="attr">show</span>: <span class="literal">true</span>&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#125;,</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    $(</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            fetchData(chart);</span></pre></td></tr><tr><td class="code"><pre><span class="line">            setInterval(fetchData, <span class="number">1000</span> * <span class="number">60</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    );</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fetchData</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        $.ajax(&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            type: <span class="string">"GET"</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">            url: <span class="string">"/barChart"</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">            dataType: <span class="string">'json'</span>,</span></pre></td></tr><tr><td class="code"><pre><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                chart.setOption(result);</span></pre></td></tr><tr><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+<p>这样就可以实现相应的功能了。</p>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在开发过程中，使用过多次<code>Pyecharts</code>，通过记录这两次场景应用，方便以后的学习，数据可视化还需要更深入的研究，以后还会继续学习相关知识。</p>
+]]></content>
       <tags>
-        <tag>设计师</tag>
-        <tag>输的</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2019/12/03/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
+    <title>常规漏洞处置方案</title>
+    <url>/2019/12/03/%E5%B8%B8%E8%A7%84%E6%BC%8F%E6%B4%9E%E5%A4%84%E7%BD%AE%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>收集下常规漏洞处置方案，在生产环境中，基本上首先都要封禁攻击者IP。</p>
 <a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="内网IP攻击"><a href="#内网IP攻击" class="headerlink" title="内网IP攻击"></a>内网IP攻击</h3><p>升级免疫网络，基因式终端网卡绑定，对身份严格控制审计，对发出的任何数据做到严格验证封包。</p>
+<h3 id="structs2远程命令执行漏洞"><a href="#structs2远程命令执行漏洞" class="headerlink" title="structs2远程命令执行漏洞"></a>structs2远程命令执行漏洞</h3><p>升级Struct2框架，在不影响业务前提下，对lib目录中对应jar包进行替换。</p>
+<h3 id="注入攻击"><a href="#注入攻击" class="headerlink" title="注入攻击"></a>注入攻击</h3><p>封禁攻击IP，对用户输入进行验证，过滤特殊字符，使用类型安全的sql参数，业务代码中检测注入点。</p>
+<h3 id="跨站攻击"><a href="#跨站攻击" class="headerlink" title="跨站攻击"></a>跨站攻击</h3><p>封禁攻击IP，对于存储型攻击，找到业务代码进行修复，过滤特殊字符串，严格检测用户输入，对用户上传文件进行检测。</p>
+<h3 id="Web插件漏洞攻击"><a href="#Web插件漏洞攻击" class="headerlink" title="Web插件漏洞攻击"></a>Web插件漏洞攻击</h3><p>封禁攻击IP，对系统使用的Web插件进行定期插件检测，使用安全的Web插件，关注相关插件漏洞。</p>
+<h3 id="Webshell攻击"><a href="#Webshell攻击" class="headerlink" title="Webshell攻击"></a>Webshell攻击</h3><p>封禁攻击IP，及时删除攻击文件，配置好服务器FSO权限，对asp上传文件进行严格审核，设置上传白名单。</p>
+<h3 id="弱口令探测"><a href="#弱口令探测" class="headerlink" title="弱口令探测"></a>弱口令探测</h3><p>封禁探测IP，系统可以采取动态口令验证，定期更改口令，系统强制使用强口令。</p>
+<h3 id="Web漏洞扫描"><a href="#Web漏洞扫描" class="headerlink" title="Web漏洞扫描"></a>Web漏洞扫描</h3><p>封禁攻击IP，使用第三方的防御策略来设置过滤。</p>
+<h3 id="口令爆破"><a href="#口令爆破" class="headerlink" title="口令爆破"></a>口令爆破</h3><p>封禁探测IP，系统可以采取动态口令验证，定期更改口令，系统强制使用强口令。</p>
+<h3 id="命令执行攻击"><a href="#命令执行攻击" class="headerlink" title="命令执行攻击"></a>命令执行攻击</h3><p>封禁攻击IP，对敏感字符进行转义，对参数进行过滤，系统少用或者禁用命令执行函数。</p>
+<h3 id="Sql注入攻击"><a href="#Sql注入攻击" class="headerlink" title="Sql注入攻击"></a>Sql注入攻击</h3><p>封禁攻击IP，查询语句使用数据库提供的参数化查询接口，对特殊字符进行转义或者编码处理，严格限制变量类型、数据长度以及操作权限。</p>
+<h3 id="社会工程学攻击"><a href="#社会工程学攻击" class="headerlink" title="社会工程学攻击"></a>社会工程学攻击</h3><p>保证数据库安全，防止被暴库泄露用户信息，重视邮件系统信息以及用户敏感信息保护。</p>
+<h3 id="网络钓鱼攻击"><a href="#网络钓鱼攻击" class="headerlink" title="网络钓鱼攻击"></a>网络钓鱼攻击</h3><p>各类文章链接或文件一律不点击、不查看、不下载、不传播。</p>
+<h3 id="Apache-Tomcat-远程代码执行攻击"><a href="#Apache-Tomcat-远程代码执行攻击" class="headerlink" title="Apache Tomcat 远程代码执行攻击"></a>Apache Tomcat 远程代码执行攻击</h3><p>封禁攻击IP，根据厂商进行升级补丁修复漏洞。</p>
+<h3 id="RDP爆破攻击"><a href="#RDP爆破攻击" class="headerlink" title="RDP爆破攻击"></a>RDP爆破攻击</h3><p>封禁攻击IP，根据业务需求，关闭没必要RDP服务，更新RDP版本，系统账号设置强密码，限制密码尝试次数。</p>
+<h3 id="挖矿木马攻击"><a href="#挖矿木马攻击" class="headerlink" title="挖矿木马攻击"></a>挖矿木马攻击</h3><p>封禁攻击IP，找到木马来源，切断入口；找到木马守护进程并杀死，然后杀死木马进程；持续监视服务器资源消耗，发现异常进程及时处置。</p>
+<h3 id="勒索病毒"><a href="#勒索病毒" class="headerlink" title="勒索病毒"></a>勒索病毒</h3><p>1.断网处理，防止勒索病毒内网传播感染，造成更大的损失；</p>
+<p>2.查找样本和勒索相关信息，确认是哪个勒索病毒家族的样本；</p>
+<p>3.确认完勒索病毒家族之后，看看是否有相应的解密工具，可以进行解密；</p>
+<p>4.进行溯源分析，确认是通过哪种方式传播感染的进来的，封堵相关的安全漏洞；</p>
+<p>5.做好相应的安全防护工作，以防再次感染。</p>
 ]]></content>
+      <tags>
+        <tag>漏洞</tag>
+        <tag>安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>招聘网站信息收集</title>
+    <url>/2019/12/03/%E6%8B%9B%E8%81%98%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="FindJob"><a href="#FindJob" class="headerlink" title="FindJob"></a>FindJob</h2><p> 爬取各大招聘公司，将招聘信息保存到本地。</p>
+<a id="more"></a>
+<h3 id="招聘网站"><a href="#招聘网站" class="headerlink" title="招聘网站"></a>招聘网站</h3><ul>
+<li><a href="https://www.zhipin.com/" target="_blank" rel="noopener">BOSS直聘</a></li>
+<li><a href="https://www.51job.com/" target="_blank" rel="noopener">前程无忧51Job</a></li>
+<li><a href="https://www.zhaopin.com/" target="_blank" rel="noopener">智联招聘</a></li>
+<li><a href="https://www.lagou.com/" target="_blank" rel="noopener">拉钩网</a></li>
+</ul>
+<p><strong>持续更新</strong></p>
+<h3 id="传入参数设计"><a href="#传入参数设计" class="headerlink" title="传入参数设计"></a>传入参数设计</h3><p>由于这些招聘网站设置的参数不同，统一到本项目中设置两个参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">city: 招聘地点</span></pre></td></tr><tr><td class="code"><pre><span class="line">keyword: 搜索关键字（如：java、python、平面设计等等）</span></pre></td></tr></table></figure>
+<p>同时可以选择其中一个网站获取数据，也可以获得所有网站进行数据获取。</p>
+<h4 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h4><ul>
+<li>core <pre><code>- boss.py         `boss直聘`
+- QCWY.py       `前程无忧`
+- zhilian.py        `智联招聘`</code></pre><ul>
+<li>save-data     <code>存储数据</code></li>
+<li>utils  <code>工具</code></li>
+<li>config.py <code>配置</code></li>
+<li>findjob.py <code>主文件</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h4><p>以<code>前程无忧</code>进行代码分析，定义一个<code>QCWY</code>类，构造函数只要传入关键字、城市名称、线程数。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-9e9ae52db4571c78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="URL分析"><br>通过分析url， 获得相应的信息，这里城市的ID比较难构造，但是通过分析其他文件发现一个JS文件，保存着城市ID和城市之间的关系，通过分析JS文件，将输入的城市名称转换成相应的ID：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_city_code</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    url = <span class="string">'https://js.51jobcdn.com/in/js/2016/layer/area_array_c.js'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    req = requests.get(url, headers=self.header).text</span></pre></td></tr><tr><td class="code"><pre><span class="line">    a = req.find(self.city)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> req[a - <span class="number">9</span>:a - <span class="number">3</span>]</span></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-bd17de42e6679485.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="城市ID"></p>
+<hr>
+<p>同时获取搜索的页数，并构造相应URL<br><img src="https://upload-images.jianshu.io/upload_images/14106334-5c5647f0987300fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="获取最大页数"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_max_page</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        city_code = self._get_city_code()</span></pre></td></tr><tr><td class="code"><pre><span class="line">        url = self.baseurl + <span class="string">'&#123;&#125;,000000,0000,00,9,99,&#123;&#125;,2,1.html'</span>.format(city_code, self.keyword)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        req = requests.get(url=url, headers=self.header)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        req.encoding = <span class="string">'gbk'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        html = etree.HTML(req.text)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        max_page = html.xpath(<span class="string">'//*[@id="resultList"]/div[2]/div[5]/text()'</span>)[<span class="number">1</span>][<span class="number">3</span>:]</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> range(<span class="number">1</span>, int(max_page) + <span class="number">1</span>):</span></pre></td></tr><tr><td class="code"><pre><span class="line">            page_url = self.baseurl + <span class="string">'&#123;&#125;,000000,0000,00,9,99,&#123;&#125;,2,&#123;&#125;.html'</span>.format(city_code, self.keyword, page)</span></pre></td></tr><tr><td class="code"><pre><span class="line">            self.pagequeue.put(page_url)</span></pre></td></tr></table></figure>
+<hr>
+<p>进行上述获得城市ID，获得最大页码后，进行url构造后进行爬取，通过分析用Xpath就行获取相应的信息，获得如下信息</p>
+<ol>
+<li>职位名称</li>
+<li>详细链接</li>
+<li>公司名称</li>
+<li>工作地点</li>
+<li>薪资</li>
+<li>发布时间</li>
+<li>职位信息</li>
+<li>公司信息</li>
+</ol>
+<p>获取这些字段，使用csv进行存储。</p>
+<h4 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h4><ul>
+<li>Boss直聘存在反爬，导致IP封禁。可以设置IP代理，最近得知正常Boss直聘增加了跳转，需要继续更新。</li>
+<li>主文件中，多进程没有起作用，搜索之后，没有解决，请了解的小伙伴就行指教。</li>
+</ul>
+<h4 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h4><p><a href="[https://github.com/Joynice/FindJob](https://github.com/Joynice/FindJob)">FindJob</a><br>同时推荐给小伙伴我们团队的爬虫项目地址如下：<br><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers" target="_blank" rel="noopener">ECommerceCrawlers</a></p>
+]]></content>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>百度关键词收录爬取</title>
+    <url>/2019/12/03/%E7%99%BE%E5%BA%A6%E5%85%B3%E9%94%AE%E8%AF%8D%E6%94%B6%E5%BD%95%E7%88%AC%E5%8F%96/</url>
+    <content><![CDATA[<p>根据百度搜索，输入关键字，获取相应关键子的收录数。</p>
+<a id="more"></a>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
+<li>根据百度搜索，输入关键词，获得相应关键词的收录数。</li>
+<li>收集完数据后，根据指定的阈值进行数据分类（如大于收录数大于1000的保存在一个csv文件，其他保存在另一个csv文件中。）。</li>
+<li>爬虫效率（目前测试实现18w/1h），带宽影响很大。</li>
+<li>打包成exe，可执行文件。</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><strong>接口</strong>：<a href="http://www.baidu.com/s" target="_blank" rel="noopener">http://www.baidu.com/s</a> </p>
+<p><strong>传参</strong>：data = {‘wd’: 关键词}</p>
+<p>由于百度这个接口没有反爬设置，所有正确访问即可，通过Xpath+re获得想要的数据。</p>
+<p>具体爬取内容如图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-f9e08d54c97eafec.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爬取内容"></p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol>
+<li>先将需要爬取的txt文件复制到“彩票关键词”目录，保证目录中只存在需要爬取的文件。</li>
+<li>再打开数据采集器，设置线程数，以及阈值。线程数建议20，根据带宽决定；阈值将数据进行划分出大于该值以及小于该值的两个文件。</li>
+<li>最后从结果文件夹中提取出爬取结果。</li>
+</ol>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">项目地址</a></h2><p><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu</a></p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li>学习TK。</li>
+<li>异步</li>
+<li>优化保存。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高用代理</title>
+    <url>/2019/12/03/%E9%AB%98%E7%94%A8%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>由于我们的代理有限，所以需要去一些代理网站上爬取一些可用的高效的代理，所以就需要爬虫去完成这部分的工作。</p>
+<a id="more"></a>
+<ol>
+<li>爬虫部分  </li>
+<li>代理检测  </li>
+<li>存储</li>
+</ol>
+<h2 id="爬虫部分"><a href="#爬虫部分" class="headerlink" title="爬虫部分"></a>爬虫部分</h2><p>　　由于我们的代理有限，所以需要去一些代理网站上爬取一些可用的高效的代理，所以就需要爬虫去完成这部分的工作。</p>
+<p>　　为了爬取高效的代理，找到以下的代理网站进行爬取：</p>
+<ul>
+<li><code>http://ip.kxdaili.com/</code></li>
+<li><code>http://www.xicidaili.com/</code></li>
+<li><code>http://www.66ip.cn/</code></li>
+<li><code>http://www.66ip.cn/areaindex_%s/1.html</code></li>
+<li><code>http://www.89ip.cn/</code></li>
+</ul>
+<p>　　首先，定义个爬虫类，我们只需传入爬取网站的url、正则表达式、以及标志符flag就可以调用get_data（）函数进行爬取，大大优化了代码结构，代码如下：  </p>
+<pre><code>class Crawler(object):
+    def __init__(self, url, regular, flag=None):
+        self.url = url
+        self.regular = regular
+        self.flag = flag
+
+    def get_data(self):
+        proxies_list = []
+        for i in self.url:
+            print(i)
+            try:
+                text = requests.get(i, headers=config.HEADERS)
+            except:
+                pass
+            time.sleep(5)
+            text.encoding = &apos;utf-8&apos;
+            data = re.findall(self.regular, text.text)
+            if i[11:15] == &apos;66ip&apos;:
+                for t in range(1, int(len(data) / self.flag)):
+                    proxies = &apos;{}:{}&apos;.format(data[self.flag * t], data[(self.flag * t) + 1])
+                    proxies_list.append(proxies)
+            elif i[11:15] == &apos;89ip&apos;:
+                proxies_list = data[1:]
+            else:
+                for t in range(0, int(len(data) / self.flag)):
+                    proxies = &apos;{}:{}&apos;.format(data[self.flag * t], data[(self.flag * t) + 1])
+                    proxies_list.append(proxies)
+        return proxies_list</code></pre><p>　　代理列表如下：  </p>
+<pre><code>SPIDER_PARSER_LIST =[
+{    # 开心代理
+    &apos;url&apos;:[&apos;http://ip.kxdaili.com/ipList/%s.html#ip&apos; % i for i in range(1, 11)],
+    &apos;regular&apos;:&apos;&lt;td&gt;(.*?)&lt;/td&gt;&apos;,
+    &apos;flag&apos;:7
+},
+{    # 西刺代理
+    &apos;url&apos;:[&apos;http://www.xicidaili.com/nn/%s&apos; % i for i in range(1, 5)],
+    &apos;regular&apos;:&apos;&lt;td&gt;(.*?)&lt;/td&gt;&apos;,
+    &apos;flag&apos;:5
+},
+{    # 66ip代理-全国代理
+    &apos;url&apos;: [&apos;http://www.66ip.cn/%s.html&apos; % i for i in range(1, 40)],
+    &apos;regular&apos;: &apos;&lt;td&gt;(.*?)&lt;/td&gt;&apos;,
+    &apos;flag&apos;:5
+},
+{    # 66ip代理-各省代理
+    &apos;url&apos;: [&apos;http://www.66ip.cn/areaindex_%s/1.html&apos; % i for i in range(1, 35)],
+    &apos;regular&apos;: &apos;&lt;td&gt;(.*?)&lt;/td&gt;&apos;,
+    &apos;flag&apos;:5
+},
+{    # 根据api获得代理
+    &apos;url&apos;: [&apos;http://www.89ip.cn/tqdl.html?api=1&amp;num={}&amp;port=&amp;address=&amp;isp=&apos;.format(500)],
+    &apos;regular&apos;: &apos;(.*?)&lt;br&gt;&apos;,
+    &apos;flag&apos;: None
+},
+]  </code></pre><p>　　调用方法如下：　　</p>
+<pre><code>def get_object():
+    proxise_list = []
+    for pirder_paeser in config.SPIDER_PARSER_LIST:
+        url = Crawler(url=pirder_paeser.get(&apos;url&apos;), regular=pirder_paeser.get(&apos;regular&apos;),
+                      flag=pirder_paeser.get(&apos;flag&apos;)).get_data()
+        proxise_list.append(url)
+    return proxise_list</code></pre><h2 id="代理检测"><a href="#代理检测" class="headerlink" title="代理检测"></a>代理检测</h2><p>　　将存在列表里的代理组成一个新的列表，利用进程池进行快速地检测，检测主要如下：  </p>
+<ol>
+<li>代理是否可用，代理延迟大于3秒即视为不可用。  </li>
+<li>http与https代理划分。  </li>
+<li>高匿性检测（此部分完成的不好）。  </li>
+</ol>
+<p>　　由于自己的知识的欠缺，对于代理方面的知识了解不够全面，导致对于代理检测也是跟着自己的想法进行测试，不知道是否合理，请大家指出。代码如下：  </p>
+<pre><code>def check(proxy):
+    http_proxy_list = []
+    http_proxy_gaoni_list = []
+    https_proxy_list = []
+
+    proxy_http_dict = {
+        &apos;http&apos;: proxy
+    }
+    proxy_https_dict = {
+        &apos;https&apos;: proxy
+    }
+    try:
+        http_res = requests.get(config.SPIDER_PUBLIC_URL, proxies=proxy_http_dict, timeout=5,
+                                headers=config.HEADERS)
+        time.sleep(1)
+        if http_res.status_code == 200:
+            try:
+                dic1 = eval(http_res.text)
+                ip = dic1.get(&apos;remote_addr&apos;)
+                if ip == public_network_ip:
+                    http_proxy_list.append(proxy)
+                    print(http_res.text)
+                else:
+                    print(http_res.text)
+                    http_proxy_gaoni_list.append(proxy)
+            except:
+                pass
+    except Exception as e:
+        print(e)
+    try:
+        https_res = requests.get(&apos;https://www.baidu.com/&apos;, timeout=5, proxies=proxy_https_dict
+                                 , headers=config.HEADERS, verify=False)
+        time.sleep(1)
+        if https_res.status_code == 200:
+            print(&apos;https:&apos;)
+            https_proxy_list.append(proxy)
+    except Exception as e:
+        print(e)
+    print(http_proxy_list, http_proxy_gaoni_list, https_proxy_list)
+    return http_proxy_list, http_proxy_gaoni_list, https_proxy_list</code></pre><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>　　利用python的flask-sqlalchemy模块进行关系到表的映射。Proxy结构如下：  </p>
+<pre><code>class Proxy(db.Model):
+    __tablename__ = &apos;proxy_pool&apos;
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    proxy = db.Column(db.String(100), nullable=False,unique=False)
+    http = db.Column(db.String(100), nullable=False)
+    type = db.Column(db.String(100), nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+    add_time = db.Column(db.DateTime, nullable=False)
+    check_time = db.Column(db.DateTime, nullable=False)
+    res_time = db.Column(db.Float, nullable=False)</code></pre><p>　　存储是利用非orm结构进行存储，将检测的结果一次性存储，缩短了存储时间，减小了对数据库的压力。代码如下：  </p>
+<pre><code>def save(proxy_list1, proxy_list2, proxy_list3):
+
+    if len(proxy_list1) &gt; 0:
+        session.execute(Proxy.__table__.insert(), [{&apos;proxy&apos;: str(i), &apos;http&apos;: &apos;http&apos;, &apos;type&apos;: &apos;透明&apos;, &apos;score&apos;: str(100)
+                                                       , &apos;add_time&apos;: datetime.datetime.now(),
+                                                    &apos;check_time&apos;: datetime.datetime.now()
+                                                       , &apos;res_time&apos;: 0.1} for i in proxy_list1])
+    else:
+        pass
+    if len(proxy_list2) &gt; 0:
+        session.execute(Proxy.__table__.insert(), [
+            {&apos;proxy&apos;: str(i), &apos;http&apos;: &apos;https&apos;, &apos;type&apos;: &apos;高匿&apos;, &apos;score&apos;: str(100), &apos;add_time&apos;: datetime.datetime.now(),
+             &apos;check_time&apos;: datetime.datetime.now(), &apos;res_time&apos;: 0.1} for i in proxy_list2])
+    else:
+        pass
+    if len(proxy_list3) &gt; 0:
+        session.execute(Proxy.__table__.insert(), [
+            {&apos;proxy&apos;: str(i), &apos;http&apos;: &apos;http&apos;, &apos;type&apos;: &apos;高匿&apos;, &apos;score&apos;: str(100), &apos;add_time&apos;: datetime.datetime.now(),
+             &apos;check_time&apos;: datetime.datetime.now(), &apos;res_time&apos;: 0.1} for i in proxy_list3])
+    else:
+        pass
+    session.commit()
+    session.close()</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>　　第一次，合作完成项目，学习到了许多知识如：  </p>
+<ol>
+<li>利用类，充分利用代码，降低耦合度。</li>
+<li>利用进程池缩短检测时间。</li>
+<li>以及非orm存储数据库。  　　</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>启发式爬虫</title>
+    <url>/2019/12/03/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%88%AC%E8%99%AB/</url>
+    <content><![CDATA[<p>简而言之启发式爬虫是基于所有历史经验及曾经看到过的已知场景，通过分析这些场景和利用已知的经验构造并实现规则的爬虫。</p>
+<a id="more"></a>
+
+
+<ol>
+<li>什么是启发式爬虫？</li>
+<li>启发式爬虫好处</li>
+<li>启发式爬虫具体实现</li>
+</ol>
+<h2 id="什么是启发式爬虫？"><a href="#什么是启发式爬虫？" class="headerlink" title="什么是启发式爬虫？"></a>什么是启发式爬虫？</h2><p>　　简而言之启发式爬虫是基于所有历史经验及曾经看到过的已知场景，通过分析这些场景和利用已知的经验构造并实现规则的爬虫。</p>
+<h2 id="启发式爬虫好处"><a href="#启发式爬虫好处" class="headerlink" title="启发式爬虫好处"></a>启发式爬虫好处</h2><p>现今网站特征：　　　　</p>
+<pre><code>1. Vue.js
+2. JQuery
+3. Handlebars
+4. 代码混淆反爬虫
+5. DOM时间频繁更新　　　　</code></pre><p>　　这些网站特征导致requests、urllib这些传统爬虫所用到的模块爬取不到有用的信息。这样，基于无界面的浏览器横空出世。 </p>
+<p>　　无界面浏览器发展到现在，Chromium Headless可以说是众多浏览器中的佼佼者，一方面它是谷歌研发市场第一，几个小时一个版本更新，另一方面，Chromium Headless积极支持W3C标志组织。这些优势，势必会成为将来爬虫和自动化测试的利器。    </p>
+<p>　　既然已经拥有了这么强大的无界面浏览器，就要用强大的工具去操纵它，puppteer翻译是操纵木偶的人，利用这个工具，我们能做到一个操纵页面的人。puppteer是一个Node.js的库，支持调用Chrome的Api来操纵web，相比较Selenium或是PhantomJs，它最大的特点就是它的操作Dom可以完成在内存中进行模拟既在V8引擎中处理而不打开浏览器，而且关键是这个是Chrome团队在维护，会拥有更好的兼容性和前景。   </p>
+<p>　　Pyppteer是python中操作Chromium Headless的库，具有个puppteer一样的功能，如以下功能：    </p>
+<pre><code>1. 利用网页生成PDF、图片
+2. 爬取SPA应用，并生成预渲染内容（即“SSR” 服务端渲染）
+3. 可以从网站抓取内容
+4. 自动化表单提交、UI测试、键盘输入等
+5. 帮你创建一个最新的自动化测试环境（chrome），可以直接在此运行测试用例
+6. 捕获站点的时间线，以便追踪你的网站，帮助分析网站性能问题</code></pre><h2 id="启发式爬虫具体实现"><a href="#启发式爬虫具体实现" class="headerlink" title="启发式爬虫具体实现"></a>启发式爬虫具体实现</h2><p>　　首先可以把爬虫看作一个工厂流水线系统，流水线系统一定会有一个总队长负责各条生产线任务调度，在这里<font color=red size=2 face="Consolas">ROP</font>就是总队长。流程明确后，每个步骤都各司其职实现各自的功能。　　　　</p>
+<p>　　爬虫总队长这个管理器的功能负责任务调度和事件管理。在做扫描器爬虫的第一步先将URL传给任务调度器总队长，总队长把这个任务传给下面，之后打开页面进入到加载状态。页面加载后需要判断当前页面是否完全，比如有时候某些网页服务器网络性差，或是遇到GS报错、网站超时某些资源显示不全，这时候可以通过下图标注的三个状态来确定整个网页的结构是否加载完成，整个页面是否打开完成。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14106334-07cca1feae006adf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启发式爬虫具体实现"></p>
+<p>　　完成后把整个浏览器page页面锁定不做任何动作，让它打开另外一个新网页，或者跳转其他网页上去。</p>
+<p>　　当整个网页加载好之后，把整个网页跳转锁定后就可以进入到函数劫持阶段。随后开始注入一个监听器，监听所有事件的变动和事件触发的信息。当文件加载、函数劫持、监听都完成之后，可以编译出任何输入框绑定的事件，对某个输入参数值进行常规判断的一些信息。</p>
+<p>　　当我们发现页面存在表单的时候，可以通过分析表单的输入类型以及表单名称，进行一些参数填充。上面所有流程结束后，会得到当前页面所有信息的结果题。此时可以通过去虫过滤之后，返回给事件管理器，重复执行整个流程。</p>
+<p>　　确定总体流程之后回到刚才的第一步，页面加载，录入实现。</p>
+<p>　　当一个页面加载完成之后，应该在什么时候注入我们的劫持代码，这里边有状态可以选择。第一个在page load之后；第二个是等待页面加载完成之后，也就是当前网络状态全部空闲的时候，整个爬虫执行流再继续执行；或者判断整个网页的DOM树是否被加载并解析完成。</p>
+<h3 id="演示实例"><a href="#演示实例" class="headerlink" title="演示实例"></a>演示实例</h3><p>Example: open web page and take a screenshot.</p>
+<pre><code>import asyncio
+from pyppeteer import launch
+
+async def main():
+    browser = await launch()
+    page = await browser.newPage()
+    await page.goto(&apos;http://example.com&apos;)
+    await page.screenshot({&apos;path&apos;: &apos;example.png&apos;})
+    await browser.close()
+
+asyncio.get_event_loop().run_until_complete(main())</code></pre><p>Example: evaluate script on the page.</p>
+<pre><code>import asyncio
+from pyppeteer import launch
+
+async def main():
+    browser = await launch()
+    page = await browser.newPage()
+    await page.goto(&apos;http://example.com&apos;)
+    await page.screenshot({&apos;path&apos;: &apos;example.png&apos;})
+
+    dimensions = await page.evaluate(&apos;&apos;&apos;() =&gt; {
+        return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight,
+            deviceScaleFactor: window.devicePixelRatio,
+        }
+    }&apos;&apos;&apos;)
+
+    print(dimensions)
+    # &gt;&gt;&gt; {&apos;width&apos;: 800, &apos;height&apos;: 600, &apos;deviceScaleFactor&apos;: 1}
+    await browser.close()
+
+asyncio.get_event_loop().run_until_complete(main())</code></pre>]]></content>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
   </entry>
 </search>

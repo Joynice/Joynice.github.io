@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="爬虫," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="sec_web">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;sec_web&#x2F;index.html">
+<meta name="description" content="根据百度搜索，输入关键字，获取相应关键子的收录数。">
+<meta name="keywords" content="爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度关键词收录爬取">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;03&#x2F;%E7%99%BE%E5%BA%A6%E5%85%B3%E9%94%AE%E8%AF%8D%E6%94%B6%E5%BD%95%E7%88%AC%E5%8F%96&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
+<meta property="og:description" content="根据百度搜索，输入关键字，获取相应关键子的收录数。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:updated_time" content="2019-12-03T09:52:05.843Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-f9e08d54c97eafec.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-12-03T12:50:07.850Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-f9e08d54c97eafec.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/sec_web/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/03/百度关键词收录爬取/"/>
 
 
 
 
 
-  <title>sec_web | Joynice</title>
+  <title>百度关键词收录爬取 | Joynice</title>
   
 
 
@@ -311,33 +316,203 @@ var _hmt = _hmt || [];
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/03/%E7%99%BE%E5%BA%A6%E5%85%B3%E9%94%AE%E8%AF%8D%E6%94%B6%E5%BD%95%E7%88%AC%E5%8F%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">sec_web</h2>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h2 class="post-title" itemprop="name headline">百度关键词收录爬取</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T20:35:03+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  312
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>根据百度搜索，输入关键字，获取相应关键子的收录数。</p>
+<a id="more"></a>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
+<li>根据百度搜索，输入关键词，获得相应关键词的收录数。</li>
+<li>收集完数据后，根据指定的阈值进行数据分类（如大于收录数大于1000的保存在一个csv文件，其他保存在另一个csv文件中。）。</li>
+<li>爬虫效率（目前测试实现18w/1h），带宽影响很大。</li>
+<li>打包成exe，可执行文件。</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><strong>接口</strong>：<a href="http://www.baidu.com/s" target="_blank" rel="noopener">http://www.baidu.com/s</a> </p>
+<p><strong>传参</strong>：data = {‘wd’: 关键词}</p>
+<p>由于百度这个接口没有反爬设置，所有正确访问即可，通过Xpath+re获得想要的数据。</p>
+<p>具体爬取内容如图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-f9e08d54c97eafec.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爬取内容"></p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol>
+<li>先将需要爬取的txt文件复制到“彩票关键词”目录，保证目录中只存在需要爬取的文件。</li>
+<li>再打开数据采集器，设置线程数，以及阈值。线程数建议20，根据带宽决定；阈值将数据进行划分出大于该值以及小于该值的两个文件。</li>
+<li>最后从结果文件夹中提取出爬取结果。</li>
+</ol>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">项目地址</a></h2><p><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu</a></p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li>学习TK。</li>
+<li>异步</li>
+<li>优化保存。</li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag" class=" fa  fa-tag  "> 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/%E9%AB%98%E7%94%A8%E4%BB%A3%E7%90%86/" rel="next" title="高用代理">
+                <i class="fa fa-chevron-left"></i> 高用代理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/%E6%8B%9B%E8%81%98%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="prev" title="招聘网站信息收集">
+                招聘网站信息收集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -370,8 +545,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,6 +699,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用说明"><span class="nav-number">3.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">4.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">5.</span> <span class="nav-text">TODO</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

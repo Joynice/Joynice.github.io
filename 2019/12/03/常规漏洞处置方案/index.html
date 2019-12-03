@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="漏洞,安全," />
 
 
 
@@ -79,12 +79,15 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="sec_web">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;sec_web&#x2F;index.html">
+<meta name="description" content="收集下常规漏洞处置方案，在生产环境中，基本上首先都要封禁攻击者IP。">
+<meta name="keywords" content="漏洞,安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常规漏洞处置方案">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;03&#x2F;%E5%B8%B8%E8%A7%84%E6%BC%8F%E6%B4%9E%E5%A4%84%E7%BD%AE%E6%96%B9%E6%A1%88&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
+<meta property="og:description" content="收集下常规漏洞处置方案，在生产环境中，基本上首先都要封禁攻击者IP。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:updated_time" content="2019-12-03T09:52:05.843Z">
+<meta property="og:updated_time" content="2019-12-03T13:11:21.279Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -115,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/sec_web/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/03/常规漏洞处置方案/"/>
 
 
 
 
 
-  <title>sec_web | Joynice</title>
+  <title>常规漏洞处置方案 | Joynice</title>
   
 
 
@@ -311,33 +314,204 @@ var _hmt = _hmt || [];
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/03/%E5%B8%B8%E8%A7%84%E6%BC%8F%E6%B4%9E%E5%A4%84%E7%BD%AE%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">sec_web</h2>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h2 class="post-title" itemprop="name headline">常规漏洞处置方案</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T21:02:51+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  833
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>收集下常规漏洞处置方案，在生产环境中，基本上首先都要封禁攻击者IP。</p>
+<a id="more"></a>
+
+<h3 id="内网IP攻击"><a href="#内网IP攻击" class="headerlink" title="内网IP攻击"></a>内网IP攻击</h3><p>升级免疫网络，基因式终端网卡绑定，对身份严格控制审计，对发出的任何数据做到严格验证封包。</p>
+<h3 id="structs2远程命令执行漏洞"><a href="#structs2远程命令执行漏洞" class="headerlink" title="structs2远程命令执行漏洞"></a>structs2远程命令执行漏洞</h3><p>升级Struct2框架，在不影响业务前提下，对lib目录中对应jar包进行替换。</p>
+<h3 id="注入攻击"><a href="#注入攻击" class="headerlink" title="注入攻击"></a>注入攻击</h3><p>封禁攻击IP，对用户输入进行验证，过滤特殊字符，使用类型安全的sql参数，业务代码中检测注入点。</p>
+<h3 id="跨站攻击"><a href="#跨站攻击" class="headerlink" title="跨站攻击"></a>跨站攻击</h3><p>封禁攻击IP，对于存储型攻击，找到业务代码进行修复，过滤特殊字符串，严格检测用户输入，对用户上传文件进行检测。</p>
+<h3 id="Web插件漏洞攻击"><a href="#Web插件漏洞攻击" class="headerlink" title="Web插件漏洞攻击"></a>Web插件漏洞攻击</h3><p>封禁攻击IP，对系统使用的Web插件进行定期插件检测，使用安全的Web插件，关注相关插件漏洞。</p>
+<h3 id="Webshell攻击"><a href="#Webshell攻击" class="headerlink" title="Webshell攻击"></a>Webshell攻击</h3><p>封禁攻击IP，及时删除攻击文件，配置好服务器FSO权限，对asp上传文件进行严格审核，设置上传白名单。</p>
+<h3 id="弱口令探测"><a href="#弱口令探测" class="headerlink" title="弱口令探测"></a>弱口令探测</h3><p>封禁探测IP，系统可以采取动态口令验证，定期更改口令，系统强制使用强口令。</p>
+<h3 id="Web漏洞扫描"><a href="#Web漏洞扫描" class="headerlink" title="Web漏洞扫描"></a>Web漏洞扫描</h3><p>封禁攻击IP，使用第三方的防御策略来设置过滤。</p>
+<h3 id="口令爆破"><a href="#口令爆破" class="headerlink" title="口令爆破"></a>口令爆破</h3><p>封禁探测IP，系统可以采取动态口令验证，定期更改口令，系统强制使用强口令。</p>
+<h3 id="命令执行攻击"><a href="#命令执行攻击" class="headerlink" title="命令执行攻击"></a>命令执行攻击</h3><p>封禁攻击IP，对敏感字符进行转义，对参数进行过滤，系统少用或者禁用命令执行函数。</p>
+<h3 id="Sql注入攻击"><a href="#Sql注入攻击" class="headerlink" title="Sql注入攻击"></a>Sql注入攻击</h3><p>封禁攻击IP，查询语句使用数据库提供的参数化查询接口，对特殊字符进行转义或者编码处理，严格限制变量类型、数据长度以及操作权限。</p>
+<h3 id="社会工程学攻击"><a href="#社会工程学攻击" class="headerlink" title="社会工程学攻击"></a>社会工程学攻击</h3><p>保证数据库安全，防止被暴库泄露用户信息，重视邮件系统信息以及用户敏感信息保护。</p>
+<h3 id="网络钓鱼攻击"><a href="#网络钓鱼攻击" class="headerlink" title="网络钓鱼攻击"></a>网络钓鱼攻击</h3><p>各类文章链接或文件一律不点击、不查看、不下载、不传播。</p>
+<h3 id="Apache-Tomcat-远程代码执行攻击"><a href="#Apache-Tomcat-远程代码执行攻击" class="headerlink" title="Apache Tomcat 远程代码执行攻击"></a>Apache Tomcat 远程代码执行攻击</h3><p>封禁攻击IP，根据厂商进行升级补丁修复漏洞。</p>
+<h3 id="RDP爆破攻击"><a href="#RDP爆破攻击" class="headerlink" title="RDP爆破攻击"></a>RDP爆破攻击</h3><p>封禁攻击IP，根据业务需求，关闭没必要RDP服务，更新RDP版本，系统账号设置强密码，限制密码尝试次数。</p>
+<h3 id="挖矿木马攻击"><a href="#挖矿木马攻击" class="headerlink" title="挖矿木马攻击"></a>挖矿木马攻击</h3><p>封禁攻击IP，找到木马来源，切断入口；找到木马守护进程并杀死，然后杀死木马进程；持续监视服务器资源消耗，发现异常进程及时处置。</p>
+<h3 id="勒索病毒"><a href="#勒索病毒" class="headerlink" title="勒索病毒"></a>勒索病毒</h3><p>1.断网处理，防止勒索病毒内网传播感染，造成更大的损失；</p>
+<p>2.查找样本和勒索相关信息，确认是哪个勒索病毒家族的样本；</p>
+<p>3.确认完勒索病毒家族之后，看看是否有相应的解密工具，可以进行解密；</p>
+<p>4.进行溯源分析，确认是通过哪种方式传播感染的进来的，封堵相关的安全漏洞；</p>
+<p>5.做好相应的安全防护工作，以防再次感染。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%BC%8F%E6%B4%9E/" rel="tag" class=" fa  fa-tag  "> 漏洞</a>
+          
+            <a href="/tags/%E5%AE%89%E5%85%A8/" rel="tag" class=" fa  fa-tag  "> 安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/%E6%8B%9B%E8%81%98%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="next" title="招聘网站信息收集">
+                <i class="fa fa-chevron-left"></i> 招聘网站信息收集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/Flask%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="prev" title="Flask数据可视化">
+                Flask数据可视化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -370,8 +544,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,6 +698,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内网IP攻击"><span class="nav-number">1.</span> <span class="nav-text">内网IP攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#structs2远程命令执行漏洞"><span class="nav-number">2.</span> <span class="nav-text">structs2远程命令执行漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注入攻击"><span class="nav-number">3.</span> <span class="nav-text">注入攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨站攻击"><span class="nav-number">4.</span> <span class="nav-text">跨站攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web插件漏洞攻击"><span class="nav-number">5.</span> <span class="nav-text">Web插件漏洞攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Webshell攻击"><span class="nav-number">6.</span> <span class="nav-text">Webshell攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弱口令探测"><span class="nav-number">7.</span> <span class="nav-text">弱口令探测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web漏洞扫描"><span class="nav-number">8.</span> <span class="nav-text">Web漏洞扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#口令爆破"><span class="nav-number">9.</span> <span class="nav-text">口令爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令执行攻击"><span class="nav-number">10.</span> <span class="nav-text">命令执行攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql注入攻击"><span class="nav-number">11.</span> <span class="nav-text">Sql注入攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社会工程学攻击"><span class="nav-number">12.</span> <span class="nav-text">社会工程学攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络钓鱼攻击"><span class="nav-number">13.</span> <span class="nav-text">网络钓鱼攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache-Tomcat-远程代码执行攻击"><span class="nav-number">14.</span> <span class="nav-text">Apache Tomcat 远程代码执行攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDP爆破攻击"><span class="nav-number">15.</span> <span class="nav-text">RDP爆破攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挖矿木马攻击"><span class="nav-number">16.</span> <span class="nav-text">挖矿木马攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#勒索病毒"><span class="nav-number">17.</span> <span class="nav-text">勒索病毒</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
