@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python,爬虫," />
 
 
 
@@ -79,12 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joynice">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;tags&#x2F;Flask&#x2F;index.html">
+<meta name="description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。 获取IP在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了requests库，就想百度下requests是否能够实现这个功能。经过一番搜索终于找到相关">
+<meta name="keywords" content="python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python获取网站IP以及识别IP位置">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;04&#x2F;python%E8%8E%B7%E5%8F%96%E7%BD%91%E7%AB%99IP%E4%BB%A5%E5%8F%8A%E8%AF%86%E5%88%ABIP%E4%BD%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
+<meta property="og:description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。 获取IP在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了requests库，就想百度下requests是否能够实现这个功能。经过一番搜索终于找到相关">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-5e259793be6c1d0f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-12-04T13:06:45.714Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-5e259793be6c1d0f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
 
 
@@ -114,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/tags/Flask/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/04/python获取网站IP以及识别IP位置/"/>
 
 
 
 
 
-  <title>Tag: Flask | Joynice</title>
+  <title>python获取网站IP以及识别IP位置 | Joynice</title>
   
 
 
@@ -150,7 +156,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,82 +314,231 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Flask<small>Tag</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/04/python%E8%8E%B7%E5%8F%96%E7%BD%91%E7%AB%99IP%E4%BB%A5%E5%8F%8A%E8%AF%86%E5%88%ABIP%E4%BD%8D%E7%BD%AE/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/04/Ajax%E4%B8%ADtraditonal%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8/" itemprop="url">
-              
-                <span itemprop="name">Ajax中traditonal参数作用</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">python获取网站IP以及识别IP位置</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T20:25:56+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T21:03:06+08:00">
+                2019-12-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  673
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/03/Flask%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" itemprop="url">
-              
-                <span itemprop="name">Flask数据可视化</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-03T21:07:03+08:00"
-              content="2019-12-03" >
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。<br>第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。</p>
+<h3 id="获取IP"><a href="#获取IP" class="headerlink" title="获取IP"></a>获取IP</h3><p>在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了<code>requests</code>库，就想百度下<code>requests</code>是否能够实现这个功能。<br><img src="https://upload-images.jianshu.io/upload_images/14106334-5e259793be6c1d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网站IP"><br>经过一番搜索终于找到相关的信息，具体实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">req = requests.get(<span class="string">'url'</span>,stream = <span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ip_and_port = req.raw._connection.sock.getpeername() <span class="comment">#返回元组，(ip, port)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">text = req.text</span></pre></td></tr></table></figure>
+<p>这样就可以在一次请求获得所有想要的信息。</p>
+<h3 id="获取IP所在地理位置"><a href="#获取IP所在地理位置" class="headerlink" title="获取IP所在地理位置"></a>获取IP所在地理位置</h3><p>刚才的需求解决了，那么得到<code>IP</code>，我就想获得IP地址所在的位置如：<code>国家</code>、<code>城市</code>等等，本想这个功能应该只能调用第三方接口了吧，但是谷歌一下，发现python中有实现这个功能的库<a href="https://pypi.org/project/geoip2/" target="_blank" rel="noopener">geoip2</a>，简单的浏览下它的官网，发现他们实现这个功能就是基于数据库比对，可以实现以下功能：</p>
+<ul>
+<li>IP位置查询</li>
+<li>IP是否高匿，解析真实地址</li>
+<li>域名查询</li>
+<li>连接方式查询</li>
+<li>ASD查询</li>
+<li>ISP查询</li>
+</ul>
+<p>这些功能的实现重要依靠相应的数据库匹配进行实现的，我们的使用方法也很简单，<code>geoip2</code>支持两种方式匹配数据库，一种是使用在线的数据库，但是考虑到对方的库在国外，可能耗时较大，所以选择将数据库下载下来，进行使用，下面的例子以查询IP所在位置进行记录。<br>先安装<code>geoip2</code>库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pip install geoip2</span></pre></td></tr></table></figure>
+<p>然后，数据库下载地址（包括db和csv两种格式，建议下载db格式的，如果你要看其中内容可以下载csv）：<br>          <a href="http://dev.maxmind.com/geoip/geoip2/geolite2" target="_blank" rel="noopener">http://dev.maxmind.com/geoip/geoip2/geolite2</a></p>
+<p>下面用代码说话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> geoip2.database</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_address</span><span class="params">(ip)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    reader = geoip2.database.Reader(<span class="string">'./dbs/GeoLite2-City.mmdb'</span>) <span class="comment">#这里参数为刚才下载数据库的位置</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    respone = reader.city(ip)   </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    Country = respone.country.name  <span class="comment">#获取国家</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    Province = response.subdivisions.most_specific.name <span class="comment">#获取省</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    City = response.city.name  <span class="comment">#获取市</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    Longitude_And_Latitude = <span class="string">'Longitude:&#123;&#125;，Latitude：&#123;&#125;'</span>.format(response.location.longitude, response.location.latitude)  <span class="comment">#获取经纬度</span></span></pre></td></tr></table></figure>
+<p>这样就可以获取到IP的所在位置了，这里返回的结果为英文，如果想要返回中文的话，选择地区即可，如获取国家的中文名称<code>response.country.names[&#39;zh-CN&#39;]</code>。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag" class=" fa  fa-tag  "> python</a>
+          
+            <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag" class=" fa  fa-tag  "> 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/04/ubuntu16-04-desktop-shell%E5%88%87%E6%8D%A2/" rel="next" title="ubuntu16.04-desktop-shell切换">
+                <i class="fa fa-chevron-left"></i> ubuntu16.04-desktop-shell切换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -391,6 +546,10 @@ var _hmt = _hmt || [];
 
 
           
+
+  
+
+
 
         </div>
         
@@ -411,8 +570,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -565,6 +733,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取IP"><span class="nav-number">1.</span> <span class="nav-text">获取IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取IP所在地理位置"><span class="nav-number">2.</span> <span class="nav-text">获取IP所在地理位置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -725,6 +909,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

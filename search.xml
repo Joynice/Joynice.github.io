@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python获取网站IP以及识别IP位置</title>
+    <url>/2019/12/04/python%E8%8E%B7%E5%8F%96%E7%BD%91%E7%AB%99IP%E4%BB%A5%E5%8F%8A%E8%AF%86%E5%88%ABIP%E4%BD%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。<br>第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。</p>
+<h3 id="获取IP"><a href="#获取IP" class="headerlink" title="获取IP"></a>获取IP</h3><p>在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了<code>requests</code>库，就想百度下<code>requests</code>是否能够实现这个功能。<br><img src="https://upload-images.jianshu.io/upload_images/14106334-5e259793be6c1d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网站IP"><br>经过一番搜索终于找到相关的信息，具体实现如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="code"><pre><span class="line">req = requests.get(<span class="string">'url'</span>,stream = <span class="literal">True</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">ip_and_port = req.raw._connection.sock.getpeername() <span class="comment">#返回元组，(ip, port)</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">text = req.text</span></pre></td></tr></table></figure>
+<p>这样就可以在一次请求获得所有想要的信息。</p>
+<h3 id="获取IP所在地理位置"><a href="#获取IP所在地理位置" class="headerlink" title="获取IP所在地理位置"></a>获取IP所在地理位置</h3><p>刚才的需求解决了，那么得到<code>IP</code>，我就想获得IP地址所在的位置如：<code>国家</code>、<code>城市</code>等等，本想这个功能应该只能调用第三方接口了吧，但是谷歌一下，发现python中有实现这个功能的库<a href="https://pypi.org/project/geoip2/" target="_blank" rel="noopener">geoip2</a>，简单的浏览下它的官网，发现他们实现这个功能就是基于数据库比对，可以实现以下功能：</p>
+<ul>
+<li>IP位置查询</li>
+<li>IP是否高匿，解析真实地址</li>
+<li>域名查询</li>
+<li>连接方式查询</li>
+<li>ASD查询</li>
+<li>ISP查询</li>
+</ul>
+<p>这些功能的实现重要依靠相应的数据库匹配进行实现的，我们的使用方法也很简单，<code>geoip2</code>支持两种方式匹配数据库，一种是使用在线的数据库，但是考虑到对方的库在国外，可能耗时较大，所以选择将数据库下载下来，进行使用，下面的例子以查询IP所在位置进行记录。<br>先安装<code>geoip2</code>库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install geoip2</span></pre></td></tr></table></figure>
+<p>然后，数据库下载地址（包括db和csv两种格式，建议下载db格式的，如果你要看其中内容可以下载csv）：<br>          <a href="http://dev.maxmind.com/geoip/geoip2/geolite2" target="_blank" rel="noopener">http://dev.maxmind.com/geoip/geoip2/geolite2</a></p>
+<p>下面用代码说话：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> geoip2.database</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_address</span><span class="params">(ip)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    reader = geoip2.database.Reader(<span class="string">'./dbs/GeoLite2-City.mmdb'</span>) <span class="comment">#这里参数为刚才下载数据库的位置</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    respone = reader.city(ip)   </span></pre></td></tr><tr><td class="code"><pre><span class="line">    Country = respone.country.name  <span class="comment">#获取国家</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    Province = response.subdivisions.most_specific.name <span class="comment">#获取省</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    City = response.city.name  <span class="comment">#获取市</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    Longitude_And_Latitude = <span class="string">'Longitude:&#123;&#125;，Latitude：&#123;&#125;'</span>.format(response.location.longitude, response.location.latitude)  <span class="comment">#获取经纬度</span></span></pre></td></tr></table></figure>
+<p>这样就可以获取到IP的所在位置了，这里返回的结果为英文，如果想要返回中文的话，选择地区即可，如获取国家的中文名称<code>response.country.names[&#39;zh-CN&#39;]</code>。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu16.04-desktop-shell切换</title>
     <url>/2019/12/04/ubuntu16-04-desktop-shell%E5%88%87%E6%8D%A2/</url>
     <content><![CDATA[<p><code>Ubuntu</code>主要有<code>桌面版</code>和<code>Server版</code>两种，以前开发部署主要使用的是<code>Server版</code>，两种版本在外在最大的区别就是在与界面显示，<code>Server版</code>主要就是命令行显示，而桌面版更多版功能用界面的形式展现出来。<a id="more"></a>这次为了在Linux下练习使用<code>Docker</code>在本机上安装了一个<code>ubuntu-16.04.1-desktop-amd64</code>的桌面版的虚拟机 。但是在使用过程中发现做侧面的任务框没有了，右击鼠标也没有<code>Terminal</code>，本来想要卸载，但是想想辛辛苦苦装的，于是找找这台虚拟机其他利用价值，发现界面版还能切换至命令行版，所以果断切换。</p>
@@ -56,8 +88,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Ajax</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
