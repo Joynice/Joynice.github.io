@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ubuntu16.04-desktop-shell切换</title>
+    <url>/2019/12/04/ubuntu16-04-desktop-shell%E5%88%87%E6%8D%A2/</url>
+    <content><![CDATA[<p><code>Ubuntu</code>主要有<code>桌面版</code>和<code>Server版</code>两种，以前开发部署主要使用的是<code>Server版</code>，两种版本在外在最大的区别就是在与界面显示，<code>Server版</code>主要就是命令行显示，而桌面版更多版功能用界面的形式展现出来。<a id="more"></a>这次为了在Linux下练习使用<code>Docker</code>在本机上安装了一个<code>ubuntu-16.04.1-desktop-amd64</code>的桌面版的虚拟机 。但是在使用过程中发现做侧面的任务框没有了，右击鼠标也没有<code>Terminal</code>，本来想要卸载，但是想想辛辛苦苦装的，于是找找这台虚拟机其他利用价值，发现界面版还能切换至命令行版，所以果断切换。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-590439d6171532a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="不显示侧面以及无法打开Terminal"></p>
+<p>在桌面版中按<em>CTRL+ALT+F1</em>就可以切换至命令行模式，单这种情况下，图形界面GUI是在后台运行着，按<em>CTRL+ALT+F7</em>会切换回来。我们可以在系统引导启动时，按<em>CTRL+ALT+F7</em>这样就不会进入进入图形界面了。</p>
+<p>桌面版默认没有安装ssh服务端，通过安装服务端可以使用<code>Xshell</code>进行连接，因为自带的命令行使用不习惯，可以执行以下步骤来安装：</p>
+<ol>
+<li><p><strong>安装ssh服务端</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span></pre></td></tr></table></figure></li>
+<li><p><strong>确认ssh-server是否启动</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -e|grep ssh</span></pre></td></tr></table></figure>
+<p>如果只有ssh-agent那ssh-server还没有启动，需要/etc/init.d/ssh start，如果看到sshd那说明ssh-server已经启动了</p>
+</li>
+<li><p><strong>启动ssh-server</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;ssh start</span></pre></td></tr></table></figure></li>
+<li><p><strong>SSH配置(若需要)</strong><br>修改配置文件/etc/ssh/sshd_config，这里可以定义SSH的服务端口，默认端口是22，你可以自己定义成其他端口号如32，然后重启服务</p>
+</li>
+<li><p><strong>重启ssh-server</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;ssh restart</span></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>运维</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ajax中traditonal参数作用</title>
     <url>/2019/12/04/Ajax%E4%B8%ADtraditonal%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8/</url>
     <content><![CDATA[<p>在写Flask的时候遇到这样的问题，前端使用<code>Ajax</code>传递数据的时候，要不是数字类型，要不就是字符串，没有传递过数组(在<code>js</code>中的叫法，python中交列表，但是使用效果基本相同。)等复杂的数据类型。</p>
@@ -23,8 +56,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Ajax</tag>
         <tag>Flask</tag>
+        <tag>Ajax</tag>
       </tags>
   </entry>
   <entry>
