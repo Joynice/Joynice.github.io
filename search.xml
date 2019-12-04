@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ubuntu设置静态IP地址</title>
+    <url>/2019/12/04/ubuntu%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<p>最近在Esxi中配置<code>1ubuntu18.04 server</code>记录如何配置静态IP<a id="more"></a>。因为<code>ubuntu18.04</code>的网络管理程序使用<code>netplan</code>来管理，所有配置方式也更改了。</p>
+<p>查看本机IP</p>
+<pre><code>ifconfig -a</code></pre><p>查看当前配置文件</p>
+<pre><code>cat /etc/netplan/50-cloud-init.yaml</code></pre><p>如果要使用静态IP的话，需要修改为下面的样子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># This file is generated from information provided by</span></pre></td></tr><tr><td class="code"><pre><span class="line"># the datasource.  Changes to it will not persist across an instance.</span></pre></td></tr><tr><td class="code"><pre><span class="line"># To disable cloud-init&#39;s network configuration capabilities, write a file</span></pre></td></tr><tr><td class="code"><pre><span class="line"># &#x2F;etc&#x2F;cloud&#x2F;cloud.cfg.d&#x2F;99-disable-network-config.cfg with the following:</span></pre></td></tr><tr><td class="code"><pre><span class="line"># network: &#123;config: disabled&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">network:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    ethernets:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        enp0s3:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            addresses: [192.168.199.101&#x2F;24, ]</span></pre></td></tr><tr><td class="code"><pre><span class="line">            dhcp4: no</span></pre></td></tr><tr><td class="code"><pre><span class="line">            dhcp6: no</span></pre></td></tr><tr><td class="code"><pre><span class="line">            gateway4:  192.168.199.1</span></pre></td></tr><tr><td class="code"><pre><span class="line">            nameservers:</span></pre></td></tr><tr><td class="code"><pre><span class="line">                addresses: [8.8.8.8, 9.9.9.9]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    version: 2</span></pre></td></tr></table></figure>
+<p>将上述配置改成自己的IP、网关、DNS，最后运行生效配置。</p>
+<pre><code>netplan apply</code></pre>]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu更换apt源</title>
     <url>/2019/12/04/ubuntu%E6%9B%B4%E6%8D%A2apt%E6%BA%90/</url>
     <content><![CDATA[<p>将ubuntu的apt设置为国内的源（阿里）</p>
@@ -15,8 +33,8 @@
         <category>Ubuntu</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>运维</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -46,7 +64,7 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>Python</tag>
         <tag>爬虫</tag>
       </tags>
   </entry>
@@ -77,9 +95,9 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>运维</tag>
-        <tag>linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
