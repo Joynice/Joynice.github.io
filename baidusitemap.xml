@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lr.dropsec.xyz/2019/12/04/Ajax%E4%B8%ADtraditonal%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8/</loc>
+    <lastmod>2019-12-04</lastmod>
+  </url>  <url>
     <loc>https://lr.dropsec.xyz/2019/12/03/%E6%8B%9B%E8%81%98%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</loc>
     <lastmod>2019-12-04</lastmod>
   </url>  <url>
@@ -20,9 +23,6 @@
     <lastmod>2019-12-04</lastmod>
   </url>  <url>
     <loc>https://lr.dropsec.xyz/2019/12/03/Flask%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
-    <lastmod>2019-12-04</lastmod>
-  </url>  <url>
-    <loc>https://lr.dropsec.xyz/2019/12/04/Ajax%E4%B8%ADtraditonal%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8/</loc>
     <lastmod>2019-12-04</lastmod>
   </url>
 </urlset>
