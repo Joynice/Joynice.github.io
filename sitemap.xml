@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lr.dropsec.xyz/sec_web/index.html</loc>
+    
+    <lastmod>2019-12-04T11:52:46.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lr.dropsec.xyz/know/index.html</loc>
+    
+    <lastmod>2019-12-04T11:51:26.400Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lr.dropsec.xyz/2019/12/04/Python%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/</loc>
     
     <lastmod>2019-12-04T03:20:08.198Z</lastmod>
@@ -61,13 +75,6 @@
     <loc>https://lr.dropsec.xyz/tags/index.html</loc>
     
     <lastmod>2019-12-03T09:55:31.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lr.dropsec.xyz/sec_web/index.html</loc>
-    
-    <lastmod>2019-12-03T09:52:05.843Z</lastmod>
     
   </url>
   
