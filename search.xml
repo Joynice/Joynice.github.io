@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python生成词云</title>
+    <url>/2019/12/04/Python%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/</url>
+    <content><![CDATA[<p>词云，就是对网络文本中出现频率较高的“关键词”予以视觉上的突出，形成“关键词云层”或“关键词渲染”，从而过滤掉大量的文本信息，使浏览网页者只要一眼扫过文本就可以领略文本的主旨。</p>
+<a id="more"></a>
+<p>说实在的就是一张图片，包含各种词汇，而词汇的大小根据出现的出现的频率决定的。这张图就是我根据爬取微信公众号近3w篇文章的标题，进行分词后，生成的一张词云。<br><img src="https://upload-images.jianshu.io/upload_images/14106334-9e915149123cc511.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网络安全"><br>如果自己制作这张图感觉不从下手，但是有了Python在，简直分分钟的事。首先我们安装<code>wordcloud</code>这个生成词云的库，以及中文分词的库<code>jieba</code>，然后导入绘图的库<code>matplotlib</code></p>
+<pre><code>pip install wordcloud
+pip install jieba
+pip install matplotlib</code></pre><p>然后代码说话：</p>
+<pre><code>import matplotlib.pyplot as plt
+import jieba.analyse
+from wordcloud import WordCloud
+
+def image(top):   #词云中词汇个数
+    articles = WechatArticle.query.with_entities(WechatArticle.title).all()   #获取title数据
+    text = &apos;,&apos;.join([i.title for i in articles])    #进行数据拼接
+    result = jieba.analyse.textrank(text,topK=int(top),withWeight=True)   #进行中文分词，并根据传入的词汇个数，产生多少个词汇，并返回各个词汇的比重。
+    keywords = dict()
+    for i in result:
+        keywords[i[0]] = i[1]  #生成字典，{&apos;keyword&apos;:weight}
+    wc = WordCloud(font_path=&apos;./utils/captcha/simhei.ttf&apos;,max_words=int(top), width=805, height=304)  #实例词云,传入字体路径，最大的词汇数，以及词云的宽高，这里的话如果不传入字体的话，找不到字体，就会出现框框的情况。
+    wc.generate_from_frequencies(keywords) #传入关键字
+    plt.imshow(wc) #进行绘图
+    plt.axis(&quot;off&quot;) #去除X轴
+    wc.to_file(&apos;./static/front/img/dream.png&apos;)  #保存图片</code></pre><p>一番操作后，就能生成上面的词云了，其实在词云生成的样式也可以变化的，可以生成这样的也就需要加个中国地图的背景图片。<br><img src="https://upload-images.jianshu.io/upload_images/14106334-d7b23d70e09849ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="有形状的词云"></p>
+<p><strong>有需要，但是不懂的代码的小伙伴，可以私信我，免费帮忙哦，么么哒。</strong></p>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>词云</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask数据可视化</title>
     <url>/2019/12/03/Flask%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
     <content><![CDATA[<p>在Web开发过程中遇到要做些数据可视化工作，对于我来说，基本上后端使用<a href="https://pyecharts.org/#/" target="_blank" rel="noopener">Pyecharts</a>配合着前端<code>echarts.js</code>实现数据可视化工作。</p>
