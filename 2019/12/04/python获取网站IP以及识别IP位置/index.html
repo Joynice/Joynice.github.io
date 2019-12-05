@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。 获取IP在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了requests库，就想百度下requests是否能够实现这个功能。经过一番搜索终于找到相关">
+<meta name="description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。">
 <meta name="keywords" content="Python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python获取网站IP以及识别IP位置">
 <meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;04&#x2F;python%E8%8E%B7%E5%8F%96%E7%BD%91%E7%AB%99IP%E4%BB%A5%E5%8F%8A%E8%AF%86%E5%88%ABIP%E4%BD%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。 获取IP在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了requests库，就想百度下requests是否能够实现这个功能。经过一番搜索终于找到相关">
+<meta property="og:description" content="在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-5e259793be6c1d0f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-12-04T13:49:59.627Z">
+<meta property="og:updated_time" content="2019-12-05T08:02:03.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14106334-5e259793be6c1d0f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
@@ -449,6 +449,7 @@ var _hmt = _hmt || [];
 
       
         <p>在一次开发过程中，需要获取网站的IP，以及改IP所在的地址。<br>第一个想法就是使用第三方接口，但是想想，还是自己实现比较实在，网上百度了一下，还是有些教程，所以就写篇文章记录下如何实现。</p>
+<a id="more"></a>
 <h3 id="获取IP"><a href="#获取IP" class="headerlink" title="获取IP"></a>获取IP</h3><p>在我们访问网站时，大多实用的域名进行访问，但是在项目开发过程中，我需要获得网站域名所绑定的IP地址，因为项目中导入了<code>requests</code>库，就想百度下<code>requests</code>是否能够实现这个功能。<br><img src="https://upload-images.jianshu.io/upload_images/14106334-5e259793be6c1d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网站IP"><br>经过一番搜索终于找到相关的信息，具体实现如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">req = requests.get(<span class="string">'url'</span>,stream = <span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ip_and_port = req.raw._connection.sock.getpeername() <span class="comment">#返回元组，(ip, port)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">text = req.text</span></pre></td></tr></table></figure>
 <p>这样就可以在一次请求获得所有想要的信息。</p>
