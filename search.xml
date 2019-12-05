@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>解决github上提交无记录</title>
+    <url>/2019/12/05/%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的<code>overview</code>的提交图上并没有多少，于是记录这次排查。</p>
+<a id="more"></a>
+
+<p>首先看看私有贡献是否开启，毕竟我的好多提交都是往私有仓库提交的。发现开启的，但是并没有什么卵变化。</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205111500.png" alt="私有贡献"></p>
+<p>于是排查Github上绑定的邮箱，这几个邮箱也是我经常用的，没有什么问题</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205112149.png" alt="绑定邮箱"></p>
+<p>同时我提交的时候都是往<code>master</code>默认分支上提交，同时也是项目的协作者，不是<code>fork</code>的。</p>
+<p>最后排查本地git配置</p>
+<pre><code>git config user.email   //查看绑定的邮箱</code></pre><p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205145229.png" alt=""></p>
+<p>起初没有发现什么，但是仔细一看<code>foxmail</code>少了<code>l</code>，太沙雕了，于是把这个少了<code>l</code>的邮箱绑定到Github上，同时本地修改配置</p>
+<pre><code>git config --global user.email &quot;xxx&quot; //email</code></pre><p>这样重新以后commit就会以重新配置的邮箱进行提交。</p>
+<p>写到这里还是有个疑问，我如果删除Github上那个错误的邮箱，我的以错误邮箱进行的commit记录还有吗？这里还没敢测试。</p>
+<p>总结下可能导致这个问题的原因</p>
+<ul>
+<li>没有往默认分支及<code>master</code>分支上commit</li>
+<li>commit的仓库为Fork的仓库，并不是独立仓库</li>
+<li>私有贡献没有开启</li>
+<li>Github上绑定的邮箱与本地Git配置邮箱不相同（我出现的问题）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo常用命令</title>
     <url>/2019/12/05/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>在大二的时候就用<code>Hexo</code>搭建过自己的博客，但是后来接触到各种博客平台，就没在使用Hexo，一方面在国内访问速度有点慢，另一方面写一篇文章进行的步骤过于繁杂。但是工作后，发现好多大佬都有自己独立的博客（向大佬学习），于是重新捡起自己遗弃很久的博客。</p>

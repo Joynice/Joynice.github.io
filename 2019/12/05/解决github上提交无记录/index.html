@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git,Github," />
 
 
 
@@ -79,12 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joynice">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;tags&#x2F;%E8%BF%90%E7%BB%B4&#x2F;index.html">
+<meta name="description" content="使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的overview的提交图上并没有多少，于是记录这次排查。">
+<meta name="keywords" content="Git,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决github上提交无记录">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;05&#x2F;%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
+<meta property="og:description" content="使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的overview的提交图上并没有多少，于是记录这次排查。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205111500.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205112149.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205145229.png">
+<meta property="og:updated_time" content="2019-12-05T07:04:32.392Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205111500.png">
 
 
 
@@ -114,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/tags/运维/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/05/解决github上提交无记录/"/>
 
 
 
 
 
-  <title>Tag: 运维 | Joynice</title>
+  <title>解决github上提交无记录 | Joynice</title>
   
 
 
@@ -150,7 +158,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,110 +316,221 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>运维<small>Tag</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/05/%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/04/ubuntu%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/" itemprop="url">
-              
-                <span itemprop="name">ubuntu设置静态IP地址</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">解决github上提交无记录</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T21:28:38+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T10:52:01+08:00">
+                2019-12-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  398
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/ubuntu%E6%9B%B4%E6%8D%A2apt%E6%BA%90/" itemprop="url">
-              
-                <span itemprop="name">ubuntu更换apt源</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T21:11:29+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的<code>overview</code>的提交图上并没有多少，于是记录这次排查。</p>
+<a id="more"></a>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/ubuntu16-04-desktop-shell%E5%88%87%E6%8D%A2/" itemprop="url">
-              
-                <span itemprop="name">ubuntu16.04-desktop-shell切换</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T20:56:30+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p>首先看看私有贡献是否开启，毕竟我的好多提交都是往私有仓库提交的。发现开启的，但是并没有什么卵变化。</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205111500.png" alt="私有贡献"></p>
+<p>于是排查Github上绑定的邮箱，这几个邮箱也是我经常用的，没有什么问题</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205112149.png" alt="绑定邮箱"></p>
+<p>同时我提交的时候都是往<code>master</code>默认分支上提交，同时也是项目的协作者，不是<code>fork</code>的。</p>
+<p>最后排查本地git配置</p>
+<pre><code>git config user.email   //查看绑定的邮箱</code></pre><p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205145229.png" alt=""></p>
+<p>起初没有发现什么，但是仔细一看<code>foxmail</code>少了<code>l</code>，太沙雕了，于是把这个少了<code>l</code>的邮箱绑定到Github上，同时本地修改配置</p>
+<pre><code>git config --global user.email &quot;xxx&quot; //email</code></pre><p>这样重新以后commit就会以重新配置的邮箱进行提交。</p>
+<p>写到这里还是有个疑问，我如果删除Github上那个错误的邮箱，我的以错误邮箱进行的commit记录还有吗？这里还没敢测试。</p>
+<p>总结下可能导致这个问题的原因</p>
+<ul>
+<li>没有往默认分支及<code>master</code>分支上commit</li>
+<li>commit的仓库为Fork的仓库，并不是独立仓库</li>
+<li>私有贡献没有开启</li>
+<li>Github上绑定的邮箱与本地Git配置邮箱不相同（我出现的问题）</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag" class=" fa  fa-tag  "> Git</a>
+          
+            <a href="/tags/Github/" rel="tag" class=" fa  fa-tag  "> Github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Hexo常用命令">
+                <i class="fa fa-chevron-left"></i> Hexo常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -419,6 +538,10 @@ var _hmt = _hmt || [];
 
 
           
+
+  
+
+
 
         </div>
         
@@ -753,6 +876,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
