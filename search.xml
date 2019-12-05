@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python将列表平均分成n份</title>
+    <url>/2019/12/05/python%E5%B0%86%E5%88%97%E8%A1%A8%E5%B9%B3%E5%9D%87%E5%88%86%E6%88%90n%E4%BB%BD/</url>
+    <content><![CDATA[<p>在开发中遇到，需要将下发的任务平均分给n个工人，如何进行分配，写个函数进行记录。</p>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_spilt</span><span class="params">(arr, n)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    将列表平均分成n份</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :param list:  列表对象</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :param n:  份数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :return:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(arr, list):</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(n, int) <span class="keyword">or</span> n&lt;=<span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> str(n).isdigit():</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    length = len(arr)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    new_list = []</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span></pre></td></tr><tr><td class="code"><pre><span class="line">        one_list = arr[math.floor(i / n * length):math.floor((i + <span class="number">1</span>) / n * length)]</span></pre></td></tr><tr><td class="code"><pre><span class="line">        new_list.append(one_list)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> new_list</span></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PicGo+Github打造专属图床</title>
     <url>/2019/12/05/PicGo-Github%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/</url>
     <content><![CDATA[<p>Hexo搭建博客，有个缺点就是没有提供图片上传存储，而<code>PicGo</code>这个开源工具配合<code>Github</code>仓库就可以解决这个问题哦，下面我要开始了…</p>
@@ -276,8 +291,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Ajax</tag>
         <tag>Flask</tag>
+        <tag>Ajax</tag>
       </tags>
   </entry>
   <entry>

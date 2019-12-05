@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -79,14 +79,15 @@
 
 
 
-<meta name="description" content="关于我 初级python开发  大二自学python。混迹于开源社区，至今仍处于端茶倒水·扫地打杂岗位，熟练输出helloword。 python爬虫，加密js龟速解，各大电商网站数据指哪爬哪,数据清洗，前端渲染，django、flask项目web开发，各种疑难作业代写，echart可视化，rest前后分离，课设，毕设，连做带教，项目设计。scrapy\celery异步，高并发，数据库高效驱动大小">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joynice">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;about&#x2F;index.html">
+<meta name="description" content="在开发中遇到，需要将下发的任务平均分给n个工人，如何进行分配，写个函数进行记录。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python将列表平均分成n份">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;05&#x2F;python%E5%B0%86%E5%88%97%E8%A1%A8%E5%B9%B3%E5%9D%87%E5%88%86%E6%88%90n%E4%BB%BD&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="关于我 初级python开发  大二自学python。混迹于开源社区，至今仍处于端茶倒水·扫地打杂岗位，熟练输出helloword。 python爬虫，加密js龟速解，各大电商网站数据指哪爬哪,数据清洗，前端渲染，django、flask项目web开发，各种疑难作业代写，echart可视化，rest前后分离，课设，毕设，连做带教，项目设计。scrapy\celery异步，高并发，数据库高效驱动大小">
+<meta property="og:description" content="在开发中遇到，需要将下发的任务平均分给n个工人，如何进行分配，写个函数进行记录。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:updated_time" content="2019-12-04T11:57:44.855Z">
+<meta property="og:updated_time" content="2019-12-05T09:35:52.868Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/about/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/05/python将列表平均分成n份/"/>
 
 
 
 
 
-  <title> | Joynice</title>
+  <title>python将列表平均分成n份 | Joynice</title>
   
 
 
@@ -313,58 +314,200 @@ var _hmt = _hmt || [];
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/05/python%E5%B0%86%E5%88%97%E8%A1%A8%E5%B9%B3%E5%9D%87%E5%88%86%E6%88%90n%E4%BB%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline"></h2>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><blockquote>
-<p>初级python开发</p>
-</blockquote>
-<p>大二自学python。混迹于开源社区，至今仍处于端茶倒水·扫地打杂岗位，熟练输出helloword。</p>
-<p>python爬虫，加密js龟速解，各大电商网站数据指哪爬哪,数据清洗，前端渲染，django、flask项目web开发，各种疑难作业代写，echart可视化，rest前后分离，课设，毕设，连做带教，项目设计。scrapy\celery异步，高并发，数据库高效驱动大小问题通吃。聊天室发弹幕软件开发。加密非加密post链接的接口开发。微信公众号爬虫+Hook。Docker、compose文件编写和一键部署。ctf/awd/堡垒机小项目。码云年度最具价值项目ECommerceCrawlers贡献者之一。</p>
-<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><p>我的仓库：<a href="https://github.com/Joynice" target="_blank" rel="noopener">Joynice</a><br>组织成员：<a href="https://github.com/DropsDevopsOrg" target="_blank" rel="noopener">DropsDevopsOrg</a><br>参与项目：<a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers" target="_blank" rel="noopener">ECommerceCrawlers</a></p>
-<h3 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h3><ul>
-<li>前端</li>
-<li>Python爬虫</li>
-<li>Flask框架开发</li>
-<li>linux项目部署</li>
-<li>Docker</li>
-<li><a href=""><strong>吹上面的牛B</strong></a></li>
-</ul>
-<h3 id="成长"><a href="#成长" class="headerlink" title="成长"></a>成长</h3><h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><ul>
-<li>公司官网网站</li>
-<li>百度文库解析</li>
-<li>淘宝数据爬取</li>
-<li>微信数据爬取</li>
-<li>tk应用界面开发</li>
-<li>10W+数据采集分析</li>
-<li>爬虫ECommerceCrawlers项目参与者</li>
-<li><a href=""><strong>特别厉害：做梦构想项目名称</strong></a></li>
-</ul>
-<h3 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h3><p><a href="https://github.com/DropsDevopsOrg" target="_blank" rel="noopener">Git仓库 DropsDevopsOrg</a><br><a href="https://github.com/DropsOfZut/awesome-security-weixin-official-accounts" target="_blank" rel="noopener">网络安全类公众号 awesome-security-weixin-official-accounts</a><br><a href="https://gitee.com/AJay13/ECommerceCrawlers" target="_blank" rel="noopener">码云年度最有价值开源项目贡献者之一 ECommerceCrawlers</a></p>
-
+          <h2 class="post-title" itemprop="name headline">python将列表平均分成n份</h2>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T16:07:41+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  123
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>在开发中遇到，需要将下发的任务平均分给n个工人，如何进行分配，写个函数进行记录。</p>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_spilt</span><span class="params">(arr, n)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">    将列表平均分成n份</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">    :param list:  列表对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">    :param n:  份数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">    :return:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(arr, list):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(n, int) <span class="keyword">or</span> n&lt;=<span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> str(n).isdigit():</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    length = len(arr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    new_list = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        one_list = arr[math.floor(i / n * length):math.floor((i + <span class="number">1</span>) / n * length)]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        new_list.append(one_list)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> new_list</span></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag" class=" fa  fa-tag  "> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/PicGo-Github%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/" rel="next" title="PicGo+Github打造专属图床">
+                <i class="fa fa-chevron-left"></i> PicGo+Github打造专属图床
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -397,17 +540,8 @@ var _hmt = _hmt || [];
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,22 +694,6 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于我"><span class="nav-number">1.</span> <span class="nav-text">关于我</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github"><span class="nav-number">1.0.1.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技能"><span class="nav-number">1.0.2.</span> <span class="nav-text">技能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成长"><span class="nav-number">1.0.3.</span> <span class="nav-text">成长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目"><span class="nav-number">1.0.4.</span> <span class="nav-text">项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#友链"><span class="nav-number">1.0.5.</span> <span class="nav-text">友链</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
