@@ -22,6 +22,7 @@
     <title>ubuntu更换apt源</title>
     <url>/2019/12/04/ubuntu%E6%9B%B4%E6%8D%A2apt%E6%BA%90/</url>
     <content><![CDATA[<p>将ubuntu的apt设置为国内的源（阿里）</p>
+<a id="more"></a>
 <ol>
 <li>备份系统自带源<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak</span></pre></td></tr></table></figure></li>
 <li>修改/etc/apt/sources.list文件<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;apt&#x2F;sources.list</span></pre></td></tr></table></figure>
