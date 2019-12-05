@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PicGo+Github打造专属图床</title>
+    <url>/2019/12/05/PicGo-Github%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<p>Hexo搭建博客，有个缺点就是没有提供图片上传存储，而<code>PicGo</code>这个开源工具配合<code>Github</code>仓库就可以解决这个问题哦，下面我要开始了…</p>
+<a id="more"></a>
+
+<h2 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h2><p><a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo</a>是Github上开源的图片上传管理工具，支持MacOS、Windows以及Linux，同时支持多种图床</p>
+<ul>
+<li>微博图床</li>
+<li>七牛图床</li>
+<li>腾讯云</li>
+<li>又拍云</li>
+<li>Github</li>
+<li>SM.MS</li>
+<li>阿里云</li>
+<li>Imgur</li>
+</ul>
+<blockquote>
+<p>这个我主要介绍使用Github当做图床如何使用，虽然Github比较慢，但是白嫖还是挺舒服的嘻嘻。</p>
+</blockquote>
+<h2 id="PicGo-配置"><a href="#PicGo-配置" class="headerlink" title="PicGo 配置"></a>PicGo 配置</h2><ol>
+<li><p>下载<a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">PicGo</a>，选择符合的版本</p>
+</li>
+<li><p>在Github创建个仓库，用来存储图片</p>
+</li>
+<li><p>然后进行PicGo设置<br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205153724.png" alt=""></p>
+<ul>
+<li>设置Github创建的仓库的名称格式如：用户名/仓库名</li>
+<li>设置commit分支，默认<code>master</code></li>
+<li><a href="https://github.com/settings/tokens" target="_blank" rel="noopener">生成Githb Token</a>,将Token值填入</li>
+<li>指定存储路径，存在仓库中生成文件夹，并存储在文件夹中</li>
+<li>自定义域名没用过，gg</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>配置好后就可以使用PicGo进行图片上传了</p>
+</blockquote>
+<h2 id="PicGO-使用"><a href="#PicGO-使用" class="headerlink" title="PicGO 使用"></a>PicGO 使用</h2><p>PicGo使用非常方便</p>
+<ol>
+<li>点击到上传区</li>
+<li>上传后，到相册中就可以copy图片地址，然后粘贴就好，非常低方便</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>PicGo</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决github上提交无记录</title>
     <url>/2019/12/05/%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的<code>overview</code>的提交图上并没有多少，于是记录这次排查。</p>
@@ -28,8 +80,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Github</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
