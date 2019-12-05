@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo常用命令</title>
+    <url>/2019/12/05/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在大二的时候就用<code>Hexo</code>搭建过自己的博客，但是后来接触到各种博客平台，就没在使用Hexo，一方面在国内访问速度有点慢，另一方面写一篇文章进行的步骤过于繁杂。但是工作后，发现好多大佬都有自己独立的博客（向大佬学习），于是重新捡起自己遗弃很久的博客。</p>
+<a id="more"></a>
+<p><strong>同时感谢<a href="https://bjj.dropsec.xyz/" target="_blank" rel="noopener">AJay13</a>帮我搭建<code>next</code>主题</strong></p>
+<ol>
+<li>hexo init</li>
+</ol>
+<p>命令主要用于初始化本地文件夹为博客的根目录</p>
+<pre><code>hexo init [floder]</code></pre><p><code>floder</code>为可选参数，用于指定初始化目录路径，若不指定默认为当前目录</p>
+<ol start="2">
+<li>hexo new</li>
+</ol>
+<p>命令主要英语创建文章，可以简写为<code>hexo n</code></p>
+<pre><code>hexo new post &lt;title&gt;</code></pre><p><code>title</code>为文章标题，如果参数中存在空格，则使用双引号包裹。命令执行后，会在<code>sourse/_post/</code>目录下生成指定标题的md文件，在此文件中编写文章即可。</p>
+<ol start="3">
+<li>hexo generate</li>
+</ol>
+<p>命令主要生成本地静态文件，一般可以简写为<code>hexo g</code></p>
+<pre><code>hexo generate</code></pre><p>同时可以搭配<code>-d</code>使用，生成本地文件并上传部署，这样在博客上就可以看到更新的内容。</p>
+<ol start="4">
+<li>hexo server</li>
+</ol>
+<p>命令用于开启本地服务器，可以本地调试，一般可以简写<code>hexo s</code></p>
+<pre><code>hexo server</code></pre><ul>
+<li><code>-p</code>: 指定服务器端口，默认4000</li>
+<li><code>-i</code>: 指定服务器IP地址，默认0.0.0.0</li>
+<li><code>-s</code>: 静态模式，仅提供public文件夹中的文件禁用文件监视</li>
+</ul>
+<ol start="5">
+<li>hexo deploy</li>
+</ol>
+<p>命令主要用于部署远端网站，一般可以简写<code>hexo d</code></p>
+<pre><code>hexo deploy</code></pre><p>同时在使用该命令前，要在<code>_config.yml</code>文件中修改git配置</p>
+<pre><code>deploy:
+    type: git
+    repo: &lt;repository url&gt;
+    branch: master
+    message: 自定义提交消息，默认为Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}</code></pre><ol start="6">
+<li>hexo clean</li>
+</ol>
+<p>命令主要用于清理缓存文件，网站存在异常时可以尝试此操作</p>
+<pre><code>hexo clean</code></pre><ol start="7">
+<li>option</li>
+</ol>
+<p>其他参数</p>
+<ul>
+<li>hexo –safe</li>
+</ul>
+<p>表示安全模式，用于禁用加载插件和脚本</p>
+<ul>
+<li>hexo –debug</li>
+</ul>
+<p>表示调试模式，用于将消息详细记录到终端和<code>debug.log</code>文件</p>
+<ul>
+<li>hexo –slient</li>
+</ul>
+<p>表示静默模式，用于静默输出到终端</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu设置静态IP地址</title>
     <url>/2019/12/04/ubuntu%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</url>
     <content><![CDATA[<p>最近在Esxi中配置<code>ubuntu18.04 server</code>记录如何配置静态IP<a id="more"></a>。因为<code>ubuntu18.04</code>的网络管理程序使用<code>netplan</code>来管理，所有配置方式也更改了。</p>
@@ -14,8 +81,8 @@
         <category>Ubuntu</category>
       </categories>
       <tags>
-        <tag>运维</tag>
         <tag>Ubuntu</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -34,8 +101,8 @@
         <category>Ubuntu</category>
       </categories>
       <tags>
-        <tag>运维</tag>
         <tag>Ubuntu</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -96,8 +163,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>运维</tag>
         <tag>Ubuntu</tag>
+        <tag>运维</tag>
         <tag>Linux</tag>
       </tags>
   </entry>
