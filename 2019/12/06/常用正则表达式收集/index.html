@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Github,Git," />
+  <meta name="keywords" content="Python,正则表达式," />
 
 
 
@@ -123,20 +123,16 @@
 
 
 
-<meta name="description" content="使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的overview的提交图上并没有多少，于是记录这次排查。">
-<meta name="keywords" content="Github,Git">
+<meta name="description" content="正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。">
+<meta name="keywords" content="Python,正则表达式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决github上提交无记录">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;05&#x2F;%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95&#x2F;index.html">
+<meta property="og:title" content="常用正则表达式收集">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;06&#x2F;%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%94%B6%E9%9B%86&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的overview的提交图上并没有多少，于是记录这次排查。">
+<meta property="og:description" content="正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205111500.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205112149.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205145229.png">
-<meta property="og:updated_time" content="2019-12-05T07:04:32.392Z">
+<meta property="og:updated_time" content="2019-12-06T08:43:39.595Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191205111500.png">
 
 
 
@@ -166,13 +162,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/05/解决github上提交无记录/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/06/常用正则表达式收集/"/>
 
 
 
 
 
-  <title>解决github上提交无记录 | Joynice</title>
+  <title>常用正则表达式收集 | Joynice</title>
   
 
 
@@ -374,7 +370,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/05/%E8%A7%A3%E5%86%B3github%E4%B8%8A%E6%8F%90%E4%BA%A4%E6%97%A0%E8%AE%B0%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/06/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -391,7 +387,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">解决github上提交无记录</h2>
+          <h2 class="post-title" itemprop="name headline">常用正则表达式收集</h2>
         
 
         <div class="post-meta">
@@ -403,8 +399,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T10:52:01+08:00">
-                2019-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T16:24:39+08:00">
+                2019-12-06
               </time>
             
 
@@ -426,8 +422,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">正则表达式</span>
                   </a>
                 </span>
 
@@ -457,7 +453,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  398
+                  1.2k
                 </span>
               
 
@@ -473,7 +469,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -494,26 +490,63 @@ var _hmt = _hmt || [];
       
 
       
-        <p>使用Github时间也不久了，大学的时候经常上传些自己写的小项目和课程课设，毕业后公司项目也使用Github私有仓库进行项目托管，经常commit。但是发现Github的<code>overview</code>的提交图上并没有多少，于是记录这次排查。</p>
+        <p>正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。</p>
 <a id="more"></a>
 
-<p>首先看看私有贡献是否开启，毕竟我的好多提交都是往私有仓库提交的。发现开启的，但是并没有什么卵变化。</p>
-<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205111500.png" alt="私有贡献"></p>
-<p>于是排查Github上绑定的邮箱，这几个邮箱也是我经常用的，没有什么问题</p>
-<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205112149.png" alt="绑定邮箱"></p>
-<p>同时我提交的时候都是往<code>master</code>默认分支上提交，同时也是项目的协作者，不是<code>fork</code>的。</p>
-<p>最后排查本地git配置</p>
-<pre><code>git config user.email   //查看绑定的邮箱</code></pre><p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20191205145229.png" alt=""></p>
-<p>起初没有发现什么，但是仔细一看<code>foxmail</code>少了<code>l</code>，太沙雕了，于是把这个少了<code>l</code>的邮箱绑定到Github上，同时本地修改配置</p>
-<pre><code>git config --global user.email &quot;xxx&quot; //email</code></pre><p>这样重新以后commit就会以重新配置的邮箱进行提交。</p>
-<p>写到这里还是有个疑问，我如果删除Github上那个错误的邮箱，我的以错误邮箱进行的commit记录还有吗？这里还没敢测试。</p>
-<p>总结下可能导致这个问题的原因</p>
-<ul>
-<li>没有往默认分支及<code>master</code>分支上commit</li>
-<li>commit的仓库为Fork的仓库，并不是独立仓库</li>
-<li>私有贡献没有开启</li>
-<li>Github上绑定的邮箱与本地Git配置邮箱不相同（我出现的问题）</li>
-</ul>
+<blockquote>
+<p>网上版本很多，也不知到谁是原创，我仅提取我需要的部分，在以后，自己会继续更新更多的正则表达式，以供参考学习。</p>
+</blockquote>
+<h3 id="0x01-验证数字的表达式"><a href="#0x01-验证数字的表达式" class="headerlink" title="0x01 验证数字的表达式"></a>0x01 验证数字的表达式</h3><p>数字：<code>^[0-9]*$</code></p>
+<p>n位的数字：<code>^d{n}$</code></p>
+<p>至少n位的数字：<code>^d{n,}$</code></p>
+<p>m-n位的数字：<code>^d{m,n}$</code></p>
+<p>零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code></p>
+<p>非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(.[0-9]{1,2})?$</code></p>
+<p>带1-2位小数的正数或负数：<code>^(-)?d+(.d{1,2})?$</code></p>
+<p>正数、负数、和小数：<code>^(-|+)?d+(.d+)?$</code></p>
+<p>有两位小数的正实数：<code>^[0-9]+(.[0-9]{2})?$</code></p>
+<p>有1~3位小数的正实数：<code>^[0-9]+(.[0-9]{1,3})?$</code></p>
+<p>非零的正整数：<code>^[1-9]d*$</code> 或 <code>^([1-9][0-9]*){1,3}$</code> 或 <code>^+?[1-9][0-9]*$</code></p>
+<p>非零的负整数：<code>^-[1-9][]0-9&quot;*$</code> 或 <code>^-[1-9]d*$</code></p>
+<p>非负整数：<code>^d+$</code> 或 <code>^[1-9]d*|0$</code></p>
+<p>非正整数：<code>^-[1-9]d*|0$</code> 或 <code>^((-d+)|(0+))$</code></p>
+<p>非负浮点数：<code>^d+(.d+)?$</code> 或 <code>^[1-9]d*.d*|0.d*[1-9]d*|0?.0+|0$</code></p>
+<p>非正浮点数：<code>^((-d+(.d+)?)|(0+(.0+)?))$</code> 或 <code>^(-([1-9]d*.d*|0.d*[1-9]d*))|0?.0+|0$</code></p>
+<p>正浮点数：<code>^[1-9]d*.d*|0.d*[1-9]d*$</code> 或 <code>^(([0-9]+.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*.[0-9]+)|([0-9]*[1-9][0-9]*))$</code></p>
+<p>负浮点数：<code>^-([1-9]d*.d*|0.d*[1-9]d*)$</code> 或 <code>^(-(([0-9]+.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code></p>
+<p>浮点数：<code>^(-?d+)(.d+)?$</code> 或 <code>^-?([1-9]d*.d*|0.d*[1-9]d*|0?.0+|0)$</code></p>
+<h3 id="0x02-验证字符串的表达式"><a href="#0x02-验证字符串的表达式" class="headerlink" title="0x02 验证字符串的表达式"></a>0x02 验证字符串的表达式</h3><p>汉字：<code>^[\u4e00-\u9fa5]+$</code></p>
+<p>英文和数字：<code>^[A-Za-z0-9]+$</code> 或 <code>^[A-Za-z0-9]{4,40}$</code></p>
+<p>长度为3-20的所有字符：<code>^.{3,20}$</code></p>
+<p>由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code></p>
+<p>由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code></p>
+<p>由26个小写英文字母组成的字符串：<code>^[a-z]+$</code></p>
+<p>由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code></p>
+<p>由数字、26个英文字母或者下划线组成的字符串：<code>^w+$</code> 或 <code>^w{3,20}$</code></p>
+<h3 id="0x03-特殊需求表达式"><a href="#0x03-特殊需求表达式" class="headerlink" title="0x03 特殊需求表达式"></a>0x03 特殊需求表达式</h3><p>去掉左右空格:<br><code>str.replace(/(^\s*)|(\s*$)/g, &#39;&#39;)</code></p>
+<p>去掉所有空格:<br><code>str.replace(/\s+/g, &#39;&#39;)</code></p>
+<p>密码需由8位以上大写字母、小写字母、数字及特殊符号组成: <code>/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!.,@$%^&amp;*-]).{8,}$/</code></p>
+<p>Email地址：<code>^w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*$</code></p>
+<p>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</p>
+<p>InternetURL：[a-zA-z]+://[<code>^s]* 或</code>^http://([w-]+.)+[w-]+(/[w-./?%&amp;=]*)?$`</p>
+<p>手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])d{8}$</code></p>
+<p>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^((d{3,4}-)|d{3.4}-)?d{7,8}$</code></p>
+<p>国内电话号码<code>(0511-4405222、021-87888822)：d{3}-d{8}|d{4}-d{7}</code></p>
+<p>身份证号(15位、18位数字)：<code>^d{15}|d{18}$</code></p>
+<p>短身份证号码(数字、字母x结尾)：<code>^([0-9]){7,18}(x|X)?$</code> 或 <code>^d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</code></p>
+<p>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code></p>
+<p>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]w{5,17}$</code></p>
+<p>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></p>
+<p>日期格式：<code>^d{4}-d{1,2}-d{1,2}</code></p>
+<p>一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></p>
+<p>一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code><br>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</code></p>
+<p>空白行的正则表达式：<code>s*</code> (可以用来删除空白行)</p>
+<p>HTML标记的正则表达式：<code>&lt;(S*?)[`^&gt;]*&gt;.*?&lt;/&gt;|&lt;.*? /&gt;</code> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</p>
+<p>首尾空白字符的正则表达式：<code>^s*|s*$</code>或(<code>^s*)|(s*$</code>) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</p>
+<p>腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)</p>
+<p>中国邮政编码：<code>[1-9]d{5}(?!d)</code> (中国邮政编码为6位数字)</p>
+<p>IP地址：<code>d+.d+.d+.d+</code> (提取IP地址时有用)</p>
+<p>IP地址：<code>((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))</code></p>
 
       
     </div>
@@ -531,9 +564,9 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/Github/" rel="tag" class=" fa  fa-tag  "> Github</a>
+            <a href="/tags/Python/" rel="tag" class=" fa  fa-tag  "> Python</a>
           
-            <a href="/tags/Git/" rel="tag" class=" fa  fa-tag  "> Git</a>
+            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag" class=" fa  fa-tag  "> 正则表达式</a>
           
         </div>
       
@@ -546,8 +579,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/05/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Hexo常用命令">
-                <i class="fa fa-chevron-left"></i> Hexo常用命令
+              <a href="/2019/12/06/%E5%88%A0%E9%99%A4github%E8%AF%AF%E4%BC%A0%E6%96%87%E4%BB%B6/" rel="next" title="删除github误传文件">
+                <i class="fa fa-chevron-left"></i> 删除github误传文件
               </a>
             
           </div>
@@ -555,10 +588,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/05/PicGo-Github%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/" rel="prev" title="PicGo+Github打造专属图床">
-                PicGo+Github打造专属图床 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -610,8 +639,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -752,6 +790,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-验证数字的表达式"><span class="nav-number">1.</span> <span class="nav-text">0x01 验证数字的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-验证字符串的表达式"><span class="nav-number">2.</span> <span class="nav-text">0x02 验证字符串的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-特殊需求表达式"><span class="nav-number">3.</span> <span class="nav-text">0x03 特殊需求表达式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
