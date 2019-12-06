@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>记Flask-Sqlalchemy一次奇葩操作</title>
+    <url>/2019/12/06/%E8%AE%B0Flask-Sqlalchemy%E4%B8%80%E6%AC%A1%E5%A5%87%E8%91%A9%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>在写用户编辑的时候，进行前端过滤，只是将用户ID和更改的字段传递给后端，可以后端我并不知道哪个字段更改啊(真是自己给自己挖坑啊)现在想想是不是当时喝醉写的代码</p>
+<a id="more"></a>
+
+<blockquote>
+<p>具体代码就不看了，说下个人认为正常操作吧</p>
+</blockquote>
+<p>正常情况下，前端正常的判断还是需要的，然后将用户的所有字段都传递过来，并不是只有更改的字段，如果只传更改字段，其实在获取各个字段的时候，将默认值改成数据库中的数据也可以操作，这里我会再写一篇文章进行详细记录，先说说这次奇葩操作。</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">name</th>
+<th align="center">email</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">张三</td>
+<td align="center"><a href="mailto:zhangsan@qq.com" target="_blank" rel="noopener">zhangsan@qq.com</a></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">李四</td>
+<td align="center"><a href="mailto:lisi@qq.com" target="_blank" rel="noopener">lisi@qq.com</a></td>
+</tr>
+</tbody></table>
+<p>比如我现在用这个表，前端我需要修改张三的邮箱，而我往后端传递的参数只有<code>id</code>和修改后<code>email</code>，而后端正常更改用户数据的话，先根据<code>id</code>查询到相关用户,然后进行修改。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user = User.query.get(id)</span></pre></td></tr><tr><td class="code"><pre><span class="line">user.email = <span class="string">'zhangsan111@qq.com'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit() <span class="comment">#提交</span></span></pre></td></tr></table></figure>
+<p>可是我只传<code>email</code>和<code>id</code>的话，我可以根据<code>id</code>找到这个用户,但是再进行<code>user.xxx=xxx</code>时，我就不知道如何错误了，于是酒劲上来了，突发奇想，这样操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = request.values   <span class="comment">#获取返回的字典如&#123;'id':1, 'email':'zhangsan111@qq.com'&#125;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">key = list(data.keys())  <span class="comment">#获取字典中的key如：['id', 'name']</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">key.remove(<span class="string">'id'</span>)  <span class="comment">#将列表中的id删除,应为主键不可更改</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> key:</span></pre></td></tr><tr><td class="code"><pre><span class="line">	user.__setattr__(i, data.get(i))  <span class="comment">#将列表中的其他字段通过user.__setattr__('email','zhangsan111@qq.com')进行更改，这样我就不要顾虑前端哪个字段更改了，都可以解决。</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit() <span class="comment">#提交</span></span></pre></td></tr></table></figure>
+
+<p>现在看看这个操作还是想笑，后续我会关于这个实现，更新个正常点的方法。</p>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python实现断点续传</title>
     <url>/2019/12/06/python%E5%AE%9E%E7%8E%B0%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</url>
     <content><![CDATA[<p>在写观星资产扫描器的时候，IP定位用的是<a href="https://geoip.com/" target="_blank" rel="noopener">Geoip</a>提供的IP库实现的，每个用户在使用扫描器的时候如果本地没有IP库需要从远端进行下载,然而这个文件将近50M，为尽量减少下载的效率，采用断点续传。<a id="more"></a></p>
