@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="Joynice">
 <meta property="og:description" content="在使用git push时，有时忘记忽略某些不必要上传的文件，从而上传到Github上，记录如何删除这些文件">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:updated_time" content="2019-12-06T07:35:41.259Z">
+<meta property="og:updated_time" content="2019-12-06T07:58:00.899Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -453,7 +453,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  89
+                  86
                 </span>
               
 
@@ -493,13 +493,13 @@ var _hmt = _hmt || [];
         <p>在使用<code>git push</code>时，有时忘记忽略某些不必要上传的文件，从而上传到Github上，记录如何删除这些文件</p>
 <a id="more"></a>
 
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ git rm -r <span class="comment">--cached &lt;target&gt;</span></span></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git rm -r <span class="comment">--cached &lt;target&gt;</span></span></pre></td></tr></table></figure>
 <p><strong>target</strong>：删除对象</p>
 <p>然后进行提交</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git commit -m<span class="string">"删除target"</span></span></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m<span class="string">"删除target"</span></span></pre></td></tr></table></figure>
 
 <p>最后进行上传,就可以删除Github上误传的文件了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ git push origin master</span></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span></pre></td></tr></table></figure>
 
 
       
