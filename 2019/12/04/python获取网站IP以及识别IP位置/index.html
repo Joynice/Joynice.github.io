@@ -507,7 +507,7 @@ var _hmt = _hmt || [];
 <li>ISP查询</li>
 </ul>
 <p>这些功能的实现重要依靠相应的数据库匹配进行实现的，我们的使用方法也很简单，<code>geoip2</code>支持两种方式匹配数据库，一种是使用在线的数据库，但是考虑到对方的库在国外，可能耗时较大，所以选择将数据库下载下来，进行使用，下面的例子以查询IP所在位置进行记录。<br>先安装<code>geoip2</code>库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pip install geoip2</span></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> geoip2</span></pre></td></tr></table></figure>
 <p>然后，数据库下载地址（包括db和csv两种格式，建议下载db格式的，如果你要看其中内容可以下载csv）：<br>          <a href="http://dev.maxmind.com/geoip/geoip2/geolite2" target="_blank" rel="noopener">http://dev.maxmind.com/geoip/geoip2/geolite2</a></p>
 <p>下面用代码说话：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> geoip2.database</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_address</span><span class="params">(ip)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    reader = geoip2.database.Reader(<span class="string">'./dbs/GeoLite2-City.mmdb'</span>) <span class="comment">#这里参数为刚才下载数据库的位置</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    respone = reader.city(ip)   </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    Country = respone.country.name  <span class="comment">#获取国家</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    Province = response.subdivisions.most_specific.name <span class="comment">#获取省</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    City = response.city.name  <span class="comment">#获取市</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    Longitude_And_Latitude = <span class="string">'Longitude:&#123;&#125;，Latitude：&#123;&#125;'</span>.format(response.location.longitude, response.location.latitude)  <span class="comment">#获取经纬度</span></span></pre></td></tr></table></figure>
@@ -677,7 +677,7 @@ var _hmt = _hmt || [];
      <span class="site-state-item-name">访客量</span>
 </div>
 <div class="site-state-item site-state-posts">
-      <span class="site-state-item-count">9.7k</span>
+      <span class="site-state-item-count">9.6k</span>
       <span class="site-state-item-name">总字数</span>
 </div>
           
@@ -815,7 +815,7 @@ var _hmt = _hmt || [];
     
       <span class="post-meta-item-text">博客总字数</span>
     
-    <span title="Site words total count">9.7k</span>
+    <span title="Site words total count">9.6k</span>
   
   <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278048714'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278048714%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
