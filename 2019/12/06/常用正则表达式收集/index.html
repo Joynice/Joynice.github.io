@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="Joynice">
 <meta property="og:description" content="正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。">
 <meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
-<meta property="og:updated_time" content="2019-12-06T08:43:39.595Z">
+<meta property="og:updated_time" content="2019-12-06T10:07:17.517Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -538,6 +538,7 @@ var _hmt = _hmt || [];
 <p>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]w{5,17}$</code></p>
 <p>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></p>
 <p>日期格式：<code>^d{4}-d{1,2}-d{1,2}</code></p>
+<p>Html中title：<code>&lt;title&gt;(.*?)&lt;/title&gt;|&lt;TITLE&gt;(.*?)&lt;/TITLE&gt;</code></p>
 <p>一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></p>
 <p>一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code><br>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</code></p>
 <p>空白行的正则表达式：<code>s*</code> (可以用来删除空白行)</p>
