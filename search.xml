@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>删除github误传文件</title>
+    <url>/2019/12/06/%E5%88%A0%E9%99%A4github%E8%AF%AF%E4%BC%A0%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>在使用<code>git push</code>时，有时忘记忽略某些不必要上传的文件，从而上传到Github上，记录如何删除这些文件</p>
+<a id="more"></a>
+
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">$ git rm -r <span class="comment">--cached &lt;target&gt;</span></span></pre></td></tr></table></figure>
+<p><strong>target</strong>：删除对象</p>
+<p>然后进行提交</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git commit -m<span class="string">"删除target"</span></span></pre></td></tr></table></figure>
+
+<p>最后进行上传,就可以删除Github上误传的文件了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python将列表平均分成n份</title>
     <url>/2019/12/05/python%E5%B0%86%E5%88%97%E8%A1%A8%E5%B9%B3%E5%9D%87%E5%88%86%E6%88%90n%E4%BB%BD/</url>
     <content><![CDATA[<p>在开发中遇到，需要将下发的任务平均分给n个工人，如何进行分配，写个函数进行记录。</p>
@@ -291,8 +314,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Ajax</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
