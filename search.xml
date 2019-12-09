@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python关于时间操作</title>
+    <url>/2019/12/09/python%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>Python中时间操作使用还是挺频繁的，主要使用到<code>time</code>和<code>datetime</code>这两个库，下面记录常用的时间操作<a id="more"></a></p>
+<h3 id="当前时间戳"><a href="#当前时间戳" class="headerlink" title="当前时间戳"></a>当前时间戳</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="code"><pre><span class="line">ticks = time.time()</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(ticks)</span></pre></td></tr></table></figure>
+
+<h3 id="当前时间-now"><a href="#当前时间-now" class="headerlink" title="当前时间(now)"></a>当前时间(now)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(now)</span></pre></td></tr></table></figure>
+
+<h3 id="本地时间-localtime"><a href="#本地时间-localtime" class="headerlink" title="本地时间(localtime)"></a>本地时间(localtime)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
+
+<h3 id="格式化时间-strftime"><a href="#格式化时间-strftime" class="headerlink" title="格式化时间(strftime)"></a>格式化时间(strftime)</h3><ul>
+<li>datetime<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="code"><pre><span class="line">strftime = now.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(strftime)</span></pre></td></tr></table></figure></li>
+<li>time</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="code"><pre><span class="line">now = time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>, time.localtime())</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(now)</span></pre></td></tr></table></figure>
+
+
+<h3 id="时间转时间戳-timestamp"><a href="#时间转时间戳-timestamp" class="headerlink" title="时间转时间戳(timestamp)"></a>时间转时间戳(timestamp)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="code"><pre><span class="line">t = now.timestamp()</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(t)</span></pre></td></tr></table></figure>
+
+<h3 id="时间戳转时间-fromtimestamp"><a href="#时间戳转时间-fromtimestamp" class="headerlink" title="时间戳转时间(fromtimestamp)"></a>时间戳转时间(fromtimestamp)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="code"><pre><span class="line">ticks = time.time()</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(datetime.fromtimestamp(ticks))</span></pre></td></tr></table></figure>
+
+<h3 id="时间加减-timedelta"><a href="#时间加减-timedelta" class="headerlink" title="时间加减(timedelta)"></a>时间加减(timedelta)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line">d1 = datetime.datetime.now()</span></pre></td></tr><tr><td class="code"><pre><span class="line">d2 = d1 + datetime.timedelta(hours = <span class="number">8</span>)  <span class="comment">#时间+8小时</span></span></pre></td></tr></table></figure>
+
+<p><strong>其中可选参数:天(days), 小时(hours), 分钟(minutes), 秒(seconds), 微秒(microseconds)</strong></p>
+<h3 id="开发中的操作"><a href="#开发中的操作" class="headerlink" title="开发中的操作"></a>开发中的操作</h3><ul>
+<li>返回一周时间列表[‘2019-12-8’,’2019-12-9’,…]</li>
+</ul>
+<pre><code class="python"><span class="keyword">import</span> datetime
+today = datetime.date.today()
+date_list = [(today - datetime.timedelta(days=i)).strftime(<span class="string">'%Y-%m-%d'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>)]  <span class="comment">#控制天数</span>
+date_list.reverse()
+print(date_list)</code></pre>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记Flask-Sqlalchemy一次奇葩操作</title>
     <url>/2019/12/06/%E8%AE%B0Flask-Sqlalchemy%E4%B8%80%E6%AC%A1%E5%A5%87%E8%91%A9%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>在写用户编辑的时候，进行前端过滤，只是将用户ID和更改的字段传递给后端，可以后端我并不知道哪个字段更改啊(真是自己给自己挖坑啊)现在想想是不是当时喝醉写的代码</p>
