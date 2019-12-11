@@ -116,7 +116,7 @@
 
 
 
-  <meta name="keywords" content="Joynice" />
+  <meta name="keywords" content="Flask,Flask-Sqlchemy," />
 
 
 
@@ -127,14 +127,18 @@
 
 
 
-<meta name="description" content="要做一个有思想的程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joynice">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;tags&#x2F;Python&#x2F;index.html">
+<meta name="description" content="在开发过程中需要借助数据库来存储相关信息，在关系型数据库中可能就需要关系来处理事物之间的逻辑，而Flask中的Flask-Sqlalchemy使用orm来实现对象关系映射，这个对于不熟悉原生sql语句的开发者来说，真是福音。本片文章记录开发过程中多对多关系从建立到使用的全过程。">
+<meta name="keywords" content="Flask,Flask-Sqlchemy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask-Sqlalchemy简单使用">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;11&#x2F;Flask%E4%B8%AD%E5%A4%9A%E5%AF%B9%E5%A4%9A%E7%9A%84%E5%85%B3%E7%B3%BB%E5%A4%84%E7%90%86-%E5%89%8D%E5%90%8E%E7%AB%AF&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="要做一个有思想的程序员">
+<meta property="og:description" content="在开发过程中需要借助数据库来存储相关信息，在关系型数据库中可能就需要关系来处理事物之间的逻辑，而Flask中的Flask-Sqlalchemy使用orm来实现对象关系映射，这个对于不熟悉原生sql语句的开发者来说，真是福音。本片文章记录开发过程中多对多关系从建立到使用的全过程。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.JPG">
+<meta property="og:updated_time" content="2019-12-11T13:22:50.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.JPG">
 
 
 
@@ -164,13 +168,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/tags/Python/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/11/Flask中多对多的关系处理-前后端/"/>
 
 
 
 
 
-  <title>标签: Python | Joynice</title>
+  <title>Flask-Sqlalchemy简单使用 | Joynice</title>
   
 
 
@@ -200,7 +204,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/Joynice" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -358,200 +362,265 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Python<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/11/Flask%E4%B8%AD%E5%A4%9A%E5%AF%B9%E5%A4%9A%E7%9A%84%E5%85%B3%E7%B3%BB%E5%A4%84%E7%90%86-%E5%89%8D%E5%90%8E%E7%AB%AF/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/09/python%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/" itemprop="url">
-              
-                <span itemprop="name">python关于时间操作</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Flask-Sqlalchemy简单使用</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-09T10:53:33+08:00"
-              content="2019-12-09" >
-          12-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-11T21:22:50+08:00">
+                2019-12-11
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-11T21:22:50+08:00">
+                2019-12-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/06/python%E5%AE%9E%E7%8E%B0%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/" itemprop="url">
-              
-                <span itemprop="name">python实现断点续传</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-06T16:55:53+08:00"
-              content="2019-12-06" >
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>在开发过程中需要借助数据库来存储相关信息，在关系型数据库中可能就需要关系来处理事物之间的逻辑，而<code>Flask</code>中的<code>Flask-Sqlalchemy</code>使用<code>orm</code>来实现对象关系映射，这个对于不熟悉原生sql语句的开发者来说，真是福音。本片文章记录开发过程中<code>多对多</code>关系从建立到使用的全过程。</p>
+<a id="more"></a>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>开发漏洞靶场的时候，使用重新记录下相关操作，从数据库配置、数据库模型设计以及迁移、数据增删改查等方面记录整个流程。</p>
+<h3 id="0X01-数据库配置"><a href="#0X01-数据库配置" class="headerlink" title="0X01 数据库配置"></a>0X01 数据库配置</h3><blockquote>
+<p>在开发这套系统的时候，使用的<code>mysql</code>数据库，而<code>Flask-Sqlalchemy</code>支持多种关系型数据库。</p>
+</blockquote>
+<p>这里记录下使用<code>Flask-Sqlalchemy</code>配合<code>mysql</code>相关配置</p>
+<p>简单Flask项目，我习惯的文件结构如下：<br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.JPG" alt="文件结构"></p>
+<p>下面所写的文件基本按照此文件结构，这是一个简单的项目：<a href="https://github.com/Joynice/shicimingju" target="_blank" rel="noopener">诗词名句网获取展示</a> 有兴趣可以踩踩</p>
+<p><strong>config.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql设置</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">MYSQL_HOST = <span class="string">'xxx'</span> <span class="comment">#host</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">MYSQL_PORT = <span class="number">3306</span>  <span class="comment">#port</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">MYSQL_DATABASE = <span class="string">'xxx'</span>  <span class="comment">#db_name</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">MYSQL_USERNAME = <span class="string">'xxx'</span>  <span class="comment">#db_username</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">MYSQL_PASSWORD = <span class="string">'xxx'</span>  <span class="comment">#db_password</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_DATABASE_URI = <span class="string">'mysql+pymysql://&#123;&#125;:&#123;&#125;@&#123;&#125;:&#123;&#125;/&#123;&#125;?charset=utf8'</span>.format(MYSQL_USERNAME, MYSQL_PASSWORD,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                                                                                MYSQL_HOST, MYSQL_PORT,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                                                                                MYSQL_DATABASE)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_TRACK_MODIFICATIONS = <span class="literal">False</span>  <span class="comment">#是否追踪对象的修改</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_COMMIT_ON_TEARDOWN = <span class="literal">False</span> <span class="comment">#每次请求结束后都会自动提交数据库中的变动</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_POOL_SIZE = <span class="number">100</span>   <span class="comment">#数据库连接池的大小。默认是引擎默认值（通常 是 5 ）</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_MAX_OVERFLOW = <span class="number">20</span>  <span class="comment">#控制连接池达到最大大小后还可以创建的连接数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_ECHO = <span class="literal">False</span>  <span class="comment">#是否输出stderr的语句</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_POOL_RECYCLE = <span class="number">90</span>  <span class="comment">#多少秒后自动回收连接</span></span></pre></td></tr></table></figure>
+<p>上面基本上涵盖了所有关于<code>Flask-Sqlalchemy</code>的配置，下面就需要将<code>Flask-Sqlalchemy</code>初始化app。这部分，我的习惯创建<code>exts.py</code>进行<code>SQLAlchemy</code>类的实例,这样会解决循环导入的问题</p>
+<p><strong>exts.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">db = SQLAlchemy()</span></pre></td></tr></table></figure>
+<p>然后在<code>app.py</code>中在导入<code>db</code>进行初始化app</p>
+<p><strong>app.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">db.init_app(app)</span></pre></td></tr></table></figure>
+<p>这样就基本完了相关配置,这里的代码只是其中核心部分</p>
+<h3 id="0x02-数据库模型设计以及迁移"><a href="#0x02-数据库模型设计以及迁移" class="headerlink" title="0x02 数据库模型设计以及迁移"></a>0x02 数据库模型设计以及迁移</h3><p>因为作为简单的例子，不必要的字段就不进行写了，在设计多对多的关系时，我的习惯就是创建中间表进行关联,这里展示模型设计。<br><strong>models.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tags</span><span class="params">(db.Model)</span>:</span>  <span class="comment">#标签表</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">    漏洞的标签：id、名称、创建时间</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    __tablename__ = <span class="string">'t_tags'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    id = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    name = db.Column(db.String(<span class="number">50</span>), nullable=<span class="literal">True</span>, comment=<span class="string">'漏洞标签名称'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    create_time = db.Column(db.DateTime, default=datetime.datetime.now, comment=<span class="string">'加入时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    vuls = db.relationship(<span class="string">'Vuls'</span>, secondary=vul_tag, backref=<span class="string">'tags'</span>)  <span class="comment"># 设置关系，通过中间表`t_vul_tag`实现</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vuls</span><span class="params">(db.Model)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="string">    靶场漏洞库</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    __tablename__ = <span class="string">'t_vuls'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    id = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>) <span class="comment">#uuid</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    name = db.Column(db.String(<span class="number">255</span>), nullable=<span class="literal">True</span>, comment=<span class="string">'漏洞名称'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    create_time = db.Column(db.DateTime, default=datetime.datetime.now, comment=<span class="string">'加入时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    vul_tag = db.Table(  <span class="comment">#中间表，表名`t_vul_tag`</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'t_vul_tag'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    db.Column(<span class="string">'t_vul_id'</span>, db.Integer, db.ForeignKey(<span class="string">'t_vuls.id'</span>), primary_key=<span class="literal">True</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    db.Column(<span class="string">'t_tag_id'</span>, db.Integer, db.ForeignKey(<span class="string">'t_tags.id'</span>), primary_key=<span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">)</span></pre></td></tr></table></figure>
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/06/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%94%B6%E9%9B%86/" itemprop="url">
-              
-                <span itemprop="name">常用正则表达式收集</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-06T16:24:39+08:00"
-              content="2019-12-06" >
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/05/python%E5%B0%86%E5%88%97%E8%A1%A8%E5%B9%B3%E5%9D%87%E5%88%86%E6%88%90n%E4%BB%BD/" itemprop="url">
-              
-                <span itemprop="name">python将列表平均分成n份</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-05T16:07:41+08:00"
-              content="2019-12-05" >
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/python%E8%8E%B7%E5%8F%96%E7%BD%91%E7%AB%99IP%E4%BB%A5%E5%8F%8A%E8%AF%86%E5%88%ABIP%E4%BD%8D%E7%BD%AE/" itemprop="url">
-              
-                <span itemprop="name">python获取网站IP以及识别IP位置</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T21:03:06+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/Python%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/" itemprop="url">
-              
-                <span itemprop="name">Python生成词云</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T11:09:02+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p>这样就可以实现题目和标签之间多对多的关系。</p>
+<p>模型设计好了，就需要映射到数据库中实实在在的表了,通常习惯创建<code>manages.py</code>文件来写些方便的操作和进行数据库迁移，这里仅进行记录如何进行数据库迁移。</p>
+<p><strong>manages.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">__author__ = <span class="string">'Joynice'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate, MigrateCommand</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apps.admin.models <span class="keyword">import</span> Upload_Log</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> create_app</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">app = create_app()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">manager = Manager(app)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">Migrate(app, db)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">manager.add_command(<span class="string">'db'</span>, MigrateCommand)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    manager.run()</span></pre></td></tr></table></figure>
+<p>基本上就这样写就可以，<br>然后运行以下命令进行数据库的迁移</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">python manages.py db init  #初始化</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">python manages.py db migrate  #迁移</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">python manages.py db<span class="built_in"> upgrade </span> #生成</span></pre></td></tr></table></figure>
+<p>运行完上述命令后，就会在数据库中生成三个表,就可以继续下面的操作了。</p>
+<h3 id="0x03-数据库增删改查"><a href="#0x03-数据库增删改查" class="headerlink" title="0x03 数据库增删改查"></a>0x03 数据库增删改查</h3><p>使用<code>Flask-Sqlalchemy</code>进行增删改查非常的方便，不需要设计原生的sql语句，只需要对模型操作就可以了，以题目-标签为例子，进行增删改查操作。</p>
+<ul>
+<li>增<ul>
+<li>增加标签  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> Tags</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">tag = Tags(name=<span class="string">'xxx'</span>, create_time=<span class="string">'xxx'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">db.session.add(tag)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure></li>
+<li>添加题目  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> Vuls</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">vul = Vuls(name=<span class="string">'xxx'</span>, create_time=<span class="string">'xxx'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">db.session.add(vul)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>删<br>  删除标签(id为1)：删除标签的时候多先进行查询再进行删除  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> Tags</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">tag = Tags.query.get(<span class="number">1</span>) <span class="comment">#这种查询方法只是试用对`主键`查询</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">db.session.delete(tag)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure></li>
+<li>改<br>  更改标签name=’ceshi’:修改操作也多在查询之后进行，这里也对id=1的数据修改  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> Tags</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">tag = Tags.query.get(<span class="number">1</span>) <span class="comment">#这种查询方法只是试用对`主键`查询</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">tag.name = <span class="string">'ceshi'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure></li>
+<li>查<br>  查的话上面操作已经有体现了</li>
+</ul>
+<p>这片文章仅记录下简单的<code>Flask-Sqlalchemy</code>的流程，以后会对更新一些文章关于<code>Flask-Sqlalchemy</code>的进阶操作，比如关系操作、复杂查询等等。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
+          
+            <a href="/tags/Flask-Sqlchemy/" rel="tag" class=" fa  fa-tag  "> Flask-Sqlchemy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/11/Layui%E8%AF%84%E5%88%86%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/" rel="next" title="Layui评分模块使用">
+                <i class="fa fa-chevron-left"></i> Layui评分模块使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
 
           </div>
           
 
 
           
+
+  
+
+
 
         </div>
         
@@ -572,8 +641,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -714,6 +792,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0X01-数据库配置"><span class="nav-number">1.</span> <span class="nav-text">0X01 数据库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-数据库模型设计以及迁移"><span class="nav-number">2.</span> <span class="nav-text">0x02 数据库模型设计以及迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-数据库增删改查"><span class="nav-number">3.</span> <span class="nav-text">0x03 数据库增删改查</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -874,6 +968,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
