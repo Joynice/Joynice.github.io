@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="/themes/next/languages/zh-Hans.yml">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -130,7 +130,7 @@
 <meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;06&#x2F;python%E5%AE%9E%E7%8E%B0%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
 <meta property="og:description" content="在写观星资产扫描器的时候，IP定位用的是Geoip提供的IP库实现的，每个用户在使用扫描器的时候如果本地没有IP库需要从远端进行下载,然而这个文件将近50M，为尽量减少下载的效率，采用断点续传。">
-<meta property="og:locale" content="&#x2F;themes&#x2F;next&#x2F;languages&#x2F;zh-Hans.yml">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;TIM%E6%88%AA%E5%9B%BE20191206172901.png">
 <meta property="og:updated_time" content="2019-12-06T09:54:41.832Z">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="/themes/next/languages/zh-Hans.yml">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -216,7 +216,7 @@ var _hmt = _hmt || [];
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description"></h1>
+        <h1 class="site-subtitle" itemprop="description">个人博客</h1>
       
   </div>
 
@@ -314,7 +314,7 @@ var _hmt = _hmt || [];
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            搜索
           </a>
         </li>
       
@@ -334,7 +334,7 @@ var _hmt = _hmt || [];
     </span>
     <div class="local-search-input-wrapper">
       <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
+             placeholder="搜索..." spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
@@ -399,15 +399,27 @@ var _hmt = _hmt || [];
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T16:55:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T16:55:53+08:00">
                 2019-12-06
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-06T17:54:41+08:00">
+                2019-12-06
+              </time>
             
           </span>
 
@@ -420,7 +432,7 @@ var _hmt = _hmt || [];
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -452,9 +464,9 @@ var _hmt = _hmt || [];
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                  <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="Words count in article">
+                <span title="字数统计">
                   829
                 </span>
               
@@ -468,9 +480,9 @@ var _hmt = _hmt || [];
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="Reading time">
+                <span title="阅读时长">
                   3
                 </span>
               
@@ -610,10 +622,10 @@ var _hmt = _hmt || [];
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
