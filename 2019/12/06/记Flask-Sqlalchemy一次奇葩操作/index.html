@@ -465,7 +465,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  492
+                  491
                 </span>
               
 
@@ -531,7 +531,7 @@ var _hmt = _hmt || [];
 <p>比如我现在用这个表，前端我需要修改张三的邮箱，而我往后端传递的参数只有<code>id</code>和修改后<code>email</code>，而后端正常更改用户数据的话，先根据<code>id</code>查询到相关用户,然后进行修改。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">user = User.query.get(id)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">user.email = <span class="string">'zhangsan111@qq.com'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">db.session.commit() <span class="comment">#提交</span></span></pre></td></tr></table></figure>
 <p>可是我只传<code>email</code>和<code>id</code>的话，我可以根据<code>id</code>找到这个用户,但是再进行<code>user.xxx=xxx</code>时，我就不知道如何解决了，于是酒劲上来了，突发奇想，这样操作。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">data = request.values   <span class="comment">#获取返回的字典如&#123;'id':1, 'email':'zhangsan111@qq.com'&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">key = list(data.keys())  <span class="comment">#获取字典中的key如：['id', 'name']</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">key.remove(<span class="string">'id'</span>)  <span class="comment">#将列表中的id删除,应为主键不可更改</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> key:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	user.__setattr__(i, data.get(i))  <span class="comment">#将列表中的其他字段通过user.__setattr__('email','zhangsan111@qq.com')进行更改，这样我就不要顾虑前端哪个字段更改了，都可以解决。</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">db.session.commit() <span class="comment">#提交</span></span></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">data = request.values   <span class="comment">#获取返回的字典如&#123;'id':1, 'email':'zhangsan111@qq.com'&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">key = list(data.keys())  <span class="comment">#获取字典中的key如：['id', 'name']</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">key.remove(<span class="string">'id'</span>)  <span class="comment">#将列表中的id删除,应为主键不可更改</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> key:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">4user.__setattr__(i, data.get(i))  <span class="comment">#将列表中的其他字段通过user.__setattr__('email','zhangsan111@qq.com')进行更改，这样我就不要顾虑前端哪个字段更改了，都可以解决。</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">db.session.commit() <span class="comment">#提交</span></span></pre></td></tr></table></figure>
 
 <p>现在看看这个操作还是想笑，后续我会关于这个实现，更新个正常点的方法。</p>
 
@@ -648,7 +648,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -659,7 +659,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -670,7 +670,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -688,7 +688,7 @@ var _hmt = _hmt || [];
      <span class="site-state-item-name">访客量</span>
 </div>
 <div class="site-state-item site-state-posts">
-      <span class="site-state-item-count">15.5k</span>
+      <span class="site-state-item-count">16.4k</span>
       <span class="site-state-item-name">总字数</span>
 </div>
           
@@ -798,7 +798,7 @@ var _hmt = _hmt || [];
     
       <span class="post-meta-item-text">博客总字数</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">16.4k</span>
   
   <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278048714'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278048714%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
