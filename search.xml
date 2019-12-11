@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Flask中使用celery实现异步操作</title>
+    <url>/2019/12/10/Flask%E4%B8%AD%E4%BD%BF%E7%94%A8celery%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>Flask自身并没有异步功能，但是后端遇到些超时操作，前端只能等待，那么Celery就可以实现异步操作，满足开发中的需求。</p>
+<a id="more"></a>
+
+<h3 id="0x01-Celery"><a href="#0x01-Celery" class="headerlink" title="0x01 Celery"></a>0x01 Celery</h3><p>Celery是一个简单、灵活而且可靠的，能够处理大量消息的分布式系统，并且提供维护这样一个系统的必要工具，Celery支持使用任务队列的方式在分布的机器、进程、线程上执行任务调度。</p>
+<p>Celery的架构有消息中间件（message broker），执行任务单元（worker）和任务执行结果存储（task result store）三个部分组成。</p>
+<ol>
+<li><p>消息中间件<br>Celery本身不提供消息服务，但是可以方便和第三方提供的消息中间件集成。包括RabbitMQ、Redis等等</p>
+</li>
+<li><p>执行任务单元<br>Worker是Celery提供的认为执行单元，worker并发运行在分布式的系统节点中。</p>
+</li>
+<li><p>任务结果存储<br>Task result store用来存储Worker执行的任务结果，Celery支持不同方式存储任务结果，包括AMQP、Redis等等。<br>Celery统筹三个单元，相互合作完成任务，充分运用了生产者消费者模型，而Wokers可以分布式部署，增加代码执行效率。用户下发任务到消息队列中，而Worker不断监视消息队列的状况，一单任务下发，Worker获得任务，开始工作，完后工作后在把返回的结果存入任务结果存储单元中。</p>
+</li>
+</ol>
+<p>Celery可以配置参数协调任务队列进行任务调度，支持及时任务以及定时任务，自身可以解决任务逻辑，减少程序开销，加快项目开发。</p>
+<h3 id="0x02-Flask中使用Celery"><a href="#0x02-Flask中使用Celery" class="headerlink" title="0x02 Flask中使用Celery"></a>0x02 Flask中使用Celery</h3><p>在Flask中就可以把耗时任务交给Celery，这样可以优化前端用户体验，就给用户发送邮件功能而说，这就是一个耗时任务，如果不使用Celery的话，同步实现发邮件，前台用户在点击获取邮件后，会在3-4秒后页面才会弹窗，发送邮件成功，这个是个同步运行过程，用户体验不好，并且在这3-4秒钟内，并不知道是否执行发送邮件的命令。使用Celery就不同了，用户点击发送邮件按钮后，会把任务交给Celery来完成，并不需要等待发送邮件的过程。</p>
+<h3 id="0x03-实例"><a href="#0x03-实例" class="headerlink" title="0x03 实例"></a>0x03 实例</h3><p>说了这么多，很多人还说<code>not give me bb, show me in code</code>，好的，我就发送邮件功能给出个栗子。</p>
+<ul>
+<li>Celery_Example<ul>
+<li>config.py</li>
+<li>tasks.py</li>
+<li>view.py</li>
+</ul>
+</li>
+</ul>
+<p>简单的文件结构</p>
+<p><strong>config.py：主要写些邮件和Celery的配置文件</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 发送者邮箱的服务器地址</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_SERVER = <span class="string">"smtp.qq.com"</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_PORT = <span class="string">'587'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_USE_TLS = <span class="literal">True</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># MAIL_USE_SSL</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_USERNAME = <span class="string">'xxxx@qq.com'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_PASSWORD = <span class="string">'xxxx'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">MAIL_DEFAULT_SENDER = <span class="string">'xxxx@qq.com'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">#celery相关的配置, 中间件使用redis</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">CELERY_RESULT_BACKEND = <span class="string">'redis://xxxx:6379/x'</span>  <span class="comment">#任务结果存储</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">CELERY_BROKER_URL = <span class="string">'redis://xxxx:6379/x'</span>  <span class="comment">#消息存储</span></span></pre></td></tr></table></figure>
+
+<p><strong>tasks.py: 创建Celery实例绑定app并创建发送邮件任务</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">__author__ = <span class="string">'Joynice'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_mail <span class="keyword">import</span> Message, Mail</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> config</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">app = Flask(__name__)</span></pre></td></tr><tr><td class="code"><pre><span class="line">app.config.from_object(config)</span></pre></td></tr><tr><td class="code"><pre><span class="line">mail = Mail()</span></pre></td></tr><tr><td class="code"><pre><span class="line">mail.init_app(app)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_celery</span><span class="params">(app)</span>:</span>   <span class="comment"># 创建Celery</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    celery = Celery(</span></pre></td></tr><tr><td class="code"><pre><span class="line">        app.import_name,</span></pre></td></tr><tr><td class="code"><pre><span class="line">        backend=app.config[<span class="string">'CELERY_RESULT_BACKEND'</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">        broker=app.config[<span class="string">'CELERY_BROKER_URL'</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    )</span></pre></td></tr><tr><td class="code"><pre><span class="line">    celery.conf.update(app.config)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ContextTask</span><span class="params">(celery.Task)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, *args, **kwargs)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">with</span> app.app_context():</span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="keyword">return</span> self.run(*args, **kwargs)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    celery.Task = ContextTask</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> celery</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">celery = make_celery(app)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="meta">@celery.task    #创建发送邮件任务</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_mail</span><span class="params">(subject, recipients, body)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    message = Message(subject=subject, recipients=recipients, body=body)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    mail.send(message)</span></pre></td></tr></table></figure>
+
+<p><strong>view.py: 在视图函数中使用发送邮件功能</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tasks <span class="keyword">import</span> send_mail</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="meta">@bp.route('/email_captcha/')</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="meta">@login_required</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">email_captcha</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    email = request.args.get(<span class="string">'email'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(email)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> email:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> restful.params_error(<span class="string">'请传递邮箱参数！'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    source = list(string.ascii_letters)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    source.extend(map(<span class="keyword">lambda</span> x: str(x), range(<span class="number">0</span>, <span class="number">10</span>)))</span></pre></td></tr><tr><td class="code"><pre><span class="line">    captcha = <span class="string">""</span>.join(random.sample(source, <span class="number">6</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">    send_mail.delay(<span class="string">'BBS论坛邮箱验证码'</span>, [email], <span class="string">'您的验证码是：&#123;&#125;'</span>.format(captcha))  <span class="comment">#Celery处理发送邮件任务</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    zlcache.set(email, captcha)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> restful.success()</span></pre></td></tr></table></figure>
+
+<hr>
+<p>这三部分是功能实现的核心，同时Celery运行命名并不是跟着<code>app.run()</code>运行的，要单独运行:</p>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">celery</span> 启动命令:<span class="variable">celery</span> -<span class="variable">A</span> <span class="variable"><span class="class">tasks</span>.celery</span> <span class="variable">worker</span> --<span class="variable">pool</span>=<span class="variable">eventlet</span>， 启动时保证与<span class="variable"><span class="class">tasks</span>.py</span>同级</span></pre></td></tr></table></figure>
+<p>同时记录下遇到的一个坑：</p>
+<figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">若出现 <span class="symbol">'AttributeError</span>: <span class="symbol">'float'</span> <span class="keyword">object</span> has no attribute <span class="symbol">'items'</span>错误，这是redis包版本不兼容，退回<span class="number">2.10</span>.<span class="number">6</span>版本即可。</span></pre></td></tr><tr><td class="code"><pre><span class="line">pip install redis==<span class="number">2.10</span>.<span class="number">6</span></span></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+        <tag>Celery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask用户头像上传</title>
     <url>/2019/12/09/Flask%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0/</url>
     <content><![CDATA[<p>在完成用户模块时，需要用户上传头像，文件上传功能毕竟属于开发过程中重要的模块，也是出现漏洞较多的点，所以写起来十分小心，并记录下。<a id="more"></a></p>
@@ -250,8 +302,8 @@
         <category>Github</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Git</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -317,8 +369,8 @@
         <category>Github</category>
       </categories>
       <tags>
-        <tag>PicGo</tag>
         <tag>Github</tag>
+        <tag>PicGo</tag>
       </tags>
   </entry>
   <entry>
@@ -349,8 +401,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Git</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>

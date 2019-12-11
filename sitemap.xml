@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lr.dropsec.xyz/2019/12/10/Flask%E4%B8%AD%E4%BD%BF%E7%94%A8celery%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2019-12-11T03:19:57.719Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lr.dropsec.xyz/2019/12/09/Flask%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0/</loc>
     
     <lastmod>2019-12-10T13:29:36.223Z</lastmod>
