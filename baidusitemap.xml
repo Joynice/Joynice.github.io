@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lr.dropsec.xyz/2019/12/12/Jinja2%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
     <loc>https://lr.dropsec.xyz/2019/12/11/Flask-Sqlalchemy%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2019-12-11</lastmod>
   </url>  <url>
