@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>requests内容编码问题</title>
+    <url>/2019/12/14/requests%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在requests获取html内容的时候，由于页面编码格式的问题，有时候会出出现乱码的问题，这里记录下统一的解决方法。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>先写一段获取百度首页的代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="code"><pre><span class="line">req = requests.get(<span class="string">'https://www.baidu.com'</span>).text()</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(req)</span></pre></td></tr></table></figure>
+
+<p>这段代码执行后，后获取百度首页的html代码，但是有些网站获取html代码就可能不那么轻松了，可能就会出现编码问题，也不演示这么多，大多说html的编码是<code>utf-8</code>,但是不排除其他编码方式的存在，为了解决这个问题，让指定正确的编码方式，<code>requests</code>中封装了获取页面编码方式的方法。以后获取页面源码的时候可以这样写，增加代码的健壮性。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="code"><pre><span class="line">req = requests.get(<span class="string">'https://www.baidu.com'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> req.status_code == <span class="number">200</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    req.encoding = req.apparent_encoding</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(req.text())</span></pre></td></tr></table></figure>
+<p>通过添加设置<code>apparent_encoding</code>，调用chardet.detect()来识别文本编码，可以实现自动编码。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Requests</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Boss直聘爬虫新思路</title>
     <url>/2019/12/14/Boss%E7%9B%B4%E8%81%98%E7%88%AC%E8%99%AB%E6%96%B0%E6%80%9D%E8%B7%AF/</url>
     <content><![CDATA[<p>之前写了一个爬虫项目，关于获取各大求职平台的数据，具体哪些平台就不列举了，感兴趣的话可以访问<a href="https://github.com/Joynice/FindJob" target="_blank" rel="noopener">Findjob</a>，时隔几个月后，突然有人<code>issues</code>说boss直聘不能爬了，本片文章记录如何解决反反爬虫。</p>
@@ -765,8 +788,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Ajax</tag>
         <tag>Flask</tag>
+        <tag>Ajax</tag>
       </tags>
   </entry>
   <entry>
