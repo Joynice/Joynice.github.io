@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Boss直聘爬虫新思路</title>
+    <url>/2019/12/14/Boss%E7%9B%B4%E8%81%98%E7%88%AC%E8%99%AB%E6%96%B0%E6%80%9D%E8%B7%AF/</url>
+    <content><![CDATA[<p>之前写了一个爬虫项目，关于获取各大求职平台的数据，具体哪些平台就不列举了，感兴趣的话可以访问<a href="https://github.com/Joynice/FindJob" target="_blank" rel="noopener">Findjob</a>，时隔几个月后，突然有人<code>issues</code>说boss直聘不能爬了，本片文章记录如何解决反反爬虫。</p>
+<a id="more"></a>
+
+<h3 id="0x01-问题排查"><a href="#0x01-问题排查" class="headerlink" title="0x01 问题排查"></a>0x01 问题排查</h3><p>收到issues后，我将以前的项目拉下，发现Boss直聘真的运行不了了，然后查看当初拼接的查询链接的html，返回是一个跳转页面，不没有返回结果页面，通过判断某些参数，返回跳转页来隔离爬虫，最后发现<code>cookie</code>多了个<code>__zp_stoken__</code>字段这个可能就是限制是否跳转的重要参数，通过copy这个参数加在情头求头的cookie中可以正常访问，然后我就百度boss直聘的<code>__zp_stoken__</code>，听那些大佬说，这个参数是三千行js生成的，而且每天加密方式都会变化，我这还玩个毛线啊，果断放弃这条思路，这是<a href="https://blog.csdn.net/Lock_Jun/article/details/101768531" target="_blank" rel="noopener">文章链接</a>，还有这个参数的存活也是有限制的，有人说可以使用5次，也有人说可以使用几分钟，但是我一次就gg了。<br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20191214165430.png" alt="cookie"></p>
+<h3 id="0x02-解决方法"><a href="#0x02-解决方法" class="headerlink" title="0x02 解决方法"></a>0x02 解决方法</h3><ul>
+<li><p>解密js获取token<br>对于我来说，占比登天还难，js大佬可以调试试试</p>
+<ul>
+<li><p>模拟浏览器<br>这种方法应该可以，但是我没尝试，因为浏览器会自动运行那段加密js，从而生成token进行验证，但是模拟浏览器太慢了，还是放弃了。</p>
+</li>
+<li><p>寻找其他接口<br>终于在不经意间发现了boss直聘的手机端接口，一开始发现请求的cookie中还是有token字段，准备放弃，但是还是用postman测试了下可以获得数据，nice。而且也解决了web端只能获取前十页数据限制，目前测试没有任何验证。</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.zhipin.com<span class="regexp">/mobile/</span>jobs.json?city=<span class="number">101280600</span>&amp;query=java&amp;page=<span class="number">27</span></span></pre></td></tr></table></figure>
+<p>不久之后我会将这个方法更新到项目中</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h3><p>有时候成功可能就在不经意之间….</p>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gunicorn+Nginx部署Flask项目</title>
     <url>/2019/12/14/Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<p>最近上线了<a href="http://wechat.doonsec.com" target="_blank" rel="noopener">洞见微信聚合平台</a>需要部署，以前部署项目使用的<code>uwsgi</code>+<code>nginx</code>，听说<code>gunicorn</code>使用起来挺方便的，记录下部署过程。<a id="more"></a></p>
@@ -678,8 +706,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>爬虫</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -737,8 +765,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Ajax</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>

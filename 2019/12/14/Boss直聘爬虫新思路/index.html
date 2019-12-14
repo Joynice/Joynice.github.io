@@ -116,7 +116,7 @@
 
 
 
-  <meta name="keywords" content="Flask,Jinja2," />
+  <meta name="keywords" content="爬虫," />
 
 
 
@@ -127,16 +127,18 @@
 
 
 
-<meta name="description" content="Jinja2本身自带许多过滤器，但是有些功能实现需要自己设计特定的过滤器，我熟悉的有两种实现的方法，这里记录经常使用的一种方法。">
-<meta name="keywords" content="Flask,Jinja2">
+<meta name="description" content="之前写了一个爬虫项目，关于获取各大求职平台的数据，具体哪些平台就不列举了，感兴趣的话可以访问Findjob，时隔几个月后，突然有人issues说boss直聘不能爬了，本片文章记录如何解决反反爬虫。">
+<meta name="keywords" content="爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jinja2自定义过滤器">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;12&#x2F;Jinja2%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8&#x2F;index.html">
+<meta property="og:title" content="Boss直聘爬虫新思路">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;14&#x2F;Boss%E7%9B%B4%E8%81%98%E7%88%AC%E8%99%AB%E6%96%B0%E6%80%9D%E8%B7%AF&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="Jinja2本身自带许多过滤器，但是有些功能实现需要自己设计特定的过滤器，我熟悉的有两种实现的方法，这里记录经常使用的一种方法。">
+<meta property="og:description" content="之前写了一个爬虫项目，关于获取各大求职平台的数据，具体哪些平台就不列举了，感兴趣的话可以访问Findjob，时隔几个月后，突然有人issues说boss直聘不能爬了，本片文章记录如何解决反反爬虫。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-12T03:07:32.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20191214165430.png">
+<meta property="og:updated_time" content="2019-12-14T08:34:53.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;img&#x2F;%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20191214165430.png">
 
 
 
@@ -166,13 +168,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/12/Jinja2自定义过滤器/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/14/Boss直聘爬虫新思路/"/>
 
 
 
 
 
-  <title>Jinja2自定义过滤器 | Joynice</title>
+  <title>Boss直聘爬虫新思路 | Joynice</title>
   
 
 
@@ -374,7 +376,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/12/Jinja2%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/14/Boss%E7%9B%B4%E8%81%98%E7%88%AC%E8%99%AB%E6%96%B0%E6%80%9D%E8%B7%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -391,7 +393,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">Jinja2自定义过滤器</h2>
+          <h2 class="post-title" itemprop="name headline">Boss直聘爬虫新思路</h2>
         
 
         <div class="post-meta">
@@ -403,8 +405,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-12T11:07:32+08:00">
-                2019-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T16:34:53+08:00">
+                2019-12-14
               </time>
             
 
@@ -419,8 +421,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-12T11:07:32+08:00">
-                2019-12-12
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-14T16:34:53+08:00">
+                2019-12-14
               </time>
             
           </span>
@@ -438,8 +440,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flask/" itemprop="url" rel="index">
-                    <span itemprop="name">Flask</span>
+                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
                   </a>
                 </span>
 
@@ -469,7 +471,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  209
+                  537
                 </span>
               
 
@@ -506,20 +508,23 @@ var _hmt = _hmt || [];
       
 
       
-        <p><code>Jinja2</code>本身自带许多过滤器，但是有些功能实现需要自己设计特定的过滤器，我熟悉的有两种实现的方法，这里记录经常使用的一种方法。</p>
+        <p>之前写了一个爬虫项目，关于获取各大求职平台的数据，具体哪些平台就不列举了，感兴趣的话可以访问<a href="https://github.com/Joynice/FindJob" target="_blank" rel="noopener">Findjob</a>，时隔几个月后，突然有人<code>issues</code>说boss直聘不能爬了，本片文章记录如何解决反反爬虫。</p>
 <a id="more"></a>
 
-<blockquote>
-<p>以难度判断记录下，通过判断1-5，返回不同的难度等级</p>
-</blockquote>
-<p>过滤函数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Num2Nandu</span><span class="params">(num)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(num, int):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'暂无'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> num == <span class="number">1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'入门'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">elif</span> num == <span class="number">2</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'初级'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">elif</span>  <span class="number">2</span>&lt;num&lt;=<span class="number">4</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'中级'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">elif</span> num == <span class="number">5</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'高级'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">'暂无'</span></span></pre></td></tr></table></figure>
-
-<p>将过滤函数添加到模板过滤器中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">bp.add_app_template_filter(Num2Nandu, <span class="string">'Num2Nandu'</span>)  <span class="comment">#过滤数字-难度，第二个参数为过滤器的名字</span></span></pre></td></tr></table></figure>
-
-<p>前端使用自定义的过滤器</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"Ori-pic"</span>&gt;</span>&#123;&#123; vul.stars|Num2Nandu &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>  <span class="comment">&lt;!--传入int进行过滤---&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="0x01-问题排查"><a href="#0x01-问题排查" class="headerlink" title="0x01 问题排查"></a>0x01 问题排查</h3><p>收到issues后，我将以前的项目拉下，发现Boss直聘真的运行不了了，然后查看当初拼接的查询链接的html，返回是一个跳转页面，不没有返回结果页面，通过判断某些参数，返回跳转页来隔离爬虫，最后发现<code>cookie</code>多了个<code>__zp_stoken__</code>字段这个可能就是限制是否跳转的重要参数，通过copy这个参数加在情头求头的cookie中可以正常访问，然后我就百度boss直聘的<code>__zp_stoken__</code>，听那些大佬说，这个参数是三千行js生成的，而且每天加密方式都会变化，我这还玩个毛线啊，果断放弃这条思路，这是<a href="https://blog.csdn.net/Lock_Jun/article/details/101768531" target="_blank" rel="noopener">文章链接</a>，还有这个参数的存活也是有限制的，有人说可以使用5次，也有人说可以使用几分钟，但是我一次就gg了。<br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20191214165430.png" alt="cookie"></p>
+<h3 id="0x02-解决方法"><a href="#0x02-解决方法" class="headerlink" title="0x02 解决方法"></a>0x02 解决方法</h3><ul>
+<li><p>解密js获取token<br>对于我来说，占比登天还难，js大佬可以调试试试</p>
+<ul>
+<li><p>模拟浏览器<br>这种方法应该可以，但是我没尝试，因为浏览器会自动运行那段加密js，从而生成token进行验证，但是模拟浏览器太慢了，还是放弃了。</p>
+</li>
+<li><p>寻找其他接口<br>终于在不经意间发现了boss直聘的手机端接口，一开始发现请求的cookie中还是有token字段，准备放弃，但是还是用postman测试了下可以获得数据，nice。而且也解决了web端只能获取前十页数据限制，目前测试没有任何验证。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.zhipin.com<span class="regexp">/mobile/</span>jobs.json?city=<span class="number">101280600</span>&amp;query=java&amp;page=<span class="number">27</span></span></pre></td></tr></table></figure>
+<p>不久之后我会将这个方法更新到项目中</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h3><p>有时候成功可能就在不经意之间….</p>
 
       
     </div>
@@ -537,9 +542,7 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
-          
-            <a href="/tags/Jinja2/" rel="tag" class=" fa  fa-tag  "> Jinja2</a>
+            <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag" class=" fa  fa-tag  "> 爬虫</a>
           
         </div>
       
@@ -552,8 +555,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/11/Flask-Sqlalchemy%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" rel="next" title="Flask-Sqlalchemy简单使用">
-                <i class="fa fa-chevron-left"></i> Flask-Sqlalchemy简单使用
+              <a href="/2019/12/14/Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/" rel="next" title="Gunicorn+Nginx部署Flask项目">
+                <i class="fa fa-chevron-left"></i> Gunicorn+Nginx部署Flask项目
               </a>
             
           </div>
@@ -561,10 +564,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/14/Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/" rel="prev" title="Gunicorn+Nginx部署Flask项目">
-                Gunicorn+Nginx部署Flask项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -616,8 +615,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -758,6 +766,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-问题排查"><span class="nav-number">1.</span> <span class="nav-text">0x01 问题排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-解决方法"><span class="nav-number">2.</span> <span class="nav-text">0x02 解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-总结"><span class="nav-number">3.</span> <span class="nav-text">0x03 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
