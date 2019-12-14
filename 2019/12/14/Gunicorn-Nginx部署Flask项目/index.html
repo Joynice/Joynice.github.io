@@ -116,7 +116,7 @@
 
 
 
-  <meta name="keywords" content="Python,正则表达式," />
+  <meta name="keywords" content="Flask,部署," />
 
 
 
@@ -127,15 +127,15 @@
 
 
 
-<meta name="description" content="正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。">
-<meta name="keywords" content="Python,正则表达式">
+<meta name="description" content="最近上线了洞见微信聚合平台需要部署，以前部署项目使用的uwsgi+nginx，听说gunicorn使用起来挺方便的，记录下部署过程。">
+<meta name="keywords" content="Flask,部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用正则表达式收集">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;06&#x2F;%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%94%B6%E9%9B%86&#x2F;index.html">
+<meta property="og:title" content="Gunicorn+Nginx部署Flask项目">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;14&#x2F;Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。">
+<meta property="og:description" content="最近上线了洞见微信聚合平台需要部署，以前部署项目使用的uwsgi+nginx，听说gunicorn使用起来挺方便的，记录下部署过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-06T10:07:17.517Z">
+<meta property="og:updated_time" content="2019-12-14T07:02:49.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -166,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/06/常用正则表达式收集/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/14/Gunicorn-Nginx部署Flask项目/"/>
 
 
 
 
 
-  <title>常用正则表达式收集 | Joynice</title>
+  <title>Gunicorn+Nginx部署Flask项目 | Joynice</title>
   
 
 
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/06/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%94%B6%E9%9B%86/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/14/Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -391,7 +391,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">常用正则表达式收集</h2>
+          <h2 class="post-title" itemprop="name headline">Gunicorn+Nginx部署Flask项目</h2>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T16:24:39+08:00">
-                2019-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T15:02:49+08:00">
+                2019-12-14
               </time>
             
 
@@ -419,8 +419,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-06T18:07:17+08:00">
-                2019-12-06
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-14T15:02:49+08:00">
+                2019-12-14
               </time>
             
           </span>
@@ -438,8 +438,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">正则表达式</span>
+                  <a href="/categories/%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">部署</span>
                   </a>
                 </span>
 
@@ -469,7 +469,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  371
                 </span>
               
 
@@ -485,7 +485,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  1
                 </span>
               
             </div>
@@ -506,64 +506,22 @@ var _hmt = _hmt || [];
       
 
       
-        <p>正则表达式的应用的地方还是挺多的，如爬虫中提取相关数据，以及web开发中用户提交数据验证，所有收集些常用的正则表达式，方便自已查找使用。</p>
-<a id="more"></a>
+        <p>最近上线了<a href="http://wechat.doonsec.com" target="_blank" rel="noopener">洞见微信聚合平台</a>需要部署，以前部署项目使用的<code>uwsgi</code>+<code>nginx</code>，听说<code>gunicorn</code>使用起来挺方便的，记录下部署过程。<a id="more"></a></p>
+<p>生产环境不比开发环境，要适应性能强大的<code>应用服务器</code>和<code>web服务器</code>,在开发环境中，使用Flask自带的<code>wsgi</code>不能满足生产环境的需求，需要满足高性能的要求。这里不得不说，<code>1核2g</code>的阿里云服务器配置三个web项目，每天将近500的访问量不带卡的。不吹牛批了，开始正式记录。</p>
+<h3 id="0X01-Flask配置"><a href="#0X01-Flask配置" class="headerlink" title="0X01 Flask配置"></a>0X01 Flask配置</h3><p>其实Flask配置没有什么好说的，需要将<code>debug</code>改为<code>True</code></p>
+<h3 id="0x02-Gunicorn配置"><a href="#0x02-Gunicorn配置" class="headerlink" title="0x02 Gunicorn配置"></a>0x02 Gunicorn配置</h3><p>首先安装Gunicorn</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> gunicorn</span></pre></td></tr></table></figure>
 
-<blockquote>
-<p>网上版本很多，也不知到谁是原创，我仅提取我需要的部分，在以后，自己会继续更新更多的正则表达式，以供参考学习。</p>
-</blockquote>
-<h3 id="0x01-验证数字的表达式"><a href="#0x01-验证数字的表达式" class="headerlink" title="0x01 验证数字的表达式"></a>0x01 验证数字的表达式</h3><p>数字：<code>^[0-9]*$</code></p>
-<p>n位的数字：<code>^d{n}$</code></p>
-<p>至少n位的数字：<code>^d{n,}$</code></p>
-<p>m-n位的数字：<code>^d{m,n}$</code></p>
-<p>零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code></p>
-<p>非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(.[0-9]{1,2})?$</code></p>
-<p>带1-2位小数的正数或负数：<code>^(-)?d+(.d{1,2})?$</code></p>
-<p>正数、负数、和小数：<code>^(-|+)?d+(.d+)?$</code></p>
-<p>有两位小数的正实数：<code>^[0-9]+(.[0-9]{2})?$</code></p>
-<p>有1~3位小数的正实数：<code>^[0-9]+(.[0-9]{1,3})?$</code></p>
-<p>非零的正整数：<code>^[1-9]d*$</code> 或 <code>^([1-9][0-9]*){1,3}$</code> 或 <code>^+?[1-9][0-9]*$</code></p>
-<p>非零的负整数：<code>^-[1-9][]0-9&quot;*$</code> 或 <code>^-[1-9]d*$</code></p>
-<p>非负整数：<code>^d+$</code> 或 <code>^[1-9]d*|0$</code></p>
-<p>非正整数：<code>^-[1-9]d*|0$</code> 或 <code>^((-d+)|(0+))$</code></p>
-<p>非负浮点数：<code>^d+(.d+)?$</code> 或 <code>^[1-9]d*.d*|0.d*[1-9]d*|0?.0+|0$</code></p>
-<p>非正浮点数：<code>^((-d+(.d+)?)|(0+(.0+)?))$</code> 或 <code>^(-([1-9]d*.d*|0.d*[1-9]d*))|0?.0+|0$</code></p>
-<p>正浮点数：<code>^[1-9]d*.d*|0.d*[1-9]d*$</code> 或 <code>^(([0-9]+.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*.[0-9]+)|([0-9]*[1-9][0-9]*))$</code></p>
-<p>负浮点数：<code>^-([1-9]d*.d*|0.d*[1-9]d*)$</code> 或 <code>^(-(([0-9]+.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code></p>
-<p>浮点数：<code>^(-?d+)(.d+)?$</code> 或 <code>^-?([1-9]d*.d*|0.d*[1-9]d*|0?.0+|0)$</code></p>
-<h3 id="0x02-验证字符串的表达式"><a href="#0x02-验证字符串的表达式" class="headerlink" title="0x02 验证字符串的表达式"></a>0x02 验证字符串的表达式</h3><p>汉字：<code>^[\u4e00-\u9fa5]+$</code></p>
-<p>英文和数字：<code>^[A-Za-z0-9]+$</code> 或 <code>^[A-Za-z0-9]{4,40}$</code></p>
-<p>长度为3-20的所有字符：<code>^.{3,20}$</code></p>
-<p>由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code></p>
-<p>由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code></p>
-<p>由26个小写英文字母组成的字符串：<code>^[a-z]+$</code></p>
-<p>由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code></p>
-<p>由数字、26个英文字母或者下划线组成的字符串：<code>^w+$</code> 或 <code>^w{3,20}$</code></p>
-<h3 id="0x03-特殊需求表达式"><a href="#0x03-特殊需求表达式" class="headerlink" title="0x03 特殊需求表达式"></a>0x03 特殊需求表达式</h3><p>去掉左右空格:<br><code>str.replace(/(^\s*)|(\s*$)/g, &#39;&#39;)</code></p>
-<p>去掉所有空格:<br><code>str.replace(/\s+/g, &#39;&#39;)</code></p>
-<p>密码需由8位以上大写字母、小写字母、数字及特殊符号组成: <code>/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!.,@$%^&amp;*-]).{8,}$/</code></p>
-<p>Email地址：<code>^w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*$</code></p>
-<p>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</p>
-<p>InternetURL：[a-zA-z]+://[<code>^s]* 或</code>^http://([w-]+.)+[w-]+(/[w-./?%&amp;=]*)?$`</p>
-<p>手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])d{8}$</code></p>
-<p>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^((d{3,4}-)|d{3.4}-)?d{7,8}$</code></p>
-<p>国内电话号码<code>(0511-4405222、021-87888822)：d{3}-d{8}|d{4}-d{7}</code></p>
-<p>身份证号(15位、18位数字)：<code>^d{15}|d{18}$</code></p>
-<p>短身份证号码(数字、字母x结尾)：<code>^([0-9]){7,18}(x|X)?$</code> 或 <code>^d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</code></p>
-<p>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code></p>
-<p>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]w{5,17}$</code></p>
-<p>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></p>
-<p>日期格式：<code>^d{4}-d{1,2}-d{1,2}</code></p>
-<p>Html中title：<code>&lt;title&gt;(.*?)&lt;/title&gt;|&lt;TITLE&gt;(.*?)&lt;/TITLE&gt;</code></p>
-<p>一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></p>
-<p>一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code><br>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</code></p>
-<p>空白行的正则表达式：<code>s*</code> (可以用来删除空白行)</p>
-<p>HTML标记的正则表达式：<code>&lt;(S*?)[`^&gt;]*&gt;.*?&lt;/&gt;|&lt;.*? /&gt;</code> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</p>
-<p>首尾空白字符的正则表达式：<code>^s*|s*$</code>或(<code>^s*)|(s*$</code>) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</p>
-<p>腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)</p>
-<p>中国邮政编码：<code>[1-9]d{5}(?!d)</code> (中国邮政编码为6位数字)</p>
-<p>IP地址：<code>d+.d+.d+.d+</code> (提取IP地址时有用)</p>
-<p>IP地址：<code>((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))</code></p>
+<p>Gunicorn配置也非常方便，这里记录下常用的一条配置命令</p>
+<p>在app.py同级目录下运行</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gunicorn -b <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> -p <span class="number">5000</span> -w <span class="number">10</span> -k gevent -D app:app</span></pre></td></tr></table></figure>
+<p> <strong>-b：</strong> 绑定IP<br> <strong>-p:</strong> 绑定端口<br> <strong>-w：</strong> worke数量<br> <strong>-k：</strong> 运行模式<br> <strong>-D：</strong> 开启守护进程<br> <strong>app:app：</strong> 启动文件下的app实例</p>
+<h3 id="0x03-ngixn配置"><a href="#0x03-ngixn配置" class="headerlink" title="0x03 ngixn配置"></a>0x03 ngixn配置</h3><p>nginx配置需要将gunicorn绑定的端口进行消息转发就可以了</p>
+<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        listen xx;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        server_name xxx;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        location / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                proxy_pass http:<span class="comment">//127.0.0.1:5000;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                proxy_set_header Host <span class="variable">$host</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                proxy_set_header <span class="keyword">X</span>-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                proxy_set_header <span class="keyword">X</span>-Real-IP <span class="variable">$remote_addr</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                proxy_set_header referer <span class="variable">$http_referer</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">`</span></pre></td></tr></table></figure>
+<p>同时记录下nginx的几条配置命令</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nginx -t <span class="string">//</span>检查配置文件是否合法</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">nginx -s <span class="keyword">reload</span> <span class="string">//</span>重启nginx</span></pre></td></tr></table></figure>
+
+<p>```</p>
 
       
     </div>
@@ -581,9 +539,9 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag" class=" fa  fa-tag  "> Python</a>
+            <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
           
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag" class=" fa  fa-tag  "> 正则表达式</a>
+            <a href="/tags/%E9%83%A8%E7%BD%B2/" rel="tag" class=" fa  fa-tag  "> 部署</a>
           
         </div>
       
@@ -596,8 +554,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/06/%E5%88%A0%E9%99%A4github%E8%AF%AF%E4%BC%A0%E6%96%87%E4%BB%B6/" rel="next" title="删除github误传文件">
-                <i class="fa fa-chevron-left"></i> 删除github误传文件
+              <a href="/2019/12/12/Jinja2%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8/" rel="next" title="Jinja2自定义过滤器">
+                <i class="fa fa-chevron-left"></i> Jinja2自定义过滤器
               </a>
             
           </div>
@@ -605,10 +563,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/06/python%E5%AE%9E%E7%8E%B0%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/" rel="prev" title="python实现断点续传">
-                python实现断点续传 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -821,7 +775,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-验证数字的表达式"><span class="nav-number">1.</span> <span class="nav-text">0x01 验证数字的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-验证字符串的表达式"><span class="nav-number">2.</span> <span class="nav-text">0x02 验证字符串的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-特殊需求表达式"><span class="nav-number">3.</span> <span class="nav-text">0x03 特殊需求表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0X01-Flask配置"><span class="nav-number">1.</span> <span class="nav-text">0X01 Flask配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Gunicorn配置"><span class="nav-number">2.</span> <span class="nav-text">0x02 Gunicorn配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-ngixn配置"><span class="nav-number">3.</span> <span class="nav-text">0x03 ngixn配置</span></a></li></ol></div>
             
 
           </div>
