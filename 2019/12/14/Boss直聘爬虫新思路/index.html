@@ -518,10 +518,10 @@ var _hmt = _hmt || [];
 <li><p>模拟浏览器<br>这种方法应该可以，但是我没尝试，因为浏览器会自动运行那段加密js，从而生成token进行验证，但是模拟浏览器太慢了，还是放弃了。</p>
 </li>
 <li><p>寻找其他接口<br>终于在不经意间发现了boss直聘的手机端接口，一开始发现请求的cookie中还是有token字段，准备放弃，但是还是用postman测试了下可以获得数据，nice。而且也解决了web端只能获取前十页数据限制，目前测试没有任何验证。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.zhipin.com<span class="regexp">/mobile/</span>jobs.json?city=<span class="number">101280600</span>&amp;query=java&amp;page=<span class="number">27</span></span></pre></td></tr></table></figure>
-<p>不久之后我会将这个方法更新到项目中</p>
 </li>
 </ol>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.zhipin.com<span class="regexp">/mobile/</span>jobs.json?city=<span class="number">101280600</span>&amp;query=java&amp;page=<span class="number">27</span></span></pre></td></tr></table></figure>
+<p>不久之后我会将这个方法更新到项目中</p>
 <h3 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h3><p>有时候成功可能就在不经意之间….</p>
 
       
