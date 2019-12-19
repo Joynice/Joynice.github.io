@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PicGo_Web打造专属图床</title>
+    <url>/2019/12/19/PicGo-Web%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<h1 id="PicGo-Web"><a href="#PicGo-Web" class="headerlink" title="PicGo_Web"></a>PicGo_Web</h1><p>PicGo_Web打造专属图床</p>
+<a id="more"></a>
+<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>忙里抽闲写了这个图床工具，灵感来自于<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo</a>,在使用过程中发现这个工具的强大<br>于是模仿写了个<code>Web</code>端的工具，方便自己搭建一个简易的图床。</p>
+<h2 id="应用说明"><a href="#应用说明" class="headerlink" title="应用说明"></a>应用说明</h2><p>PicGo_Web目前支持</p>
+<ul>
+<li>Github</li>
+<li>个人服务器</li>
+</ul>
+<p><em>目前支持的方式比较少，但是也是最稳定的两个图床选择</em></p>
+<p><code>Github</code>：虽然国内访问慢，但是可以保证图片存在的永久性，插个话“Github都准备把全球开源代码保存在北极，至少保存1000年，那<br>岂不是子子孙孙都能找到你当前上传的图片，哈哈”。这个图床的设计主要是方便那些没有个人服务器的小伙伴们，在github创建个仓库，就可以<br>作为图床，保存你上传的图片。</p>
+<p><code>个人服务器</code>：如果你不满足于github的速度，你可以选择个人服务器，但是服务器到期的时候，图床也就失效了，个人还是觉得github还是不错的，<br>白嫖，嘻嘻</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/picweb.JPG" alt="界面"></p>
+<p>本程序<code>Flask</code>框架开发，前端使用<code>layui</code>，对于没有美感的我，可以说前端设计真是对<code>layui</code>的侮辱。</p>
+<p><strong>环境：python3.0+</strong></p>
+<h4 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h4><p><strong>0x01 git clone</strong><br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;Joynice&#x2F;PicGo_Web.git</span></pre></td></tr></table></figure></p>
+<p><strong>0x02 安装依赖</strong></p>
+<p>切到项目根目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span></pre></td></tr></table></figure>
+
+<p><strong>0x03 数据库迁移</strong><br>切到项目根目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python manages.py db init</span></pre></td></tr><tr><td class="code"><pre><span class="line">python manages.py db migrate</span></pre></td></tr><tr><td class="code"><pre><span class="line">python manages.py db upgrade</span></pre></td></tr></table></figure>
+
+<p><strong>0x04 修改config中配置</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">STORE_TYPE = <span class="string">'github'</span> <span class="comment">#存储方式（github or server）</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">#github 配置</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">GITHUB_USERNAME = <span class="string">'xxx'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">GITHUB_PASSWORD = <span class="string">'xxx'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">REPOSITORIES = <span class="string">'xxx'</span>  <span class="comment">#需要提前创建，仓库名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">BRANCH = <span class="string">'master'</span> <span class="comment">#分支</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">PATH = <span class="string">'xxx'</span> <span class="comment"># 存储路径</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># server 配置</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">LOCAL_STORAGE_PATH = os.path.join(os.getcwd(),<span class="string">'static'</span>,<span class="string">'images'</span>) <span class="comment">#默认存储到项目static/images文件夹下</span></span></pre></td></tr></table></figure>
+
+<p><strong>0x05 运行</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python run.py</span></pre></td></tr></table></figure>
+<p>如果有hug，请及时issues，定会及时回复</p>
+<blockquote>
+<p>以上步骤可以启动程序，如果你想要高性能部署(gunicorn+nginx)，参照文章:<a href="http://lr.dropsec.xyz/2019/12/14/Gunicorn-Nginx%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/">Gunicorn+Nginx部署Flask项目</a></p>
+</blockquote>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>如果你觉得这个工具，还可以，不妨赏点:</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/wx.JPG" alt="微信"><br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/zfb.JPG" alt="支付宝"></p>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录Flask-Sqlalchemy使用过的查询</title>
+    <url>/2019/12/16/%E8%AE%B0%E5%BD%95Flask-Sqlalchemy%E4%BD%BF%E7%94%A8%E8%BF%87%E7%9A%84%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<p>在使用Flask开发的时候，用到Flask-Sqlalchemy进行数据库操作，<code>查</code>作为数据库操作重要的部分，查询语句的设计直接关系到网站性能，真实体验到<code>查</code>操作的重要性。</p>
+<a id="more"></a>
+
+<p>本片文章主要记录Flask-Sqlalchemy查询操作，也是开发工作中使用过的在此做个记录。</p>
+<h3 id="0x01-简单操作"><a href="#0x01-简单操作" class="headerlink" title="0x01 简单操作"></a>0x01 简单操作</h3><h3 id="0x02-进阶操作"><a href="#0x02-进阶操作" class="headerlink" title="0x02 进阶操作"></a>0x02 进阶操作</h3><h3 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h3>]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+        <tag>Flask-Sqlalchemy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python生成验证码</title>
     <url>/2019/12/16/Python%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81%E7%A0%81/</url>
     <content><![CDATA[<p>在开发中许多地方要用到验证码，验证码的一般限制用户进行表单提交的时候进行爆破，这篇文章记录Python如何生成验证码。</p>
