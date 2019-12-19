@@ -3,7 +3,7 @@
   <entry>
     <title>PicGo_Web打造专属图床</title>
     <url>/2019/12/19/PicGo-Web%E6%89%93%E9%80%A0%E4%B8%93%E5%B1%9E%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<h1 id="PicGo-Web"><a href="#PicGo-Web" class="headerlink" title="PicGo_Web"></a>PicGo_Web</h1><p>PicGo_Web打造专属图床</p>
+    <content><![CDATA[<p>PicGo_Web打造专属图床</p>
 <a id="more"></a>
 <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>忙里抽闲写了这个图床工具，灵感来自于<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo</a>,在使用过程中发现这个工具的强大<br>于是模仿写了个<code>Web</code>端的工具，方便自己搭建一个简易的图床。</p>
 <h2 id="应用说明"><a href="#应用说明" class="headerlink" title="应用说明"></a>应用说明</h2><p>PicGo_Web目前支持</p>
