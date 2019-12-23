@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Clipboard使用</title>
+    <url>/2019/12/23/clipboard%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>在开发<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，点击Copy，将绑定的url复制到粘贴板中。</p>
+<a id="more"></a>
+
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/copy.JPG" alt="Copy"><br>找到各种插件，最后选择使用<code>Clipboard</code>来实现这个功能</p>
+<h3 id="0x01-引入Clipboard"><a href="#0x01-引入Clipboard" class="headerlink" title="0x01 引入Clipboard"></a>0x01 引入Clipboard</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://www.jq22.com/demo/clipboard.js-master201703170013/dist/clipboard.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="0x02-指定内容"><a href="#0x02-指定内容" class="headerlink" title="0x02 指定内容"></a>0x02 指定内容</h3><p>使用<code>data-clipboard-text</code>指定copy内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"layui-btn layui-btn-xs layui-btn-radius layui-btn-warm copy"</span> <span class="attr">id</span>=<span class="string">"copy"</span> <span class="attr">data-clipboard-text</span>=<span class="string">"&#123;&#123; image.link &#125;&#125;"</span>&gt;</span>copy</span></pre></td></tr></table></figure>
+
+<h3 id="0x03-绑定元素"><a href="#0x03-绑定元素" class="headerlink" title="0x03 绑定元素"></a>0x03 绑定元素</h3><p>当点击到<code>copy</code>类的时候进行拷贝操作</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;    <span class="comment">//copy链接</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">var</span> clipboard = <span class="keyword">new</span> Clipboard(<span class="string">'.copy'</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    clipboard.on(<span class="string">'success'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        layer.msg(<span class="string">"已拷贝到粘贴版"</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    clipboard.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="built_in">console</span>.log(e);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python操作github</title>
     <url>/2019/12/23/python%E6%93%8D%E4%BD%9Cgithub/</url>
     <content><![CDATA[<p>在写<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，需要向Github上上传图片和删除图片，这里记录下如何操作。</p>
