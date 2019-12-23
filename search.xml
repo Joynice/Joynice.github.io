@@ -25,7 +25,7 @@
   <entry>
     <title>python操作github</title>
     <url>/2019/12/23/python%E6%93%8D%E4%BD%9Cgithub/</url>
-    <content><![CDATA[<p>在写<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，需要向Github上上传图片和删除图片，这里记录下如何操作。</p>
+    <content><![CDATA[<p>在写<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，需要向Github上传图片和删除图片，这里记录下如何操作。</p>
 <a id="more"></a>
 <p>据我了解，能够操作Github的库有两个：</p>
 <ul>
