@@ -116,7 +116,7 @@
 
 
 
-  <meta name="keywords" content="Python,Requests," />
+  <meta name="keywords" content="Flask,Flask-Sqlalchemy," />
 
 
 
@@ -127,15 +127,15 @@
 
 
 
-<meta name="description" content="在requests获取html内容的时候，由于页面编码格式的问题，有时候会出出现乱码的问题，这里记录下统一的解决方法。">
-<meta name="keywords" content="Python,Requests">
+<meta name="description" content="Mysql从5.7版本后支持Json字段，本片文章记录Flask-Sqlalchemy如何对于Json字段进行增删改查操作">
+<meta name="keywords" content="Flask,Flask-Sqlalchemy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="requests内容编码问题">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;14&#x2F;requests%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98&#x2F;index.html">
+<meta property="og:title" content="Flask-Sqlalchemy中使用JSON字段">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;23&#x2F;Flask-Sqlalchemy%E4%B8%AD%E4%BD%BF%E7%94%A8JSON%E5%AD%97%E6%AE%B5&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="在requests获取html内容的时候，由于页面编码格式的问题，有时候会出出现乱码的问题，这里记录下统一的解决方法。">
+<meta property="og:description" content="Mysql从5.7版本后支持Json字段，本片文章记录Flask-Sqlalchemy如何对于Json字段进行增删改查操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-14T10:25:03.000Z">
+<meta property="og:updated_time" content="2019-12-23T12:20:04.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -166,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/14/requests内容编码问题/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/23/Flask-Sqlalchemy中使用JSON字段/"/>
 
 
 
 
 
-  <title>requests内容编码问题 | Joynice</title>
+  <title>Flask-Sqlalchemy中使用JSON字段 | Joynice</title>
   
 
 
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/14/requests%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/23/Flask-Sqlalchemy%E4%B8%AD%E4%BD%BF%E7%94%A8JSON%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -391,7 +391,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">requests内容编码问题</h2>
+          <h2 class="post-title" itemprop="name headline">Flask-Sqlalchemy中使用JSON字段</h2>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T18:25:03+08:00">
-                2019-12-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-23T20:20:04+08:00">
+                2019-12-23
               </time>
             
 
@@ -419,8 +419,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-14T18:25:03+08:00">
-                2019-12-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-23T20:20:04+08:00">
+                2019-12-23
               </time>
             
           </span>
@@ -438,8 +438,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
                   </a>
                 </span>
 
@@ -469,7 +469,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  250
+                  328
                 </span>
               
 
@@ -506,18 +506,18 @@ var _hmt = _hmt || [];
       
 
       
-        <p>在requests获取html内容的时候，由于页面编码格式的问题，有时候会出出现乱码的问题，这里记录下统一的解决方法。</p>
+        <p>Mysql从5.7版本后支持Json字段，本片文章记录Flask-Sqlalchemy如何对于Json字段进行增删改查操作</p>
 <a id="more"></a>
-
 <blockquote>
-<p>先写一段获取百度首页的代码</p>
+<p>项目中的字段无法确定，动态变化时使用。<br>也可以使用text、varchar来代替，但是text、varchar是不支持搜索的，并且不支持局部更新，只能更改全部字段，增加了i/o操作，不利于性能。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">req = requests.get(<span class="string">'https://www.baidu.com'</span>).text()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">print(req)</span></pre></td></tr></table></figure>
+<p>定义一个<code>User</code>类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(db.Model)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    name= db.Column(db.String(<span class="number">32</span>), comment=<span class="string">'姓名'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    extra = db.Column(db.JSON, comment=<span class="string">'扩展字段'</span>)</span></pre></td></tr></table></figure>
+<h3 id="0x01-添加数据"><a href="#0x01-添加数据" class="headerlink" title="0x01 添加数据"></a>0x01 添加数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">user = User(name = <span class="string">'张三'</span>, extra = dict(age=<span class="number">18</span>, gender = <span class="number">1</span>, weght = <span class="number">70</span>kg))) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">db.session.add(user)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
+<h3 id="0x02-更新Json数据"><a href="#0x02-更新Json数据" class="headerlink" title="0x02 更新Json数据"></a>0x02 更新Json数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.orm.attributes <span class="keyword">import</span> flag_modified </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">user.extra.update(dict(birthday=<span class="number">1998</span><span class="number">-12</span><span class="number">-12</span>))) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">db.session.add(user) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
 
-<p>这段代码执行后，后获取百度首页的html代码，但是有些网站获取html代码就可能不那么轻松了，可能就会出现编码问题，也不演示这么多，大多说html的编码是<code>utf-8</code>,但是不排除其他编码方式的存在，为了解决这个问题，让指定正确的编码方式，<code>requests</code>中封装了获取页面编码方式的方法。以后获取页面源码的时候可以这样写，增加代码的健壮性。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">req = requests.get(<span class="string">'https://www.baidu.com'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> req.status_code == <span class="number">200</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    req.encoding = req.apparent_encoding</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    print(req.text())</span></pre></td></tr></table></figure>
-<p>通过添加设置<code>apparent_encoding</code>，调用chardet.detect()来识别文本编码，可以实现自动编码。</p>
-
+<h3 id="0x03-删除Json字段"><a href="#0x03-删除Json字段" class="headerlink" title="0x03 删除Json字段"></a>0x03 删除Json字段</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">user.extra.pop(<span class="string">'birthday'</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">db.session.add(user) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
+<h3 id="0x04-查询Json字段"><a href="#0x04-查询Json字段" class="headerlink" title="0x04 查询Json字段"></a>0x04 查询Json字段</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> cast, type_coerce</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> String, JSON</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先是针对单一数字、字符串时</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">User.query.filter(User.extra[<span class="string">'age'</span>] == <span class="number">18</span>, User.extra[<span class="string">'weght'</span>] == <span class="string">'70kg'</span>).first()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 另一种特殊情况时,查询条件是一个对象时： </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先增加一组数据： </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">user.extra.update(dict(info=dict(address=<span class="string">'北京市'</span>))) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">db.session.commit() </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询整个info时： </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">User.query.filter(cast(User.extra[<span class="string">'info'</span>], String) == json.dumps(&#123;<span class="string">'address'</span>:<span class="string">'北京市'</span>&#125;)).first() </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># or</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">User.query.filter(cast(User.extra[<span class="string">'info'</span>], String) == type_coerce(&#123;<span class="string">"address"</span>: <span class="string">"北京市"</span>&#125;, JSON)).first()</span></pre></td></tr></table></figure>
       
     </div>
     
@@ -534,9 +534,9 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag" class=" fa  fa-tag  "> Python</a>
+            <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
           
-            <a href="/tags/Requests/" rel="tag" class=" fa  fa-tag  "> Requests</a>
+            <a href="/tags/Flask-Sqlalchemy/" rel="tag" class=" fa  fa-tag  "> Flask-Sqlalchemy</a>
           
         </div>
       
@@ -549,8 +549,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/14/Boss%E7%9B%B4%E8%81%98%E7%88%AC%E8%99%AB%E6%96%B0%E6%80%9D%E8%B7%AF/" rel="next" title="Boss直聘爬虫新思路">
-                <i class="fa fa-chevron-left"></i> Boss直聘爬虫新思路
+              <a href="/2019/12/23/clipboard%E4%BD%BF%E7%94%A8/" rel="next" title="Clipboard使用">
+                <i class="fa fa-chevron-left"></i> Clipboard使用
               </a>
             
           </div>
@@ -558,10 +558,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/16/Python%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="prev" title="Python生成验证码">
-                Python生成验证码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,8 +609,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -755,6 +760,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-添加数据"><span class="nav-number">1.</span> <span class="nav-text">0x01 添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-更新Json数据"><span class="nav-number">2.</span> <span class="nav-text">0x02 更新Json数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-删除Json字段"><span class="nav-number">3.</span> <span class="nav-text">0x03 删除Json字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-查询Json字段"><span class="nav-number">4.</span> <span class="nav-text">0x04 查询Json字段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

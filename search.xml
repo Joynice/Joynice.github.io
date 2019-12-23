@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Flask-Sqlalchemy中使用JSON字段</title>
+    <url>/2019/12/23/Flask-Sqlalchemy%E4%B8%AD%E4%BD%BF%E7%94%A8JSON%E5%AD%97%E6%AE%B5/</url>
+    <content><![CDATA[<p>Mysql从5.7版本后支持Json字段，本片文章记录Flask-Sqlalchemy如何对于Json字段进行增删改查操作</p>
+<a id="more"></a>
+<blockquote>
+<p>项目中的字段无法确定，动态变化时使用。<br>也可以使用text、varchar来代替，但是text、varchar是不支持搜索的，并且不支持局部更新，只能更改全部字段，增加了i/o操作，不利于性能。</p>
+</blockquote>
+<p>定义一个<code>User</code>类</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(db.Model)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    name= db.Column(db.String(<span class="number">32</span>), comment=<span class="string">'姓名'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    extra = db.Column(db.JSON, comment=<span class="string">'扩展字段'</span>)</span></pre></td></tr></table></figure>
+<h3 id="0x01-添加数据"><a href="#0x01-添加数据" class="headerlink" title="0x01 添加数据"></a>0x01 添加数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user = User(name = <span class="string">'张三'</span>, extra = dict(age=<span class="number">18</span>, gender = <span class="number">1</span>, weght = <span class="number">70</span>kg))) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.add(user)</span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
+<h3 id="0x02-更新Json数据"><a href="#0x02-更新Json数据" class="headerlink" title="0x02 更新Json数据"></a>0x02 更新Json数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.orm.attributes <span class="keyword">import</span> flag_modified </span></pre></td></tr><tr><td class="code"><pre><span class="line">user.extra.update(dict(birthday=<span class="number">1998</span><span class="number">-12</span><span class="number">-12</span>))) </span></pre></td></tr><tr><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.add(user) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
+
+<h3 id="0x03-删除Json字段"><a href="#0x03-删除Json字段" class="headerlink" title="0x03 删除Json字段"></a>0x03 删除Json字段</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user.extra.pop(<span class="string">'birthday'</span>) </span></pre></td></tr><tr><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.add(user) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit()</span></pre></td></tr></table></figure>
+<h3 id="0x04-查询Json字段"><a href="#0x04-查询Json字段" class="headerlink" title="0x04 查询Json字段"></a>0x04 查询Json字段</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> cast, type_coerce</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> String, JSON</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 首先是针对单一数字、字符串时</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">User.query.filter(User.extra[<span class="string">'age'</span>] == <span class="number">18</span>, User.extra[<span class="string">'weght'</span>] == <span class="string">'70kg'</span>).first()</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 另一种特殊情况时,查询条件是一个对象时： </span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 先增加一组数据： </span></span></pre></td></tr><tr><td class="code"><pre><span class="line">user.extra.update(dict(info=dict(address=<span class="string">'北京市'</span>))) </span></pre></td></tr><tr><td class="code"><pre><span class="line">flag_modified(user, <span class="string">'extra'</span>) </span></pre></td></tr><tr><td class="code"><pre><span class="line">db.session.commit() </span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 查询整个info时： </span></span></pre></td></tr><tr><td class="code"><pre><span class="line">User.query.filter(cast(User.extra[<span class="string">'info'</span>], String) == json.dumps(&#123;<span class="string">'address'</span>:<span class="string">'北京市'</span>&#125;)).first() </span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># or</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">User.query.filter(cast(User.extra[<span class="string">'info'</span>], String) == type_coerce(&#123;<span class="string">"address"</span>: <span class="string">"北京市"</span>&#125;, JSON)).first()</span></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+        <tag>Flask-Sqlalchemy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Clipboard使用</title>
     <url>/2019/12/23/clipboard%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，点击Copy，将绑定的url复制到粘贴板中。</p>
@@ -962,8 +985,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Ajax</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
