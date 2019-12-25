@@ -116,7 +116,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="前端,Slimscroll," />
 
 
 
@@ -127,15 +127,15 @@
 
 
 
-<meta name="description" content="Python中时间操作使用还是挺频繁的，主要使用到time和datetime这两个库，下面记录常用的时间操作">
-<meta name="keywords" content="Python">
+<meta name="description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。  CDN链接，自行下载">
+<meta name="keywords" content="前端,Slimscroll">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python关于时间操作">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;09&#x2F;python%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C&#x2F;index.html">
+<meta property="og:title" content="slimscroll使用">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;25&#x2F;slimscroll%E4%BD%BF%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="Python中时间操作使用还是挺频繁的，主要使用到time和datetime这两个库，下面记录常用的时间操作">
+<meta property="og:description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。  CDN链接，自行下载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-09T03:53:37.309Z">
+<meta property="og:updated_time" content="2019-12-25T05:16:10.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -166,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/09/python关于时间操作/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2019/12/25/slimscroll使用/"/>
 
 
 
 
 
-  <title>python关于时间操作 | Joynice</title>
+  <title>slimscroll使用 | Joynice</title>
   
 
 
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/09/python%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2019/12/25/slimscroll%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -391,7 +391,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">python关于时间操作</h2>
+          <h2 class="post-title" itemprop="name headline">slimscroll使用</h2>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T10:53:33+08:00">
-                2019-12-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T13:16:10+08:00">
+                2019-12-25
               </time>
             
 
@@ -419,8 +419,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-09T11:53:37+08:00">
-                2019-12-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-25T13:16:10+08:00">
+                2019-12-25
               </time>
             
           </span>
@@ -438,8 +438,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -469,7 +469,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  229
+                  201
                 </span>
               
 
@@ -506,34 +506,16 @@ var _hmt = _hmt || [];
       
 
       
-        <p>Python中时间操作使用还是挺频繁的，主要使用到<code>time</code>和<code>datetime</code>这两个库，下面记录常用的时间操作<a id="more"></a></p>
-<h3 id="当前时间戳"><a href="#当前时间戳" class="headerlink" title="当前时间戳"></a>当前时间戳</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">ticks = time.time()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">print(ticks)</span></pre></td></tr></table></figure>
+        <p>在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。</p>
+<blockquote>
+<p><a href="https://www.bootcdn.cn/jQuery-slimScroll/" target="_blank" rel="noopener">CDN链接</a>，自行下载</p>
+</blockquote>
+<a id="more"></a>
 
-<h3 id="当前时间-now"><a href="#当前时间-now" class="headerlink" title="当前时间(now)"></a>当前时间(now)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">print(now)</span></pre></td></tr></table></figure>
-
-<h3 id="本地时间-localtime"><a href="#本地时间-localtime" class="headerlink" title="本地时间(localtime)"></a>本地时间(localtime)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">loacltime = time.loacltime()</span></pre></td></tr></table></figure>
-
-<h3 id="格式化时间-strftime"><a href="#格式化时间-strftime" class="headerlink" title="格式化时间(strftime)"></a>格式化时间(strftime)</h3><ul>
-<li><p>datetime</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">strftime = now.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">print(strftime)</span></pre></td></tr></table></figure>
-</li>
-<li><p>time</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">now = time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>, time.localtime())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">print(now)</span></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="时间转时间戳-timestamp"><a href="#时间转时间戳-timestamp" class="headerlink" title="时间转时间戳(timestamp)"></a>时间转时间戳(timestamp)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">now = datetime.datetime.now()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">t = now.timestamp()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">print(t)</span></pre></td></tr></table></figure>
-
-<h3 id="时间戳转时间-fromtimestamp"><a href="#时间戳转时间-fromtimestamp" class="headerlink" title="时间戳转时间(fromtimestamp)"></a>时间戳转时间(fromtimestamp)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ticks = time.time()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">print(datetime.fromtimestamp(ticks))</span></pre></td></tr></table></figure>
-
-<h3 id="时间加减-timedelta"><a href="#时间加减-timedelta" class="headerlink" title="时间加减(timedelta)"></a>时间加减(timedelta)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">d1 = datetime.datetime.now()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">d2 = d1 + datetime.timedelta(hours = <span class="number">8</span>)  <span class="comment">#时间+8小时</span></span></pre></td></tr></table></figure>
-
-<p><strong>其中可选参数:天(days), 小时(hours), 分钟(minutes), 秒(seconds), 微秒(microseconds)</strong></p>
-<h3 id="开发中的操作"><a href="#开发中的操作" class="headerlink" title="开发中的操作"></a>开发中的操作</h3><ul>
-<li>返回一周时间列表[‘2019-12-8’, ‘2019-12-9’,…]<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">today = datetime.date.today()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">date_list = [(today - datetime.timedelta(days=i)).strftime(<span class="string">'%Y-%m-%d'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>)]  <span class="comment">#控制天数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">date_list.reverse()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">print(date_list)</span></pre></td></tr></table></figure>
-</li>
-</ul>
-
+<h3 id="0x01-引入插件"><a href="#0x01-引入插件" class="headerlink" title="0x01 引入插件"></a>0x01 引入插件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/jquery.slimscroll.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="指定内容"><a href="#指定内容" class="headerlink" title="指定内容"></a>指定内容</h3><p>指定<code>id=&quot;box&quot;</code>的div设置滚动</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-card-body1"</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &#123;&#123; announcement.context|safe &#125;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="绑定元素"><a href="#绑定元素" class="headerlink" title="绑定元素"></a>绑定元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    $(<span class="string">'#box'</span>).slimScroll(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        height: <span class="string">'100'</span>, <span class="comment">//容器高度</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        size: <span class="string">"6px"</span>, <span class="comment">//滚动条宽度</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        color: <span class="string">"#009688"</span>, <span class="comment">//滚动条颜色,默认#000000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        alwaysVisible: <span class="literal">true</span>, <span class="comment">//是否禁用隐藏滚动条,默认false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        opacity: <span class="number">4</span>,  <span class="comment">// 滚动条透明度</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr></table></figure>
       
     </div>
     
@@ -550,7 +532,9 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag" class=" fa  fa-tag  "> Python</a>
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag" class=" fa  fa-tag  "> 前端</a>
+          
+            <a href="/tags/Slimscroll/" rel="tag" class=" fa  fa-tag  "> Slimscroll</a>
           
         </div>
       
@@ -563,8 +547,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/06/%E8%AE%B0Flask-Sqlalchemy%E4%B8%80%E6%AC%A1%E5%A5%87%E8%91%A9%E6%93%8D%E4%BD%9C/" rel="next" title="记Flask-Sqlalchemy一次奇葩操作">
-                <i class="fa fa-chevron-left"></i> 记Flask-Sqlalchemy一次奇葩操作
+              <a href="/2019/12/25/%E5%B0%8F%E7%B1%B3%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97%E7%88%AC%E8%99%AB/" rel="next" title="小米应用商店爬虫">
+                <i class="fa fa-chevron-left"></i> 小米应用商店爬虫
               </a>
             
           </div>
@@ -572,10 +556,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/09/Flask%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0/" rel="prev" title="Flask用户头像上传">
-                Flask用户头像上传 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -788,7 +768,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#当前时间戳"><span class="nav-number">1.</span> <span class="nav-text">当前时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当前时间-now"><span class="nav-number">2.</span> <span class="nav-text">当前时间(now)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地时间-localtime"><span class="nav-number">3.</span> <span class="nav-text">本地时间(localtime)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化时间-strftime"><span class="nav-number">4.</span> <span class="nav-text">格式化时间(strftime)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间转时间戳-timestamp"><span class="nav-number">5.</span> <span class="nav-text">时间转时间戳(timestamp)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间戳转时间-fromtimestamp"><span class="nav-number">6.</span> <span class="nav-text">时间戳转时间(fromtimestamp)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间加减-timedelta"><span class="nav-number">7.</span> <span class="nav-text">时间加减(timedelta)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发中的操作"><span class="nav-number">8.</span> <span class="nav-text">开发中的操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-引入插件"><span class="nav-number">1.</span> <span class="nav-text">0x01 引入插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定内容"><span class="nav-number">2.</span> <span class="nav-text">指定内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定元素"><span class="nav-number">3.</span> <span class="nav-text">绑定元素</span></a></li></ol></div>
             
 
           </div>

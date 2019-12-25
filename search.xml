@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>slimscroll使用</title>
+    <url>/2019/12/25/slimscroll%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。</p>
+<blockquote>
+<p><a href="https://www.bootcdn.cn/jQuery-slimScroll/" target="_blank" rel="noopener">CDN链接</a>，自行下载</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="0x01-引入插件"><a href="#0x01-引入插件" class="headerlink" title="0x01 引入插件"></a>0x01 引入插件</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/jquery.slimscroll.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="指定内容"><a href="#指定内容" class="headerlink" title="指定内容"></a>指定内容</h3><p>指定<code>id=&quot;box&quot;</code>的div设置滚动</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-card-body1"</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#123;&#123; announcement.context|safe &#125;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="绑定元素"><a href="#绑定元素" class="headerlink" title="绑定元素"></a>绑定元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    $(<span class="string">'#box'</span>).slimScroll(&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        height: <span class="string">'100'</span>, <span class="comment">//容器高度</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        size: <span class="string">"6px"</span>, <span class="comment">//滚动条宽度</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        color: <span class="string">"#009688"</span>, <span class="comment">//滚动条颜色,默认#000000</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        alwaysVisible: <span class="literal">true</span>, <span class="comment">//是否禁用隐藏滚动条,默认false</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        opacity: <span class="number">4</span>,  <span class="comment">// 滚动条透明度</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;)</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>Slimscroll</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小米应用商店爬虫</title>
     <url>/2019/12/25/%E5%B0%8F%E7%B1%B3%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97%E7%88%AC%E8%99%AB/</url>
     <content><![CDATA[<p>应以前同学需要爬取小米应用商店的各个APP的下载链接，然后进行分析，果断帮了这个忙。分析了一下，这个网站也没有反爬，正常爬取即可，找到接口进行获取数据。</p>
