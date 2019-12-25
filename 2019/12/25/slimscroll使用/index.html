@@ -127,13 +127,13 @@
 
 
 
-<meta name="description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。  CDN链接，自行下载">
+<meta name="description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。">
 <meta name="keywords" content="前端,Slimscroll">
 <meta property="og:type" content="article">
 <meta property="og:title" content="slimscroll插件使用">
 <meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2019&#x2F;12&#x2F;25&#x2F;slimscroll%E4%BD%BF%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。  CDN链接，自行下载">
+<meta property="og:description" content="在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-12-25T05:16:10.000Z">
 <meta name="twitter:card" content="summary">
@@ -507,11 +507,10 @@ var _hmt = _hmt || [];
 
       
         <p>在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。</p>
+<a id="more"></a>
 <blockquote>
 <p><a href="https://www.bootcdn.cn/jQuery-slimScroll/" target="_blank" rel="noopener">CDN链接</a>，自行下载</p>
 </blockquote>
-<a id="more"></a>
-
 <h3 id="0x01-引入插件"><a href="#0x01-引入插件" class="headerlink" title="0x01 引入插件"></a>0x01 引入插件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/jquery.slimscroll.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
 <h3 id="指定内容"><a href="#指定内容" class="headerlink" title="指定内容"></a>指定内容</h3><p>指定<code>id=&quot;box&quot;</code>的div设置滚动</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-card-body1"</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &#123;&#123; announcement.context|safe &#125;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>

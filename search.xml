@@ -26,11 +26,10 @@
     <title>slimscroll插件使用</title>
     <url>/2019/12/25/slimscroll%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。</p>
+<a id="more"></a>
 <blockquote>
 <p><a href="https://www.bootcdn.cn/jQuery-slimScroll/" target="_blank" rel="noopener">CDN链接</a>，自行下载</p>
 </blockquote>
-<a id="more"></a>
-
 <h3 id="0x01-引入插件"><a href="#0x01-引入插件" class="headerlink" title="0x01 引入插件"></a>0x01 引入插件</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/jquery.slimscroll.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
 <h3 id="指定内容"><a href="#指定内容" class="headerlink" title="指定内容"></a>指定内容</h3><p>指定<code>id=&quot;box&quot;</code>的div设置滚动</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-card-body1"</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#123;&#123; announcement.context|safe &#125;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
