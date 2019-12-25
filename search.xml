@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>slimscroll使用</title>
+    <title>toTop插件使用</title>
+    <url>/2019/12/25/toTop%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>在开发微信集合平台的时候，因为页面采取流加载，为了方便用户快速回到顶部，于是找到了toTop插件，小巧方面。为了方便以后查看，记录下如何使用。</p>
+<a id="more"></a>
+
+<blockquote>
+<p><a href="http://www.jqhtml.com/wp-content/uploads/2017/07/wz/toTop.zip" target="_blank" rel="noopener">下载地址</a>，自行下载</p>
+</blockquote>
+<h3 id="0x01-引入文件"><a href="#0x01-引入文件" class="headerlink" title="0x01 引入文件"></a>0x01 引入文件</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('static', filename='common/jquery.toTop.min.js') &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="0x02-设置元素"><a href="#0x02-设置元素" class="headerlink" title="0x02 设置元素"></a>0x02 设置元素</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"layui-btn layui-btn-radius layui-btn-lg to-top"</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="0x03-绑定元素"><a href="#0x03-绑定元素" class="headerlink" title="0x03 绑定元素"></a>0x03 绑定元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    $(<span class="string">'.to-top'</span>).toTop();</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+<p><strong>配置</strong><br>|属性/方法|类型|默认值|说明|<br>|—|—|—|—|<br>|autohide|布尔值|true|自动隐藏|<br>|offset|整数|420|距离顶部多少距离时自动隐藏|<br>|speed|整数|500|滚动持续时间|<br>|position|布尔值|true|如果设置为 false，则需要手动在 css 中设置“按钮”的位置|<br>|right|整数|15|右侧位置|<br>|bottom|整数|30|底部位置|</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>ToTop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>slimscroll插件使用</title>
     <url>/2019/12/25/slimscroll%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发微信聚合平台的时候，需要给公告的div设置个滚轮，防止太大，影响下面元素，各种找插件最后找到slimscroll这个插件，使用起来非常方便，记录下，方便以后查找。</p>
 <blockquote>
@@ -66,12 +88,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Clipboard使用</title>
+    <title>Clipboard插件使用</title>
     <url>/2019/12/23/clipboard%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发<a href="https://github.com/Joynice/PicGo_Web" target="_blank" rel="noopener">PicGo_Web</a>时，点击Copy，将绑定的url复制到粘贴板中。</p>
 <a id="more"></a>
 
 <p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/copy.JPG" alt="Copy"><br>找到各种插件，最后选择使用<code>Clipboard</code>来实现这个功能</p>
+<blockquote>
+<p><a href="https://www.bootcdn.cn/clipboard.js/" target="_blank" rel="noopener">CDN加速</a>，自行查看</p>
+</blockquote>
 <h3 id="0x01-引入Clipboard"><a href="#0x01-引入Clipboard" class="headerlink" title="0x01 引入Clipboard"></a>0x01 引入Clipboard</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://www.jq22.com/demo/clipboard.js-master201703170013/dist/clipboard.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
 <h3 id="0x02-指定内容"><a href="#0x02-指定内容" class="headerlink" title="0x02 指定内容"></a>0x02 指定内容</h3><p>使用<code>data-clipboard-text</code>指定copy内容</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"layui-btn layui-btn-xs layui-btn-radius layui-btn-warm copy"</span> <span class="attr">id</span>=<span class="string">"copy"</span> <span class="attr">data-clipboard-text</span>=<span class="string">"&#123;&#123; image.link &#125;&#125;"</span>&gt;</span>copy</span></pre></td></tr></table></figure>
@@ -109,8 +134,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Python</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
