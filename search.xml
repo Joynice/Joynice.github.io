@@ -1,6 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>微信公众号信息采集思路与实践</title>
+    <url>/2019/12/27/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BF%A1%E6%81%AF%E9%87%87%E9%9B%86%E6%80%9D%E8%B7%AF%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<p>微信公众号信息采集思路与实践</p>
+<a id="more"></a>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><ul>
+<li><p>早在两年前就进行了微信公众号基本信息采集</p>
+</li>
+<li><p><a href="https://github.com/DropsOfZut/awesome-security-weixin-official-accounts/commits/master" target="_blank" rel="noopener">https://github.com/DropsOfZut/awesome-security-weixin-official-accounts/commits/master</a></p>
+</li>
+<li><p>通过一篇公众号文章获取爬取公众号基本信息</p>
+</li>
+<li><p>存在问题：更新麻烦、文章存在失效、信息处理麻烦</p>
+</li>
+<li><p>想要的功能：方便git仓库同步，方面增加删除公众号</p>
+</li>
+</ul>
+<p>另外</p>
+<ul>
+<li><p>微信公众号相对封闭不易爬取</p>
+</li>
+<li><p>关于安全方面的文章微信公众号也是一个重要来源</p>
+</li>
+<li><p>舆情监测分析、公众号数据分析</p>
+</li>
+</ul>
+<p><strong>爬取一个公众号的来源从哪里？</strong></p>
+<p>普通数据的爬取方式，给一个网站，从头爬取链接，链接爬详情。</p>
+<p>微信官方是没有这样的一个网站</p>
+<p>只有寻找蹊径</p>
+<h2 id="爬取方式"><a href="#爬取方式" class="headerlink" title="爬取方式"></a>爬取方式</h2><ul>
+<li>方案一：基于搜狗入口</li>
+</ul>
+<ul>
+<li>方案二：网页微信端</li>
+</ul>
+<ul>
+<li>方案三：<strong>对微信进行中间人攻击</strong></li>
+</ul>
+<ul>
+<li>方案四：Hook微信</li>
+</ul>
+<h3 id="0x01基于搜狗入口"><a href="#0x01基于搜狗入口" class="headerlink" title="0x01基于搜狗入口"></a>0x01基于搜狗入口</h3><p>一般流程：</p>
+<p>1、搜狗微信搜索入口进行公众号搜索</p>
+<p>2、选取公众号进入公众号历史文章列表 </p>
+<p>3、对文章内容进行解析入库</p>
+<p>采集过于频繁的话，搜狗搜索和公众号历史文章列表访问都会出现验证码。直接采用一般的脚本采集是无法拿到验证码的。这里可以使用无头浏览器来进行访问,通过对接打码平台识别验证码。无头浏览器可采用selenium。</p>
+<p>即便采用无头浏览器同样存在问题：</p>
+<p>1、效率低下（实际上就是在跑一个完整的浏览器来模拟人类操作）</p>
+<p>2、网页资源浏览器加载难以控制，脚本对浏览器加载很难控制 3、验证码识别也无法做到100%，中途很可能会打断抓取流程</p>
+<p>如果坚持使用搜狗入口并想进行完美采集的话只有增加代理IP。顺便说一句，公开免费的IP地址就别想了，非常不稳定，而且基本都被微信给封了。</p>
+<p>除了面临搜狗/微信的反爬虫机制之外，采用此方案还有其他的缺点：</p>
+<p>无法获得阅读数、点赞数等用于评估文章质量的关键信息</p>
+<p>无法及时获得已经发布公众号文章，只能作定期的重复爬取 只能获得最近十条群发文章</p>
+<p>github免费轮子：</p>
+<ul>
+<li><a href="https://github.com/chyroc/WechatSogou" target="_blank" rel="noopener">https://github.com/chyroc/WechatSogou</a></li>
+<li><a href="https://github.com/jaryee/wechat_sogou_crawl" target="_blank" rel="noopener">https://github.com/jaryee/wechat_sogou_crawl</a></li>
+</ul>
+<h3 id="0x02网页微信端"><a href="#0x02网页微信端" class="headerlink" title="0x02网页微信端"></a>0x02网页微信端</h3><p>微信聊天不仅有手机端、电脑端还有web端<code>https://wx.qq.com/</code></p>
+<p>扫码登录微信、此时数据传输走的就是https。</p>
+<p>通过抓取数据包、模拟分析。能完成微信上大部分操作。<br>群发消息、获取消息、删除好友、获取公众号信息</p>
+<p>被动爬取与主动爬取</p>
+<p>不要重复做轮子：<code>pychat</code>与<code>itchat</code></p>
+<p>基本请求功能都有封装，它实现的原理就是对网页微信进行抓包分析，汇总成个人微信接口，目标就是所有网页微信能实现的功能它都能实现</p>
+<p>这种方案的主要流程是：</p>
+<p>1、服务器端通过ItChat登录网页微信</p>
+<p>2、当公众号发布新文章推送的时候，会被服务端截获进行后续的解析入库</p>
+<p>这种方案的优点是：</p>
+<p>1、基本零间隔获取已经发布的公众号文章</p>
+<p>2、能获取点赞数、阅读数 </p>
+<p>3、只需手机微信保持登陆，不用其他操作</p>
+<p>网页版微信存在问题：</p>
+<p>1、新注册的小号已经不能登入</p>
+<p>2、对老号也有部分限制</p>
+<p>3、itchat已经不支持微信公众号的获取了</p>
+<p>4、必须有手机在线、不能主动退出或长时间断网掉线</p>
+<h3 id="0x03-对微信进行中间人攻击"><a href="#0x03-对微信进行中间人攻击" class="headerlink" title="0x03 对微信进行中间人攻击"></a>0x03 <strong>对微信进行中间人攻击</strong></h3><p>中间人攻击本是某种黑客手法，用于截取客户端与服务端之间的通信信息。这种方案的思路是在手机微信和微信服务器之间搭建一个”HTTPS代理”，用于截获手机微信获取的公众号文章信息。</p>
+<p>一般性步骤是：</p>
+<p>1、手机微信搜索一个公众号</p>
+<p>2、点击进入公众号历史文章页面 </p>
+<p>3、代理识别已经进入列表页，进行内容截获，同时根据实际情况返回继续下拉或爬取新的公众号的js代码</p>
+<p>这种方案能够实现自动化的原因是：</p>
+<p>1、微信公众号使用的是HTTPS协议，且内容未加密</p>
+<p>2、微信公众号文章列表和详情本质上是个Web页面，可以嵌入js代码进行控制 </p>
+<p>这种方案的优点：</p>
+<p>1、一般情况下不会被屏蔽</p>
+<p>2、能拿到点赞数和阅读数等文章评估信息 3、能拿到公众号全部的历史文章</p>
+<p>当然，也存在很多缺点：</p>
+<p>1、需要一个长期联网的实体手机</p>
+<p>2、前期需要设置代理，工作量比较大 </p>
+<p>3、本质上还是个轮查的过程，而不是实时推送 </p>
+<p>4、同样有Web加载难以控制的风险，且本地网络环境对其影响非常大 </p>
+<p>5、存在着微信接口发生变更代码不再适应的情况</p>
+<p><strong>利用Mimtproxy实现过程</strong></p>
+<p>常用的代理抓包工具；Wireshark、BP、Mimtproxy、Anyproxy、Fidder</p>
+<p>使用Mimtproxy正向中间人代理，部署在与设备同一局域网下进行拦截数据，数据请求先流向代理、代理发送到服务器、得到响应、返回给设备</p>
+<p><img src="https://raw.githubusercontent.com/Hatcat123/GraphicBed/master/Img/20190926213855.png" alt=""></p>
+<p>目前比较广泛的应用是做仿真爬虫，即利用手机模拟器、无头浏览器来爬取 APP 或网站的数据，mitmpproxy 作为代理可以拦截、存储爬虫获取到的数据，或修改数据调整爬虫的行为。</p>
+<p>最强功能，拿到数据包可进行二次开发（python语言）</p>
+<p>快速上手一： 获取数据流</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">import mitmproxy.<span class="keyword">http</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="built_in">from</span> mitmproxy import ctx</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="built_in">num</span> = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">def request(flow: mitmproxy.<span class="keyword">http</span>.HTTPFlow):</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="built_in">global</span> <span class="built_in">num</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="built_in">num</span> = <span class="built_in">num</span> + <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    ctx.<span class="built_in">log</span>.info(<span class="string">"We've seen %d flows"</span> % <span class="built_in">num</span>)</span></pre></td></tr></table></figure>
+<p>快速上手二： <strong>事件</strong>获取数据流</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">import mitmproxy.http</span></pre></td></tr><tr><td class="code"><pre><span class="line">from mitmproxy import ctx</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">self</span>.num = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span><span class="params">(<span class="keyword">self</span>, <span class="symbol">flow:</span> mitmproxy.http.HTTPFlow)</span></span><span class="symbol">:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">self</span>.num = <span class="keyword">self</span>.num + <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        ctx.log.info(<span class="string">"We've seen %d flows"</span> % <span class="keyword">self</span>.num)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">addons = [</span></pre></td></tr><tr><td class="code"><pre><span class="line">    Counter()</span></pre></td></tr><tr><td class="code"><pre><span class="line">]</span></pre></td></tr></table></figure>
+
+<p>请求web可视化界面展示</p>
+<p>手动点击手机微信公众号文章，流量经过mimtproxy代理，在web端中能看到流量信息。明文展示。同时更多的信息也存在如：点赞、喜欢、阅读数。</p>
+<p>点击刷新公众号主页与历史文章，获取公众号的基本信息，与历史文章的连接。</p>
+<p>如何自动化？</p>
+<p>设计一个公众号文章自动化爬取。</p>
+<p>首先获取公众号的历史文章链接、再爬取链接获取详情页。但是不能自动化，就是说现在必须手动点击。才能获取数据。</p>
+<p>之前说了<code>仿真爬虫</code>修改数据调整爬虫的行为。我们可以通过修改响应包中的内容，加入自动翻页的js。</p>
+<p>实现10秒之后自动跳转到下个url</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="javascript">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#123;<span class="built_in">window</span>.location.href=<span class="string">'&#123;url&#125;'</span>;&#125;&#125;,<span class="number">10</span>);</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr></table></figure>
+
+<p>代替了我们手动点击下一个内容的请求。我么在返回的数据中注入上面的js，同时连接放入下一个请求的链接。周而复始。</p>
+<p>注意：必须有一个手机端发送的起始请求。在断网情况下，将不能继续自动化。</p>
+<p>整体架构图</p>
+<p><img src="https://raw.githubusercontent.com/Hatcat123/GraphicBed/master/Img/20190926215618.png" alt=""></p>
+<p>1、 需要一个公众号的id<br>2、 构造模拟请求历史文章列表的请求，手动发送（参数变化id）<br>3、 首页能获取到公众号的详情信息、存储到数据库<br>4、 获取到所有的公众号文章的链接、存储到数据库<br>5、 下页的公众号的历史数据通过注入js如page+1让程序自动爬取<br>6、 最后一页的返回公众号数据通过注入js如放入公众号文章的链接<br>7、 获取到公众号文章的数据、解析各种参数、存储数据库<br>8、 下页的公众号文章数据注入js如公众号文章链接<br>9、 最后一页的返回公众号文章数据注入js如：等待时间后重新执行2</p>
+<p>这样完成持续监听，主动获取。</p>
+<h3 id="0x04-Hook微信"><a href="#0x04-Hook微信" class="headerlink" title="0x04 Hook微信"></a>0x04 Hook微信</h3><p>借助微信hook，拦截修改某些call，填充进我们的Python代码，进行微信公众号文章的爬取</p>
+<p>实现hook功能，申请内存，修改call，在里面写调用python逻辑</p>
+<p>使用vs桌面应用c调动python程序</p>
+<p>限制：每个版本的微信call偏移量不同。</p>
+<p>优点：被动获取，请求量较少。</p>
+<p>属于逆向方面的知识，还需要调用c、修改ddl。</p>
+<p>找群里大神修改好的，直接用。</p>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文章</title>
     <url>/2019/12/27/%E4%B8%AA%E4%BA%BA%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<p>本片主要记录本人写的文章，不方便公开，请勿尝试。</p>
