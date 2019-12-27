@@ -513,7 +513,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> star = $(<span class="string">".layui-layer .layui-icon-rate-solid"</span>).length; <span class="comment">//获取当前弹窗的题目的star数,方法：获取layui-icon-rate-solid类的个数。</span></span></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Layui</category>
+        <category>前端</category>
       </categories>
       <tags>
         <tag>Flask</tag>
