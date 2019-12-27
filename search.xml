@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>搜索关键字标红</title>
+    <url>/2019/12/27/%E6%90%9C%E7%B4%A2%E5%85%B3%E9%94%AE%E5%AD%97%E6%A0%87%E7%BA%A2/</url>
+    <content><![CDATA[<p>在开发<a href="http://wechat.doonsec.com/" target="_blank" rel="noopener">微信聚合平台</a>的时候，用户进行搜索的时候，将搜索结果中包含用户输入的关键字标红，以方便用户发现差异。</p>
+<a id="more"></a>
+<p><strong>处理函数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setHeightKeyWord</span>(<span class="params">keyword</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">/* 获取需要处理的关键字 */</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">var</span> tempHTML = $(<span class="string">"#demo"</span>).html();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">/* 关键字替换文本 该文本设置有高亮颜色 */</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">var</span> replaceText = <span class="string">"&lt;font style='color:red;'&gt;$1&lt;/font&gt;"</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">/* 关键字正则匹配规则 */</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">var</span> r = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"("</span> + keyword + <span class="string">")"</span>, <span class="string">"ig"</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">/* 将匹配到的关键字替换成我们预设的文本 */</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    tempHTML = tempHTML.replace(r, replaceText);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">/* 将文本显示到浏览器上 */</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> tempHTML</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment">// $("#demo").html(tempHTML);</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>因为文章使用的信息流加载，所以次函数没有使用，只是核心就是这个正则表达式，然后进行相应的文本替换即可，同时记录下判断用户输入是否未空的判断</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (keyword.match(<span class="regexp">/^[ ]*$/</span>))&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    layer.msg(<span class="string">"搜索关键词不能为空！"</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> ;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Layui流加载模块使用</title>
     <url>/2019/12/27/Layui%E6%B5%81%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发<a href="http://wechat.doonsec.com/" target="_blank" rel="noopener">微信集合平台</a>的时候，首页展示公众号文章的时候，由于文章太多，展示不完，于是想到了使用流加载，下面记录如何使用Layui框架实现流加载。</p>
@@ -12,6 +29,7 @@
 <li>1：最新文章（默认展示）</li>
 <li>2：某个公众号下的文章（如i春秋）</li>
 <li>3：分类下的文章（如社区媒体类）</li>
+<li>4：搜索内容</li>
 </ul>
 <p>以下以某个公众号文章展示如何实现流加载</p>
 <h3 id="0x02-javascript-代码"><a href="#0x02-javascript-代码" class="headerlink" title="0x02 javascript 代码"></a>0x02 javascript 代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">   $.ajaxSetup(&#123;<span class="attr">cache</span>:<span class="literal">false</span>&#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    $(<span class="string">".layui-colla-content a"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> a = $(<span class="keyword">this</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> id = a.attr(<span class="string">'img-data'</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> flag = $(<span class="string">"#num"</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">        flag.attr(<span class="string">'data-num'</span>, <span class="string">"2"</span>); <span class="comment">//初始化flag值为2</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        $(<span class="string">"#demo"</span>).empty();<span class="comment">//将文章列表清空</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        layui.use(<span class="string">'flow'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">//此部分为流加载</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">var</span> flow = layui.flow;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            flow.load(&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                elem: <span class="string">'#demo'</span> <span class="comment">//指定列表容器</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">               ,<span class="attr">scrollElem</span>: <span class="string">'#demo'</span> <span class="comment">//滚动条所在元素选择器</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                , <span class="attr">isAuto</span>: <span class="literal">true</span> <span class="comment">//是否自动加载，如果设为false，点会在列表底部生成一个“加载更多”的button，则只能点击它才会加载下一页数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                , <span class="attr">mb</span>: <span class="number">1</span> <span class="comment">//与底部的临界距离</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                , <span class="attr">done</span>: <span class="function"><span class="keyword">function</span> (<span class="params">page, next</span>) </span>&#123; <span class="comment">//到达临界点（默认滚动触发），触发下一页</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                    layer.load();</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    <span class="keyword">var</span> lis = [];</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    <span class="comment">//以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                    <span class="keyword">if</span> (flag.attr(<span class="string">'data-num'</span>) == <span class="string">'2'</span>) &#123; <span class="comment">//在发送请求的时候，先判断下值，如果是这个值的话，才发送请求，防止下滑时，每个接口都请求</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                        <span class="keyword">var</span> url = <span class="string">'/articles/?page='</span> + page + <span class="string">'&amp;id='</span> + id;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                        $.<span class="keyword">get</span>(url, function (res) &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                            <span class="comment">//假设你的列表返回在data集合中</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                             layer.closeAll(<span class="string">'loading'</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">                            layui.each(res.data, <span class="function"><span class="keyword">function</span> (<span class="params">index, item</span>) </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                                lis.push()  <span class="comment">//此处将获取的data信息，展示到页面中，此处push函数里面为传入前端的html代码</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                            &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">                            <span class="comment">//执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                            <span class="comment">//pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                            next(lis.join(<span class="string">''</span>), page &lt; res.count);</span></pre></td></tr><tr><td class="code"><pre><span class="line">                            url = <span class="string">''</span> <span class="comment">//重新赋值，必须的，原文档没有，不重新赋值，好像有bug</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                        &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#125;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;)</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
@@ -21,8 +39,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>Layui</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -39,8 +57,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>Layui</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -1142,8 +1160,8 @@
         <category>前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Ajax</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
