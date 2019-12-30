@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker安装Mysql</title>
+    <url>/2019/12/30/Docker%E5%AE%89%E8%A3%85Mysql/</url>
+    <content><![CDATA[<p>前一段时间发现了尴尬的问题，别人问自己的Mysql版本，出口说个十点几的版本，回去查查才发现Mysql的官方Docker镜像为8.0.18，本片主要记录Docker安装Mysql5.7的版本。</p>
+<a id="more"></a>
+
+<h3 id="0x01-缘由"><a href="#0x01-缘由" class="headerlink" title="0x01 缘由"></a>0x01 缘由</h3><p>由于项目开发中，要使用Json字段作为表的拓展字段，为Json字段支持Mysql5.7以后的版本，所以记录下，如何使用Docker安装Mysql5.7</p>
+<h3 id="0x02-安装"><a href="#0x02-安装" class="headerlink" title="0x02 安装"></a>0x02 安装</h3><p><strong>搜索Mysql</strong></p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker search mysql</span></span></pre></td></tr></table></figure>
+<p><strong>拉取Mysql5.7版本</strong></p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">docker pull mysql:<span class="number">5.7</span></span></pre></td></tr></table></figure>
+<p>如果拉取的慢，可以设置为国内的源<br><strong>运行Mysql</strong></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> --name doonsec-mysql -p 3306:3306 -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=root -e <span class="attribute">MYSQL_DATABASE</span>=docker  -e <span class="attribute">TZ</span>=Asia/Shanghai -d mysql:5.7 <span class="attribute">--character-set-server</span>=utf8mb4 <span class="attribute">--collation-server</span>=utf8mb4_unicode_ci <span class="attribute">--default-time_zone</span>=<span class="string">'+8:00'</span></span></pre></td></tr></table></figure>
+<p>其中参数:</p>
+<ul>
+<li>–name: 容器名称</li>
+<li>-p: 映射端口</li>
+<li>-e MYSQL_ROOT_PASSWORD=xxx: root用户密码</li>
+<li>-e MYSQL_DATABASE=xxx: 创建数据库</li>
+<li>-e TZ=Asia/Shanghai: 设置时区</li>
+<li>–character-set-server=utf8mb4: 设置编码</li>
+<li>–collation-server=utf8mb4_unicode_ci: 设置字符集</li>
+<li>–default-time_zone=’+8:00’: 时区加+8</li>
+</ul>
+<p>设置完之后，即可使用root用户进行连接</p>
+<h3 id="0x03-使用"><a href="#0x03-使用" class="headerlink" title="0x03 使用"></a>0x03 使用</h3><p>安装好后，可以创建普通用户设置权限，进行使用。</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask封装响应包</title>
     <url>/2019/12/30/Flask%E5%B0%81%E8%A3%85%E5%93%8D%E5%BA%94%E5%8C%85/</url>
     <content><![CDATA[<p>主要记录Flask封装响应包，包括返回json内容、状态码、Header、Cookie信息。</p>
@@ -535,8 +569,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>Github</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
