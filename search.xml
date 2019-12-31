@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>pip设置豆瓣镜像源</title>
+    <url>/2019/12/31/Windows%E4%B8%8Bpip%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E8%B1%86%E7%93%A3%E9%95%9C%E5%83%8F%E6%BA%90/</url>
+    <content><![CDATA[<p>在安装第三方包的时候，默认源当包比较大的时候，安装比较慢，很是耽搁时间，所以需要选择国内的源，主要记录如何使用设置豆瓣镜像源。</p>
+<a id="more"></a>
+<h3 id="0x01-命令行模式"><a href="#0x01-命令行模式" class="headerlink" title="0x01 命令行模式"></a>0x01 命令行模式</h3><p>直接运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install xxx -i https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple</span></pre></td></tr></table></figure>
+
+<h3 id="0x02-修改默认设置"><a href="#0x02-修改默认设置" class="headerlink" title="0x02 修改默认设置"></a>0x02 修改默认设置</h3><ol>
+<li>在<code>C:\Users\Administrator\AppData\Roaming</code>目录下新建文件夹 <code>pip</code></li>
+<li>在pip文件夹下新建pip.ini文件，然后在pip.ini 里输入 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[global]</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">timeout</span> = <span class="number">6000</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">index-url</span> =https://pypi.douban.com/simple</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">trusted-host</span> = pypi.douban.com</span></pre></td></tr></table></figure></li>
+<li>设置完成后，正常使用pip</li>
+</ol>
+<h3 id="0x03-pip其他参数"><a href="#0x03-pip其他参数" class="headerlink" title="0x03 pip其他参数"></a>0x03 pip其他参数</h3><ul>
+<li>pip -V <strong>pip版本信息</strong></li>
+<li>pip list <strong>显示pip已安装包</strong></li>
+<li>pip show xxx <strong>显示某个包的具体信息</strong></li>
+<li>pip freeze &gt; requirements.txt <strong>生成requirements.txt依赖文件</strong></li>
+<li>pip install -r requirements.txt <strong>安装requirements.txt文件</strong></li>
+<li>pip install -U xxx <strong>升级某个包</strong></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Pip</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker安装Mysql</title>
     <url>/2019/12/30/Docker%E5%AE%89%E8%A3%85Mysql/</url>
     <content><![CDATA[<p>前一段时间发现了尴尬的问题，别人问自己的Mysql版本，出口说个十点几的版本，回去查查才发现Mysql的官方Docker镜像为8.0.18，本片主要记录Docker安装Mysql5.7的版本。</p>
