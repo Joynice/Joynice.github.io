@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Flask红图使用</title>
+    <url>/2020/01/07/Flask%E7%BA%A2%E5%9B%BE%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>在Flask中，自带有蓝图功能，但是在大型项目中，只使用蓝图会使得项目比较臃肿，所有在蓝图的基础上引入红图的概念，细化蓝图功能，使得项目更加轻巧。</p>
+<a id="more"></a>
+
+<h3 id="0x01-红图概念"><a href="#0x01-红图概念" class="headerlink" title="0x01 红图概念"></a>0x01 红图概念</h3><p>红图主要针对于具体的业务模块，在蓝图之下，一般在设计REST API的时候将版本号作为整体的蓝图，将各个业务模块作为红图，增加项目的颗粒度。</p>
+<p><img src="https://raw.githubusercontent.com/Joynice/image/master/img/1259476-20181019232609737-16604921.png" alt=""></p>
+<h3 id="0x02-红图实现"><a href="#0x02-红图实现" class="headerlink" title="0x02 红图实现"></a>0x02 红图实现</h3><p>红图的实现，可以参照蓝图的实现，主要核心的功能，设置视图装饰器，以及注册到蓝图上的功能。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Redprint</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.name = name</span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.mound = []</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">route</span><span class="params">(self, rule, **options)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(f)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            self.mound.append((f, rule, options))</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">return</span> f</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> decorator</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(self, bp, url_prefix=None)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">if</span> url_prefix <span class="keyword">is</span> <span class="literal">None</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            url_prefix = <span class="string">'/'</span> + self.name</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">for</span> f, rule, options <span class="keyword">in</span> self.mound:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            endpoint = self.name + <span class="string">'+'</span> + \</span></pre></td></tr><tr><td class="code"><pre><span class="line">                       options.pop(<span class="string">"endpoint"</span>, f.__name__)</span></pre></td></tr><tr><td class="code"><pre><span class="line">            bp.add_url_rule(url_prefix + rule, endpoint, f, **options)  <span class="comment">#注册到蓝图（路由,endpoint）</span></span></pre></td></tr></table></figure>
+<h3 id="0x03-红图使用"><a href="#0x03-红图使用" class="headerlink" title="0x03 红图使用"></a>0x03 红图使用</h3><p>主要使用也是实现的两个主要功能，注册到蓝图上和视图装饰器。<br><strong>视图装饰器</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Redprint</span></pre></td></tr><tr><td class="code"><pre><span class="line">api = Redprint(<span class="string">'book'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="meta">@api.route('/search')</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">pass</span></span></pre></td></tr></table></figure>
+<p><strong>注册到蓝图上</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_blueprint_v1</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    bp_v1 = Blueprint(<span class="string">'v1'</span>, __name__)  <span class="comment">#蓝图</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    user.api.register(bp_v1)  <span class="comment">#红图注册</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    book.api.register(bp_v1)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    client.api.register(bp_v1)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    token.api.register(bp_v1)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    gift.api.register(bp_v1)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> bp_v1</span></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Selenium加载插件实现动态代理</title>
     <url>/2020/01/03/Selenium%E5%8A%A0%E8%BD%BD%E6%8F%92%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<p>在爬虫实现的过程中，有些时候需要借助操控浏览器实现数据的抓取，在Python中操作浏览器使用最多的库就是<code>Selenium</code>这个库封装了操作主流浏览器的功能，本片文章主要记录如何给Chrome浏览器设置动态代理。</p>
