@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python获取类变量以及实例变量</title>
+    <url>/2020/01/08/Python%E8%8E%B7%E5%8F%96%E7%B1%BB%E5%8F%98%E9%87%8F%E4%BB%A5%E5%8F%8A%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<p>Python获取类变量以及实例变量的方法，单一获取类变量或者实例变量很简单，但是同时获取两个变量需要对类的操作非常的熟悉，这里记录一种方法实现。</p>
+<a id="more"></a>
+<p>定义一个简单的类：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    name = <span class="string">'Joynice'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    age = <span class="number">18</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.sex = <span class="string">'男'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.job = <span class="string">'程序员'</span></span></pre></td></tr></table></figure>
+<h3 id="0x01-获取类变量"><a href="#0x01-获取类变量" class="headerlink" title="0x01 获取类变量"></a>0x01 获取类变量</h3><ul>
+<li>直接访问<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = Person.name  <span class="comment">#Joynice</span></span></pre></td></tr></table></figure></li>
+<li><strong>dict</strong>访问<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = Person.__dict__.get(<span class="string">'name'</span>) <span class="comment">#Joynice</span></span></pre></td></tr></table></figure></li>
+<li>getattr()访问<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = getattr(Person, <span class="string">'name'</span>) <span class="comment">#Joynice</span></span></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="0x02-获取实例变量"><a href="#0x02-获取实例变量" class="headerlink" title="0x02 获取实例变量"></a>0x02 获取实例变量</h3><ul>
+<li>实例后获取实例变量，同时也能获得类变量<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex = Person().sex <span class="comment">#男</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">name = Person().name <span class="comment"># Joynice</span></span></pre></td></tr></table></figure></li>
+<li>实例后通过<strong>dict</strong>获得，但是这种方法获得不了类变量<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex = Person().__dict__.get(<span class="string">'sex'</span>) <span class="comment">#男</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">name = Person().__dict__.get(<span class="string">'name'</span>) <span class="comment">#None</span></span></pre></td></tr></table></figure></li>
+<li>getattr()访问实例对象中的实例变量,同时也能获得类变量<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex = getattr(Person(), <span class="string">'sex'</span>) <span class="comment">#男</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">name = getattr(Person(), <span class="string">'name'</span>) <span class="comment">#Joynice</span></span></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="0x03-同时返回类变量和实例变量"><a href="#0x03-同时返回类变量和实例变量" class="headerlink" title="0x03 同时返回类变量和实例变量"></a>0x03 同时返回类变量和实例变量</h3><p>通过dict()获取实例后的所有变量</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    name = <span class="string">'Joynice'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    age = <span class="number">18</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.sex = <span class="string">'男'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        self.job = <span class="string">'程序员'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">keys</span><span class="params">(self)</span>:</span>  <span class="comment">#类自动运行keys方法，可以设置需要返回变量的名称</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> [<span class="string">'name'</span>, <span class="string">'age'</span>, <span class="string">'sex'</span>, <span class="string">'job'</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> getattr(self, item)  <span class="comment">#通过getattr(获取对应的值)</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">dict(Person())</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">#&#123;'name': 'Joynice', 'age': 18, 'sex': '男', 'job': '程序员'&#125;</span></span></pre></td></tr></table></figure>
+
+<h3 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h3><p>实例变量只有类实例后，才能获得，类变量是公有的，但是类实例化访问类变量，只是类实例中复制的一份类变量，进行操作不会影响类本身。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Sqlalchemy模型对象序列化</title>
     <url>/2020/01/07/Sqlalchemy%E6%9F%A5%E8%AF%A2%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96/</url>
     <content><![CDATA[<p>最近看了<code>Python Flask高级编程之RESTFul API前后端分离精讲</code>的课程受益匪浅，在一起的知识层面上进一步构建更加完美的项目结构，这里主要记录Sqlalchemy模型对象序列化问题。</p>
