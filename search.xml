@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python操作ini文件</title>
+    <url>/2020/01/09/Python%E6%93%8D%E4%BD%9Cini%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>ini文件一般当做配置文件使用，在写Flask API项目的时候也使用ini文件作为配置文件，本片文章不要记录Python如何操作ini文件。</p>
+<a id="more"></a>
+<p>Python中自带<code>configparser</code>来操作ini文件,但是这个模块存在一些缺陷，无法识别section的大小写，无法读取到文件的注释，这样带有注释的配置文件操作时候就会存在问题。</p>
+<h3 id="0x01-实例文件"><a href="#0x01-实例文件" class="headerlink" title="0x01 实例文件"></a>0x01 实例文件</h3><blockquote>
+<p>config.ini</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[persion]</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">name</span> = Joynice</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">age</span> = <span class="number">18</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">sex</span> = 男</span></pre></td></tr></table></figure>
+<h3 id="0x02-读取文件"><a href="#0x02-读取文件" class="headerlink" title="0x02 读取文件"></a>0x02 读取文件</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> configparser</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">config = configparser.ConfigParser()</span></pre></td></tr><tr><td class="code"><pre><span class="line">config.read(<span class="string">'config.ini'</span>, encoding=<span class="string">'gbk'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">items = config.items(<span class="string">"persion"</span>)  <span class="comment">#返回persion下所有数据：[('name', 'Joynice'), ('age', '18'), ('sex', '男')]</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">sections = config.sections() <span class="comment">#获得所有的节点名称：['persion']</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">name = config.get(<span class="string">'persion'</span>,<span class="string">'name'</span>) <span class="comment">#获取指定节点的特定字段：Joynice</span></span></pre></td></tr></table></figure>
+
+<h3 id="0x03-增加数据"><a href="#0x03-增加数据" class="headerlink" title="0x03 增加数据"></a>0x03 增加数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">config.add_section(<span class="string">"persion2"</span>)  <span class="comment">#添加一个节点</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">config.set(<span class="string">"persion2"</span>, <span class="string">"name"</span>, <span class="string">"zhangsan"</span>)  <span class="comment">#添加节点数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">config.set(<span class="string">"persion2"</span>, <span class="string">"age"</span>, <span class="string">"18"</span>)  <span class="comment"># 添加阶段数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">config.set(<span class="string">"persion2"</span>, <span class="string">"sex"</span>, <span class="string">"女"</span>)  <span class="comment">#添加阶段数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">config.write(open(<span class="string">'config.ini'</span>, <span class="string">"w"</span>))  <span class="comment">#写入文件中</span></span></pre></td></tr></table></figure>
+<p>此时文件如下：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[persion]</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">name</span> = Joynice</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">age</span> = <span class="number">18</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">sex</span> = 男</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="section">[persion2]</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">name</span> = zhangsan</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">age</span> = <span class="number">18</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">sex</span> = 女</span></pre></td></tr></table></figure>
+
+<h3 id="0x04-修改数据"><a href="#0x04-修改数据" class="headerlink" title="0x04 修改数据"></a>0x04 修改数据</h3><p>修改数据，就是使用<code>set</code>进行重新赋值，举个例子，修改persion2节点下name为lisi</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">config.set(<span class="string">"persion"</span>, <span class="string">"name"</span>, <span class="string">"lisi"</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">config.write(open(<span class="string">'config.ini'</span>, <span class="string">"w"</span>))  <span class="comment">#写入文件中</span></span></pre></td></tr></table></figure>
+<h3 id="0x05-删除数据"><a href="#0x05-删除数据" class="headerlink" title="0x05 删除数据"></a>0x05 删除数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">config.remove_option(<span class="string">"persion"</span>, <span class="string">"age"</span>) <span class="comment">#删除persion节点下的age</span></span></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Layui穿梭框组件使用</title>
     <url>/2020/01/09/Layui%E7%A9%BF%E6%A2%AD%E6%A1%86%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在开发观星资产系统的后台的时候，用到了Layui的穿梭框插件，使用起来非常的方便，本片文章主要记录如果使用。</p>
@@ -821,8 +849,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>Github</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
