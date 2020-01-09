@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Flask,Flask-Sqlalchemy," />
+  <meta name="keywords" content="Flask," />
 
 <script>
     (function () {
@@ -140,15 +140,15 @@
 
 
 
-<meta name="description" content="最近看了Python Flask高级编程之RESTFul API前后端分离精讲的课程受益匪浅，在一起的知识层面上进一步构建更加完美的项目结构，这里主要记录Sqlalchemy模型对象序列化问题。">
-<meta name="keywords" content="Flask,Flask-Sqlalchemy">
+<meta name="description" content="日志是一个程序必要的部分，它可以方便后期运维人员及时发现程序出现的错误，并及时修改代码。这里主要记录Flask API将错误信息进行日志记录。">
+<meta name="keywords" content="Flask">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sqlalchemy模型对象序列化">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2020&#x2F;01&#x2F;07&#x2F;Sqlalchemy%E6%9F%A5%E8%AF%A2%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96&#x2F;index.html">
+<meta property="og:title" content="Flask设计API之Log使用">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2020&#x2F;01&#x2F;09&#x2F;Flask%E8%AE%BE%E7%BD%AEAPI%E4%B9%8BLog%E4%BD%BF%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="最近看了Python Flask高级编程之RESTFul API前后端分离精讲的课程受益匪浅，在一起的知识层面上进一步构建更加完美的项目结构，这里主要记录Sqlalchemy模型对象序列化问题。">
+<meta property="og:description" content="日志是一个程序必要的部分，它可以方便后期运维人员及时发现程序出现的错误，并及时修改代码。这里主要记录Flask API将错误信息进行日志记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-07T13:05:05.000Z">
+<meta property="og:updated_time" content="2020-01-09T01:31:21.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -179,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/2020/01/07/Sqlalchemy查询对象序列化/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2020/01/09/Flask设置API之Log使用/"/>
 
 
 
 
 
-  <title>Sqlalchemy模型对象序列化 | Joynice</title>
+  <title>Flask设计API之Log使用 | Joynice</title>
   
 
 
@@ -387,7 +387,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2020/01/07/Sqlalchemy%E6%9F%A5%E8%AF%A2%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2020/01/09/Flask%E8%AE%BE%E7%BD%AEAPI%E4%B9%8BLog%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joynice">
@@ -404,7 +404,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">Sqlalchemy模型对象序列化</h2>
+          <h2 class="post-title" itemprop="name headline">Flask设计API之Log使用</h2>
         
 
         <div class="post-meta">
@@ -416,8 +416,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-07T21:05:05+08:00">
-                2020-01-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-09T09:31:21+08:00">
+                2020-01-09
               </time>
             
 
@@ -432,8 +432,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-07T21:05:05+08:00">
-                2020-01-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-09T09:31:21+08:00">
+                2020-01-09
               </time>
             
           </span>
@@ -482,7 +482,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  438
                 </span>
               
 
@@ -498,7 +498,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  2
                 </span>
               
             </div>
@@ -519,43 +519,20 @@ var _hmt = _hmt || [];
       
 
       
-        <p>最近看了<code>Python Flask高级编程之RESTFul API前后端分离精讲</code>的课程受益匪浅，在一起的知识层面上进一步构建更加完美的项目结构，这里主要记录Sqlalchemy模型对象序列化问题。</p>
+        <p>日志是一个程序必要的部分，它可以方便后期运维人员及时发现程序出现的错误，并及时修改代码。这里主要记录Flask API将错误信息进行日志记录。</p>
 <a id="more"></a>
-<h3 id="0x01-以前方法"><a href="#0x01-以前方法" class="headerlink" title="0x01 以前方法"></a>0x01 以前方法</h3><p>以前处理模型对象序列化的问题的时候，都是手动将模型对象构造成需要返回数据的字典，非常的繁琐，写在视图函数中显得代码结构非常的臃肿，举个栗子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">user_list = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">users = User.query.all()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> users:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    user = &#123;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    user[<span class="string">'id'</span>] = _.id</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    user[<span class="string">'name'</span>] = _.name</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    user_list.append(user)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> jsonify(user_list)</span></pre></td></tr></table></figure>
-<p>这种方法是最好实现的，但是写在视图函数中非常的臃肿，早想改掉这种写法，知道看到这个课程，发现了更加方便的写法。</p>
-<h3 id="0x02-现在方法（更好）"><a href="#0x02-现在方法（更好）" class="headerlink" title="0x02 现在方法（更好）"></a>0x02 现在方法（更好）</h3><p>现在的写法是对整个项目结构的改善，主要讲序列化的代码写在了Model中，同时对<code>JSONEncoder</code>类中的<code>default</code>方法进行重写，使得能够解析模型对象</p>
-<blockquote>
-<p><code>serialize.py</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask.json <span class="keyword">import</span> JSONEncoder <span class="keyword">as</span> _JSONEncoder</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app.libs.error_code <span class="keyword">import</span> ServerError</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSONEncoder</span><span class="params">(_JSONEncoder)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, o)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> hasattr(o, <span class="string">'keys'</span>) <span class="keyword">and</span> hasattr(o, <span class="string">'__getitem__'</span>): <span class="comment">#判断模型对象是否有keys 和 __getitem__属性,如果有使用dict()返回模型对象类属性和实例对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> dict(o)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> isinstance(o, date): <span class="comment">#对date类型进行格式化</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> o.strftime(<span class="string">'%Y-%m-%d'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">raise</span> ServerError()</span></pre></td></tr></table></figure>
-<p>如果仅仅这样写的话，通过调试发现，重写的<code>default</code>函数运行，还是运行原来的函数，所以需要指定Flask中的<code>json_encoder</code>对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask <span class="keyword">as</span> _Flask</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flask</span><span class="params">(_Flask)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    json_encoder = JSONEncoder</span></pre></td></tr></table></figure>
-<blockquote>
-<p><code>dbs.py</code></p>
-</blockquote>
-<p>继承db.Model类，所有的模型对象继承Base类，主要实现以下几个功能:</p>
-<ul>
-<li>模型对象增加<code>create_time</code>、<code>status</code>字段</li>
-<li>删除数据时，实现软删除</li>
-<li>设置<code>keys</code>方法，自动执行获取，模型对象中的<code>self.fields</code>的值</li>
-<li>对<code>self.fields</code>进行增加删除，方便自定义返回数据</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span><span class="params">(db.Model)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    __abstract__ = <span class="literal">True</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    create_time = Column(DateTime, default=datetime.now(), comment=<span class="string">'创建时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    status = Column(SmallInteger, default=<span class="number">1</span>, comment=<span class="string">'用于软删除'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> getattr(self, item)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_attrs</span><span class="params">(self, attrs_dict)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> attrs_dict.items():</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> hasattr(self, key) <span class="keyword">and</span> key != <span class="string">'id'</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                setattr(self, key, value)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        self.status = <span class="number">0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">keys</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> self.fields</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hide</span><span class="params">(self, *keys)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            self.fields.remove(key)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> self</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self, *keys)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">            self.fields.append(key)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> self</span></pre></td></tr></table></figure>
 
+<h3 id="日志模块"><a href="#日志模块" class="headerlink" title="日志模块"></a>日志模块</h3><p>使用logging模块进行日志记录，封装初始化APP时，获取配置信息。</p>
 <blockquote>
-<p><code>models.py</code></p>
+<p><code>log.py</code></p>
 </blockquote>
-<p>在构造函数中设置<code>self.fields</code>实现返回默认字段数据</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Base)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">    用户：用户id、用户名、分数、授权登录时间（第一次使用本平台）、上次登录时间、本地登录时间</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">    第一次在前端使用本平台，会检查下sso中的id是否存在此表，若不存在则新增，代表用户授权使用本项目</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    __tablename__ = <span class="string">'t_user'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    id = db.Column(db.String(<span class="number">50</span>), primary_key=<span class="literal">True</span>, default=shortuuid.uuid)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    username = db.Column(db.String(<span class="number">20</span>), comment=<span class="string">'用户名'</span>, unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    email = db.Column(db.String(<span class="number">255</span>), comment=<span class="string">'邮箱'</span>, unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    _password = db.Column(<span class="string">'password'</span>, db.String(<span class="number">100</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    score = db.Column(db.Integer, default=<span class="number">100</span>, comment=<span class="string">'用户积分'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    join_time = db.Column(db.DateTime, default=datetime.datetime.now, comment=<span class="string">'加入时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    before_last_login_time = db.Column(db.DateTime, default=datetime.datetime.now, comment=<span class="string">'上次登录时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    last_login_time = db.Column(db.DateTime, default=datetime.datetime.now, comment=<span class="string">'本次登录时间'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    auth = db.Column(db.SmallInteger, default=<span class="number">1</span>, comment=<span class="string">'用于权限认证,1:普通用户;2:管理员;3:超级管理员'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="meta">    @orm.reconstructor  #增加这个装饰器，使得运行构造函数，如果不加,则不会运行。</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        self.fields = [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'score'</span>, <span class="string">'json_time'</span>, <span class="string">'before_last_login_time'</span>, <span class="string">'last_login_time'</span>, <span class="string">'auth'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    <span class="comment"># 或者重写keys方法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">keys</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'score'</span>, <span class="string">'json_time'</span>, <span class="string">'before_last_login_time'</span>, <span class="string">'last_login_time'</span>, <span class="string">'auth'</span>]</span></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">__author__ = <span class="string">'Joynice'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging.handlers</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.创建1个logger：</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">lg = logging.getLogger(<span class="string">"Error"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_log</span><span class="params">(app)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    log_path = app.config.get(<span class="string">'LOG_PATH'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(log_path):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            os.makedirs(log_path)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">except</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        print(<span class="string">"创建日志目录失败"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        exit(<span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> len(lg.handlers) == <span class="number">0</span>:  <span class="comment"># 避免重复</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># 2.创建handler(负责输出，输出到屏幕streamhandler,输出到文件filehandler)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        filename = os.path.join(log_path, <span class="string">'api.log'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        fh = logging.FileHandler(filename, mode=<span class="string">"a"</span>, encoding=<span class="string">"utf-8"</span>)  <span class="comment"># 默认mode 为a模式，默认编码方式为utf-8</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        sh = logging.StreamHandler()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># 3.创建formatter:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        formatter = logging.Formatter(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">            fmt=<span class="string">'%(asctime)s - %(levelname)s - Model:%(filename)s - Fun:%(funcName)s - Message:%(message)s - Line:%(lineno)d'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># 4.绑定关系：①logger绑定handler</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">        lg.addHandler(fh)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        lg.addHandler(sh)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># # ②为handler绑定formatter</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        fh.setFormatter(formatter)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        sh.setFormatter(formatter)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># # 5.设置日志级别(日志级别两层关卡必须都通过，日志才能正常记录)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">        lg.setLevel(<span class="number">40</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">        fh.setLevel(<span class="number">40</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        sh.setLevel(<span class="number">40</span>)</span></pre></td></tr></table></figure>
 
-<blockquote>
-<p><code>view.py</code></p>
-</blockquote>
-<p>视图函数中只需要传入模型对象就可以了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@api.route('', methods=['GET'])</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    uid = g.user.id</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    user = User.query.filter_by(id=uid).first_or_404()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> jsonify(user)</span></pre></td></tr></table></figure>
+<h3 id="绑定app"><a href="#绑定app" class="headerlink" title="绑定app"></a>绑定app</h3><p>将封装的<code>init_log</code>绑定在app上</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    app = Flask(__name__)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    app.config.from_object(config.get(<span class="string">'default'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    db.init_app(app)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    register_blueprints(app)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    init_log(app=app)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> app</span></pre></td></tr></table></figure>
 
-<h3 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h3><p>虽然现在的方法，看起来比较复杂，但是调用起来非常的方便，可以忍受封装的复杂，不可以忍受调用的复杂，奥利给！！！</p>
+<h3 id="AOP日志捕获"><a href="#AOP日志捕获" class="headerlink" title="AOP日志捕获"></a>AOP日志捕获</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.errorhandler(Exception)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">framework_error</span><span class="params">(e)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> isinstance(e, APIException):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> e</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> isinstance(e, HTTPException):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        code = e.code</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        msg = e.description</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        success = <span class="literal">False</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        data = <span class="literal">None</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> APIException(msg, code, data, success)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># 调试模式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        lg.error(e)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> app.config[<span class="string">'DEBUG'</span>]:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> ServerError()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">raise</span> e</span></pre></td></tr></table></figure>
+<p>注意<code>Flask1.1</code>版本后才能时候errorhandler捕获Exception，低版本只能捕获特定错误。</p>
 
       
     </div>
@@ -575,8 +552,6 @@ var _hmt = _hmt || [];
           
             <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
           
-            <a href="/tags/Flask-Sqlalchemy/" rel="tag" class=" fa  fa-tag  "> Flask-Sqlalchemy</a>
-          
         </div>
       
 
@@ -588,8 +563,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/07/Flask%E7%BA%A2%E5%9B%BE%E4%BD%BF%E7%94%A8/" rel="next" title="Flask红图使用">
-                <i class="fa fa-chevron-left"></i> Flask红图使用
+              <a href="/2020/01/08/Flask%E8%AE%BE%E8%AE%A1API%E4%B9%8BToken%E4%BD%BF%E7%94%A8/" rel="next" title="Flask设计API之Token使用">
+                <i class="fa fa-chevron-left"></i> Flask设计API之Token使用
               </a>
             
           </div>
@@ -597,10 +572,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/08/Python%E8%8E%B7%E5%8F%96%E7%B1%BB%E5%8F%98%E9%87%8F%E4%BB%A5%E5%8F%8A%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F/" rel="prev" title="Python获取类变量以及实例变量">
-                Python获取类变量以及实例变量 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -813,7 +784,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-以前方法"><span class="nav-number">1.</span> <span class="nav-text">0x01 以前方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-现在方法（更好）"><span class="nav-number">2.</span> <span class="nav-text">0x02 现在方法（更好）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-总结"><span class="nav-number">3.</span> <span class="nav-text">0x03 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#日志模块"><span class="nav-number">1.</span> <span class="nav-text">日志模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定app"><span class="nav-number">2.</span> <span class="nav-text">绑定app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP日志捕获"><span class="nav-number">3.</span> <span class="nav-text">AOP日志捕获</span></a></li></ol></div>
             
 
           </div>
