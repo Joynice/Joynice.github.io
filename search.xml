@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>css中rem使用</title>
+    <url>/2020/01/15/css%E4%B8%ADrem%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>在学习Vue课程中，使用到rem来代替原来的px，rem是相对于根元素<code>&lt;html&gt;</code>，这样就意味着，我们只需要在跟元素确定一个参考值，这个参考值设置多少，完全可以根据自己的需要来确定。</p>
+<a id="more"></a>
+<p>浏览器中的默认字体大小为<code>16px</code>，根据这个值就可以判断设置rem的大小了</p>
+<table>
+<thead>
+<tr>
+<th>px</th>
+<th>rem</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12</td>
+<td>12/16 = .75</td>
+</tr>
+<tr>
+<td>14</td>
+<td>14/16 = .875</td>
+</tr>
+<tr>
+<td>16</td>
+<td>16/16 = 1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>18/16 = 1.125</td>
+</tr>
+<tr>
+<td>20</td>
+<td>20/16 = 1.25</td>
+</tr>
+<tr>
+<td>24</td>
+<td>24/16 = 1.5</td>
+</tr>
+<tr>
+<td>30</td>
+<td>30/16 = 1.875</td>
+</tr>
+<tr>
+<td>32</td>
+<td>32/16 = 2</td>
+</tr>
+</tbody></table>
+<p>为了方便计算，可以将根元素的字体大小设置成<code>10px</code>，或者为<code>62.5%</code>，这样就会更方便计算</p>
+<table>
+<thead>
+<tr>
+<th>px</th>
+<th>rem</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12</td>
+<td>12/10 = 1.2</td>
+</tr>
+<tr>
+<td>14</td>
+<td>14/10 = 1.4</td>
+</tr>
+<tr>
+<td>18</td>
+<td>18/10 = 1.8</td>
+</tr>
+<tr>
+<td>20</td>
+<td>20/10 = 2</td>
+</tr>
+</tbody></table>
+<p>同时<code>rem</code>是css3的新添加的属性，需要考虑到浏览器的支持度。<code>rem</code>在众多浏览器中都已得到很好的支持，如果您的项目不用考虑IE低版本的话，你就可以放心的使用了</p>
+<p>如果根元素中没有设置<code>font-size</code>的值的话，则按照默认浏览器以<code>16px</code>计算</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask后台登录</title>
     <url>/2020/01/14/Flask%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95/</url>
     <content><![CDATA[<p>在Flask Web应用中，登录是常用的操作之一，本片文章主要记录结合验证码，实现后台用户登录的功能。</p>
