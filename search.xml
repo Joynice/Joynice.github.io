@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue中使用Stylus进行css书写</title>
+    <url>/2020/01/16/Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Stylus%E8%BF%9B%E8%A1%8Ccss%E4%B9%A6%E5%86%99/</url>
+    <content><![CDATA[<p>最近在写Vue项目中，第一次接触到Stylus进行css的书写，Stylus给css添加了可编程的特性，也就是说，在Stylus中可以使用变量、函数、判断、循环等一系列css没有的东西来编写样式文件。</p>
+<a id="more"></a>
+
+<h3 id="0x01-安装"><a href="#0x01-安装" class="headerlink" title="0x01 安装"></a>0x01 安装</h3><p>首先保证电脑有node.js的环境，然后使用npm进行安装</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> stylus <span class="comment">--save</span></span></pre></td></tr></table></figure>
+
+<h3 id="0x02-Stylus特性"><a href="#0x02-Stylus特性" class="headerlink" title="0x02 Stylus特性"></a>0x02 Stylus特性</h3><ul>
+<li>冒号可选</li>
+<li>分号可选</li>
+<li>逗号可选</li>
+<li>括号可选</li>
+<li>变量</li>
+<li>插值</li>
+<li>混合书写</li>
+<li>算术</li>
+<li>强制类型转换</li>
+<li>动态导入</li>
+<li>条件</li>
+<li>迭代</li>
+<li>嵌套选择</li>
+<li>父级参考</li>
+<li>变量函数调用</li>
+<li>词法作用域</li>
+<li>内置函数(&gt;25)</li>
+<li>内部语言函数</li>
+<li>压缩可选</li>
+<li>图像内联可选</li>
+<li>可执行Stylus</li>
+<li>健壮的错误报告</li>
+<li>单行和多行注释</li>
+<li>CSS字面量</li>
+<li>字符转义</li>
+<li>TextMate捆绑</li>
+<li>以及其他更多</li>
+</ul>
+<p>Stylus在css的基础上增加了许多特性，使得css富有表现力、动态、健壮</p>
+<h3 id="0x03-使用例子"><a href="#0x03-使用例子" class="headerlink" title="0x03 使用例子"></a>0x03 使用例子</h3><p>下面的例子，主要完成头部搜索展示的样式<br><img src="https://raw.githubusercontent.com/Joynice/image/master/img/TIM%E6%88%AA%E5%9B%BE20200116110004.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header-left"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"iconfont back-icon"</span>&gt;</span>&amp;#xe624;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header-input"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#xe632;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                输入城市/景点/游玩主题</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header-right"</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"iconfont arrow-icon"</span>&gt;</span>&amp;#xe6aa;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                城市</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="actionscript">  name: <span class="string">'HomeHeader'</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"stylus"</span> <span class="attr">scoped</span>&gt;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">  <span class="selector-class">.header</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    display flex</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-tag">line-height</span> <span class="selector-class">.86rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-tag">background</span> <span class="selector-id">#00bcd4</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-tag">color</span> <span class="selector-id">#fff</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-class">.header-left</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">width</span> <span class="selector-class">.64rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        float left</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-class">.back-icon</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            text-align center</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">            <span class="selector-tag">font-size</span> <span class="selector-class">.4rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-class">.header-input</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        flex 1</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">height</span> <span class="selector-class">.64rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">line-height</span> <span class="selector-class">.64rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">margin-top</span> <span class="selector-class">.12rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">margin-left</span> <span class="selector-class">.2rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">background</span> <span class="selector-id">#fff</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">border-radius</span> <span class="selector-class">.1rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">color</span> <span class="selector-id">#ccc</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">padding-left</span> <span class="selector-class">.2rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">    <span class="selector-class">.header-right</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-tag">width</span> 1<span class="selector-class">.24rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        float right</span></pre></td></tr><tr><td class="code"><pre><span class="line">        text-align center</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">        <span class="selector-class">.arrow-icon</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="css">            <span class="selector-tag">font-size</span> <span class="selector-class">.24rem</span></span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></pre></td></tr></table></figure>
+<p>同时<code>scoped</code>的含义，使得css样式只试用于当前的组件，它会在css编译的时候将<code>data-v-xxxxxx</code>的随机字符，使得样式唯一性。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>css中rem使用</title>
     <url>/2020/01/15/css%E4%B8%ADrem%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在学习Vue课程中，使用到rem来代替原来的px，rem是相对于根元素<code>&lt;html&gt;</code>，这样就意味着，我们只需要在跟元素确定一个参考值，这个参考值设置多少，完全可以根据自己的需要来确定。</p>
