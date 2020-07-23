@@ -1491,7 +1491,7 @@
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">gunicorn -b <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> -p <span class="number">5000</span> -w <span class="number">10</span> -k gevent -D app:app</span></pre></td></tr></table></figure>
 <p> <strong>-b：</strong> 绑定IP<br> <strong>-p:</strong> 绑定端口<br> <strong>-w：</strong> worke数量<br> <strong>-k：</strong> 运行模式<br> <strong>-D：</strong> 开启守护进程<br> <strong>app:app：</strong> 启动文件下的app实例</p>
 <h3 id="0x03-ngixn配置"><a href="#0x03-ngixn配置" class="headerlink" title="0x03 ngixn配置"></a>0x03 ngixn配置</h3><p>nginx配置需要将gunicorn绑定的端口进行消息转发就可以了</p>
-<figure class="highlight tp"><table><tr><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        listen xx;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        server_name xxx;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        location / &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_pass http:<span class="comment">//127.0.0.1:5000;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_set_header Host <span class="variable">$host</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_set_header <span class="keyword">X</span>-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_set_header <span class="keyword">X</span>-Real-IP <span class="variable">$remote_addr</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                proxy_set_header referer <span class="variable">$http_referer</span>;</span></pre></td></tr><tr><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">`</span></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">server</span> <span class="string">&#123;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="attr">listen</span> <span class="string">xx;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="attr">server_name</span> <span class="string">xxx;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="attr">location</span> <span class="string">/ &#123;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_pass</span> <span class="string">http://127.0.0.1:5000;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_set_header</span> <span class="string">Host $host;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_set_header</span> <span class="string">X-Forwarded-For $proxy_add_x_forwarded_for;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_set_header</span> <span class="string">X-Real-IP $remote_addr;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_set_header</span> <span class="string">REMOTE-HOST $remote_addr;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="attr">proxy_set_header</span> <span class="string">referer $http_referer;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="attr">&#125;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="attr">&#125;</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="attr">`</span></span></pre></td></tr></table></figure>
 <p>同时记录下nginx的几条配置命令</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">nginx -t <span class="string">//</span>检查配置文件是否合法</span></pre></td></tr><tr><td class="code"><pre><span class="line">nginx -s <span class="keyword">reload</span> <span class="string">//</span>重启nginx</span></pre></td></tr></table></figure>
 
@@ -2219,6 +2219,42 @@
       </tags>
   </entry>
   <entry>
+    <title>百度关键词收录爬取</title>
+    <url>/2019/12/04/%E7%99%BE%E5%BA%A6%E5%85%B3%E9%94%AE%E8%AF%8D%E6%94%B6%E5%BD%95%E7%88%AC%E5%8F%96/</url>
+    <content><![CDATA[<hr>
+<p>title: 百度关键词收录爬取<br>date: 2019-12-03 20:35:03<br>tags:</p>
+<ul>
+<li>爬虫<br>categories:</li>
+<li>爬虫</li>
+</ul>
+<p>根据百度搜索，输入关键字，获取相应关键子的收录数。</p>
+<a id="more"></a>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
+<li>根据百度搜索，输入关键词，获得相应关键词的收录数。</li>
+<li>收集完数据后，根据指定的阈值进行数据分类（如大于收录数大于1000的保存在一个csv文件，其他保存在另一个csv文件中。）。</li>
+<li>爬虫效率（目前测试实现18w/1h），带宽影响很大。</li>
+<li>打包成exe，可执行文件。</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><strong>接口</strong>：<a href="http://www.baidu.com/s" target="_blank" rel="noopener">http://www.baidu.com/s</a> </p>
+<p><strong>传参</strong>：data = {‘wd’: 关键词}</p>
+<p>由于百度这个接口没有反爬设置，所有正确访问即可，通过Xpath+re获得想要的数据。</p>
+<p>具体爬取内容如图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14106334-f9e08d54c97eafec.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爬取内容"></p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol>
+<li>先将需要爬取的txt文件复制到“彩票关键词”目录，保证目录中只存在需要爬取的文件。</li>
+<li>再打开数据采集器，设置线程数，以及阈值。线程数建议20，根据带宽决定；阈值将数据进行划分出大于该值以及小于该值的两个文件。</li>
+<li>最后从结果文件夹中提取出爬取结果。</li>
+</ol>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">项目地址</a></h2><p><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu</a></p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li>学习TK。</li>
+<li>异步</li>
+<li>优化保存。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Python生成词云</title>
     <url>/2019/12/04/Python%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/</url>
     <content><![CDATA[<p>词云，就是对网络文本中出现频率较高的“关键词”予以视觉上的突出，形成“关键词云层”或“关键词渲染”，从而过滤掉大量的文本信息，使浏览网页者只要一眼扫过文本就可以领略文本的主旨。</p>
@@ -2403,42 +2439,6 @@ pip install matplotlib</code></pre><p>然后代码说话：</p>
       <tags>
         <tag>爬虫</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>百度关键词收录爬取</title>
-    <url>/2019/12/03/%E7%99%BE%E5%BA%A6%E5%85%B3%E9%94%AE%E8%AF%8D%E6%94%B6%E5%BD%95%E7%88%AC%E5%8F%96/</url>
-    <content><![CDATA[<hr>
-<p>title: 百度关键词收录爬取<br>date: 2019-12-03 20:35:03<br>tags:</p>
-<ul>
-<li>爬虫<br>categories:</li>
-<li>爬虫</li>
-</ul>
-<p>根据百度搜索，输入关键字，获取相应关键子的收录数。</p>
-<a id="more"></a>
-
-<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
-<li>根据百度搜索，输入关键词，获得相应关键词的收录数。</li>
-<li>收集完数据后，根据指定的阈值进行数据分类（如大于收录数大于1000的保存在一个csv文件，其他保存在另一个csv文件中。）。</li>
-<li>爬虫效率（目前测试实现18w/1h），带宽影响很大。</li>
-<li>打包成exe，可执行文件。</li>
-</ol>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><strong>接口</strong>：<a href="http://www.baidu.com/s" target="_blank" rel="noopener">http://www.baidu.com/s</a> </p>
-<p><strong>传参</strong>：data = {‘wd’: 关键词}</p>
-<p>由于百度这个接口没有反爬设置，所有正确访问即可，通过Xpath+re获得想要的数据。</p>
-<p>具体爬取内容如图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14106334-f9e08d54c97eafec.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爬取内容"></p>
-<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol>
-<li>先将需要爬取的txt文件复制到“彩票关键词”目录，保证目录中只存在需要爬取的文件。</li>
-<li>再打开数据采集器，设置线程数，以及阈值。线程数建议20，根据带宽决定；阈值将数据进行划分出大于该值以及小于该值的两个文件。</li>
-<li>最后从结果文件夹中提取出爬取结果。</li>
-</ol>
-<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">项目地址</a></h2><p><a href="https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu" target="_blank" rel="noopener">https://github.com/DropsDevopsOrg/ECommerceCrawlers/tree/master/OthertCrawler/0x10baidu</a></p>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
-<li>学习TK。</li>
-<li>异步</li>
-<li>优化保存。</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>高用代理</title>
