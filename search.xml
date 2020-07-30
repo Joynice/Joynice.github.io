@@ -1895,7 +1895,7 @@
 <p>Email地址：<code>^w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*$</code></p>
 <p>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</p>
 <p>InternetURL：[a-zA-z]+://[<code>^s]* 或</code>^http://([w-]+.)+[w-]+(/[w-./?%&amp;=]*)?$`</p>
-<p>手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])d{8}$</code></p>
+<p>手机号码：<code>^1[3456789]\d{9}$</code></p>
 <p>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^((d{3,4}-)|d{3.4}-)?d{7,8}$</code></p>
 <p>国内电话号码<code>(0511-4405222、021-87888822)：d{3}-d{8}|d{4}-d{7}</code></p>
 <p>身份证号(15位、18位数字)：<code>^d{15}|d{18}$</code></p>
