@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Flask文件上传的注意点</title>
+    <url>/2020/08/10/Flask%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</url>
+    <content><![CDATA[<p>最近在写文件上传检的接口，这篇文章主要记录下文件上传注意的几个方面。</p>
+<a id="more"></a>
+
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><p>一般的文件上传接口都是指定特定的文件才能允许上传，如图片类型支持jpg,png,tif,gif,pcx,tga,exif,fpx,svg等等，所以需要判断用户上传的文件是否满足要求，不能需要图片类型文件，而用户上传MP4的文件。具体检测方法如下：<br>首先需要将允许上传的文件类型存储在一个列表中，将用户上传的文件分割出文件后缀，进行判断。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 判断文件后缀是否在列表中</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">allowed_file</span><span class="params">(filename, ALLOWED_EXTENSIONS)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="string">'.'</span> <span class="keyword">in</span> filename <span class="keyword">and</span> filename.rsplit(<span class="string">'.'</span>, <span class="number">1</span>)[<span class="number">1</span>] <span class="keyword">in</span> ALLOWED_EXTENSIONS</span></pre></td></tr></table></figure>
+
+<h3 id="文件大小"><a href="#文件大小" class="headerlink" title="文件大小"></a>文件大小</h3><p>文件大小也是需要判断的，规定用户上传文件的大小，如果恶意用户随意上传大文件，会占据大量带宽，影响服务器运行。首先也需要设定允许上传最大文件大小。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_len</span><span class="params">(filename_context)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    判断文件大小是否满足配置</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :param filename:文件内容</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :return: bool</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    size = len(filename_context)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> size &gt; current_app.config[<span class="string">'ALLOW_SIZE'</span>]:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span></pre></td></tr></table></figure>
+
+<h3 id="文件重命名"><a href="#文件重命名" class="headerlink" title="文件重命名"></a>文件重命名</h3><p>用户文件重新命名也是非常重要的，防治恶意用户上传后门进行连接，二来可以统一下存储文件的命名格式，防止不规范的文件名称的出现。uuid既可以保证格式一样，还能保证文件名不重复。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> shortuuid <span class="keyword">import</span> uuid</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rename</span><span class="params">(name)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="string">'''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    重构名字的格式</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    保存的文件的命名为：uuid</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :param name:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    :return:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    '''</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    name1 = name.split(<span class="string">'.'</span>)[<span class="number">-1</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    new_name = uuid() +  <span class="string">'.'</span> +name1</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> new_name</span></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo博客打包迁移</title>
     <url>/2020/07/28/hexo%E5%8D%9A%E5%AE%A2%E6%89%93%E5%8C%85%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<p>随着工作单位的转移，之前搭建的博客也需要进行打包迁移，本篇文章主要记录如何进行<code>hexo</code>博客的转移。</p>
