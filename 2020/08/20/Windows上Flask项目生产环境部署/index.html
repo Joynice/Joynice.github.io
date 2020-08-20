@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Joynice" />
+  <meta name="keywords" content="Flask,部署," />
 
 <script>
     (function () {
@@ -140,14 +140,18 @@
 
 
 
-<meta name="description" content="要做一个有思想的程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joynice">
-<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;tags&#x2F;Ubuntu&#x2F;index.html">
+<meta name="description" content="最近写了一个公司项目，开发环境和生产环境都是使用的Windows操作系统，开发测试阶段很快就完成了，但是在部署阶段遇到了些问题，下面记录解决过程。">
+<meta name="keywords" content="Flask,部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows上Flask项目生产环境部署">
+<meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2020&#x2F;08&#x2F;20&#x2F;Windows%E4%B8%8AFlask%E9%A1%B9%E7%9B%AE%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="要做一个有思想的程序员">
+<meta property="og:description" content="最近写了一个公司项目，开发环境和生产环境都是使用的Windows操作系统，开发测试阶段很快就完成了，但是在部署阶段遇到了些问题，下面记录解决过程。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;ycyl&#x2F;%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200820111703.png">
+<meta property="og:updated_time" content="2020-08-20T01:18:32.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joynice&#x2F;image&#x2F;master&#x2F;ycyl&#x2F;%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200820111703.png">
 
 
 
@@ -177,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="https://lr.dropsec.xyz/tags/Ubuntu/"/>
+  <link rel="canonical" href="https://lr.dropsec.xyz/2020/08/20/Windows上Flask项目生产环境部署/"/>
 
 
 
 
 
-  <title>标签: Ubuntu | Joynice</title>
+  <title>Windows上Flask项目生产环境部署 | Joynice</title>
   
 
 
@@ -213,7 +217,7 @@ var _hmt = _hmt || [];
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/Joynice" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -361,116 +365,237 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Ubuntu<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lr.dropsec.xyz/2020/08/20/Windows%E4%B8%8AFlask%E9%A1%B9%E7%9B%AE%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joynice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/22851022?s=180&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joynice">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/04/ubuntu%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/" itemprop="url">
-              
-                <span itemprop="name">ubuntu设置静态IP地址</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Windows上Flask项目生产环境部署</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T21:28:38+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-20T09:18:32+08:00">
+                2020-08-20
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-20T09:18:32+08:00">
+                2020-08-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  923
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/ubuntu%E6%9B%B4%E6%8D%A2apt%E6%BA%90/" itemprop="url">
-              
-                <span itemprop="name">ubuntu更换apt源</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T21:11:29+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>最近写了一个公司项目，开发环境和生产环境都是使用的<code>Windows</code>操作系统，开发测试阶段很快就完成了，但是在部署阶段遇到了些问题，下面记录解决过程。</p>
+<a id="more"></a>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h3 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h3><p>之间部署项目都是在<code>Linux</code>上进行部署，采用<code>gunicorn+nginx</code>进行部署，本来还是采用这两个中间件进行部署。但是，查找资料后发现gunicorn是基于unix系统开发的，并不兼容windows操作系统，主要这个问题的解决，在Windows上使用什么应用服务器代替gunicorn.</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>一顿搜索之后发现，<a href="https://docs.pylonsproject.org/projects/waitress/en/latest/runner.html#invocation" target="_blank" rel="noopener">waitress</a>可以解决这个问题，一顿研究后，发现命令也挺简单，操作和<code>gunicorn</code>差不多，现在记录下具体操作过程。</p>
+<h4 id="安装waitress"><a href="#安装waitress" class="headerlink" title="安装waitress"></a>安装waitress</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pip install waitress</span></pre></td></tr></table></figure>
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/04/ubuntu16-04-desktop-shell%E5%88%87%E6%8D%A2/" itemprop="url">
-              
-                <span itemprop="name">ubuntu16.04-desktop-shell切换</span>
-              
-            </a>
-        
-      </h3>
+<p>安装后，会发现有个<code>waitress-server.exe</code>的程序：<br><img src="https://raw.githubusercontent.com/Joynice/image/master/ycyl/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200820111703.png" alt=""><br>将其添加到环境变量中，即可完成安装。</p>
+<h4 id="使用waitress"><a href="#使用waitress" class="headerlink" title="使用waitress"></a>使用waitress</h4><p>使用起来也非常方便，类似<code>gunicorn</code>差不多，下面给我使用的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">waitress-server.exe --port&#x3D;5000 --threads&#x3D;10 app:app</span></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-04T20:56:30+08:00"
-              content="2019-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p>具体参数还有很多，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">--help</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Show this information.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">--call</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">Call the given object to get the WSGI application.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">--host&#x3D;ADDR</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">Hostname or IP address on which to listen, default is &#39;0.0.0.0&#39;, which means &quot;all IP addresses on this host&quot;.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">--port&#x3D;PORT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">TCP port on which to listen, default is &#39;8080&#39;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">--listen&#x3D;host:port</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">Tell waitress to listen on an ip port combination.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">Example:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">--listen&#x3D;127.0.0.1:8080 --listen&#x3D;[::1]:8080 --listen&#x3D;*:8080</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">This option may be used multiple times to listen on multipe sockets. A wildcard for the hostname is also supported and will bind to both IPv4&#x2F;IPv6 depending on whether they are enabled or disabled.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">--[no-]ipv4</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">Toggle on&#x2F;off IPv4 support.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">This affects wildcard matching when listening on a wildcard address&#x2F;port combination.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">--[no-]ipv6</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">Toggle on&#x2F;off IPv6 support.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">This affects wildcard matching when listening on a wildcard address&#x2F;port combination.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">--unix-socket&#x3D;PATH</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">Path of Unix socket. If a socket path is specified, a Unix domain socket is made instead of the usual inet domain socket.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">Not available on Windows.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">--unix-socket-perms&#x3D;PERMS</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">Octal permissions to use for the Unix domain socket, default is &#39;600&#39;.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">--url-scheme&#x3D;STR</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">Default wsgi.url_scheme value, default is &#39;http&#39;.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">--url-prefix&#x3D;STR</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">The SCRIPT_NAME WSGI environment value. Setting this to anything except the empty string will cause the WSGI SCRIPT_NAME value to be the value passed minus any trailing slashes you add, and it will cause the PATH_INFO of any request which is prefixed with this value to be stripped of the prefix. Default is the empty string.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">--ident&#x3D;STR</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">Server identity used in the &#39;Server&#39; header in responses. Default is &#39;waitress&#39;.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">Tuning options:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">--threads&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">Number of threads used to process application logic, default is 4.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">--backlog&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">Connection backlog for the server. Default is 1024.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">--recv-bytes&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">Number of bytes to request when calling socket.recv(). Default is 8192.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">--send-bytes&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">Number of bytes to send to socket.send(). Default is 1. Multiples of 9000 should avoid partly-filled TCP packets.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">Deprecated since version 1.3.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">--outbuf-overflow&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">A temporary file should be created if the pending output is larger than this. Default is 1048576 (1MB).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">--outbuf-high-watermark&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">The app_iter will pause when pending output is larger than this value and will resume once enough data is written to the socket to fall below this threshold. Default is 16777216 (16MB).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">--inbuf-overflow&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">A temporary file should be created if the pending input is larger than this. Default is 524288 (512KB).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">--connection-limit&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">Stop creating new channels if too many are already active. Default is 100.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">--cleanup-interval&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">Minimum seconds between cleaning up inactive channels. Default is 30. See --channel-timeout.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line">--channel-timeout&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line">Maximum number of seconds to leave inactive connections open. Default is 120. &#39;Inactive&#39; is defined as &#39;has received no data from the client and has sent no data to the client&#39;.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line">--[no-]log-socket-errors</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">67</span></pre></td><td class="code"><pre><span class="line">Toggle whether premature client disconnect tracebacks ought to be logged. On by default.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">68</span></pre></td><td class="code"><pre><span class="line">--max-request-header-size&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">69</span></pre></td><td class="code"><pre><span class="line">Maximum size of all request headers combined. Default is 262144 (256KB).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">70</span></pre></td><td class="code"><pre><span class="line">--max-request-body-size&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">71</span></pre></td><td class="code"><pre><span class="line">Maximum size of request body. Default is 1073741824 (1GB).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">72</span></pre></td><td class="code"><pre><span class="line">--[no-]expose-tracebacks</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">73</span></pre></td><td class="code"><pre><span class="line">Toggle whether to expose tracebacks of unhandled exceptions to the client. Off by default.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">74</span></pre></td><td class="code"><pre><span class="line">--asyncore-loop-timeout&#x3D;INT</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">75</span></pre></td><td class="code"><pre><span class="line">The timeout value in seconds passed to asyncore.loop(). Default is 1.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">76</span></pre></td><td class="code"><pre><span class="line">--asyncore-use-poll</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">77</span></pre></td><td class="code"><pre><span class="line">The use_poll argument passed to asyncore.loop(). Helps overcome open file descriptors limit. Default is False.</span></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag" class=" fa  fa-tag  "> Flask</a>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2/" rel="tag" class=" fa  fa-tag  "> 部署</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/10/Flask%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" rel="next" title="Flask文件上传的注意点">
+                <i class="fa fa-chevron-left"></i> Flask文件上传的注意点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
 
           </div>
           
 
 
           
+
+  
+
+
 
         </div>
         
@@ -491,8 +616,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -633,6 +767,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#存在问题"><span class="nav-number">1.</span> <span class="nav-text">存在问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装waitress"><span class="nav-number">2.1.</span> <span class="nav-text">安装waitress</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用waitress"><span class="nav-number">2.2.</span> <span class="nav-text">使用waitress</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -791,6 +941,10 @@ var _hmt = _hmt || [];
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
