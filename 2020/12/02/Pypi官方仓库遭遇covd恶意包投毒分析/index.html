@@ -140,13 +140,13 @@
 
 
 
-<meta name="description" content="腾讯发现pypi的官方包投毒事件https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;amp;mid&#x3D;2651202917&amp;amp;idx&#x3D;1&amp;amp;sn&#x3D;d3ea45078ee4e311214b1209c0487801，第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。这次是利用疫情期间的有人编写">
+<meta name="description" content="腾讯发现pypi的官方包投毒事件https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;amp;mid&#x3D;2651202917&amp;amp;idx&#x3D;1&amp;amp;sn&#x3D;d3ea45078ee4e311214b1209c0487801">
 <meta name="keywords" content="安全,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pypi官方仓库遭遇covd恶意包投毒分析">
 <meta property="og:url" content="https:&#x2F;&#x2F;lr.dropsec.xyz&#x2F;2020&#x2F;12&#x2F;02&#x2F;Pypi%E5%AE%98%E6%96%B9%E4%BB%93%E5%BA%93%E9%81%AD%E9%81%87covd%E6%81%B6%E6%84%8F%E5%8C%85%E6%8A%95%E6%AF%92%E5%88%86%E6%9E%90&#x2F;index.html">
 <meta property="og:site_name" content="Joynice">
-<meta property="og:description" content="腾讯发现pypi的官方包投毒事件https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;amp;mid&#x3D;2651202917&amp;amp;idx&#x3D;1&amp;amp;sn&#x3D;d3ea45078ee4e311214b1209c0487801，第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。这次是利用疫情期间的有人编写">
+<meta property="og:description" content="腾讯发现pypi的官方包投毒事件https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;amp;mid&#x3D;2651202917&amp;amp;idx&#x3D;1&amp;amp;sn&#x3D;d3ea45078ee4e311214b1209c0487801">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-12-02T03:02:55.000Z">
 <meta name="twitter:card" content="summary">
@@ -520,10 +520,11 @@ var _hmt = _hmt || [];
       
 
       
-        <p>腾讯发现pypi的官方包投毒事件<a href="https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801，第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。这次是利用疫情期间的有人编写covid库，方便获取实时的疫情信息状态。" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801，第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。这次是利用疫情期间的有人编写covid库，方便获取实时的疫情信息状态。</a></p>
+        <p>腾讯发现pypi的官方包投毒事件<a href="https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801</a></p>
 <a id="more"></a>
 
-<h2 id="0x01-事件描述"><a href="#0x01-事件描述" class="headerlink" title="0x01 事件描述"></a>0x01 事件描述</h2><p>11月16号 17:02 攻击者在PyPI官方仓库上传了<code>covd</code> 恶意包，该恶意包通过伪造<code>covid</code>包名进行钓鱼，攻击者可对受感染的主机进行入侵，并实施种植木马、命令控制等一系列活动，其中恶意代码存在于<code>1.0.2/4</code>版本中。</p>
+<h2 id="0x01-事件描述"><a href="#0x01-事件描述" class="headerlink" title="0x01 事件描述"></a>0x01 事件描述</h2><p>第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。这次是利用疫情期间的有人编写covid库，方便获取实时的疫情信息状态。</p>
+<p>11月16号 17:02 攻击者在PyPI官方仓库上传了<code>covd</code> 恶意包，该恶意包通过伪造<code>covid</code>包名进行钓鱼，攻击者可对受感染的主机进行入侵，并实施种植木马、命令控制等一系列活动，其中恶意代码存在于<code>1.0.2/4</code>版本中。</p>
 <p>正常 covid 包的功能是获取约翰斯·霍普金斯大学和worldometers.info提供的有关新型冠状病毒的信息，每天的安装量上千次。在新冠疫情在世界流行的大背景下，<code>covid</code>包因输错包名而被误装为covd钓鱼包的数量将会不断增加。</p>
 <h2 id="0x02-复现内容"><a href="#0x02-复现内容" class="headerlink" title="0x02 复现内容"></a>0x02 复现内容</h2><p>然后去复现了一下。</p>
 <p>这里文章中给出的版本号是<code>1.0.4</code></p>
